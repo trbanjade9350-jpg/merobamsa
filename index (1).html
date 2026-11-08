@@ -1,0 +1,1171 @@
+<!doctype html><html lang="ne"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>नातागोता ट्रयाकिङ</title><meta name="description" content="गाउँका परिवारको नातागोता र वंशावली"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&family=Yatra+One&display=swap"></head><body><style id="appcss">
+/* Layout: औजार-जस्तो एप शेल। माथि नाम पट्टी, तल ट्याब, बीचमा कार्यक्षेत्र। वंशावली स्क्रोल हुने क्यानभास हो, व्यक्तिको विवरण चौडा स्क्रिनमा दायाँ टाँसिन्छ र साँघुरो स्क्रिनमा तलको पाना बन्छ। */
+:root{
+  --bg:#f0f2f8; --surface:#ffffff; --surface2:#e8ecf5; --ink:#15203a; --muted:#56627f; --line:#d2d8e6; --edge:#8792b0;
+  --accent:#ab2438; --on-accent:#ffffff; --indigo:#2a4890; --on-indigo:#ffffff; --gold:#946508; --on-gold:#ffffff;
+  --ok:#256f45; --shadow:0 6px 24px rgba(21,32,58,.16);
+  --lc0:#2563eb; --lc1:#ea580c; --lc2:#16a34a; --lc3:#9333ea; --lc4:#0891b2; --lc5:#c026d3; --lc6:#92400e; --lc7:#334155;
+  --font-d:'Yatra One','Noto Sans Devanagari',serif;
+  --font-b:'Mukta','Noto Sans Devanagari',system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1424; --surface:#161e33; --surface2:#1f2947; --ink:#e7ebf6; --muted:#9ba6c6; --line:#2b3656; --edge:#6a779c;
+    --accent:#ff8d99; --on-accent:#2a0a10; --indigo:#9db7ff; --on-indigo:#0e1a3a; --gold:#e3b24f; --on-gold:#2a1d02;
+    --ok:#6fcf97; --shadow:0 6px 24px rgba(0,0,0,.55); color-scheme:dark;
+    --lc0:#60a5fa; --lc1:#fb923c; --lc2:#4ade80; --lc3:#c084fc; --lc4:#22d3ee; --lc5:#e879f9; --lc6:#d6a35c; --lc7:#94a3b8;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1424; --surface:#161e33; --surface2:#1f2947; --ink:#e7ebf6; --muted:#9ba6c6; --line:#2b3656; --edge:#6a779c;
+  --accent:#ff8d99; --on-accent:#2a0a10; --indigo:#9db7ff; --on-indigo:#0e1a3a; --gold:#e3b24f; --on-gold:#2a1d02;
+  --ok:#6fcf97; --shadow:0 6px 24px rgba(0,0,0,.55); color-scheme:dark;
+  --lc0:#60a5fa; --lc1:#fb923c; --lc2:#4ade80; --lc3:#c084fc; --lc4:#22d3ee; --lc5:#e879f9; --lc6:#d6a35c; --lc7:#94a3b8;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-b);font-size:15px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:10px 48px}
+[hidden]{display:none!important}
+button,input,select,textarea{font-family:inherit}
+:focus-visible{outline:3px solid var(--indigo);outline-offset:2px}
+.mut{color:var(--muted)}
+.top{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;padding:8px 0 14px}
+.brand{display:flex;align-items:center;gap:12px;flex:1 1 260px;min-width:0}
+.brand svg{width:40px;height:40px;flex:none;color:var(--accent)}
+h1{font:400 27px/1.2 var(--font-d);margin:0;text-wrap:balance}
+.sub{margin:2px 0 0;color:var(--muted);font-size:14px}
+.stats{display:flex;gap:18px;font-size:12.5px;color:var(--muted)}
+.stats b{display:block;font-size:20px;line-height:1.1;color:var(--ink);font-weight:700}
+.btn{font:600 14px var(--font-b);padding:9px 14px;border-radius:8px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;display:inline-flex;gap:6px;align-items:center;justify-content:center}
+.btn:hover{border-color:var(--edge)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.sm{padding:5px 10px;font-size:13px}
+.btn.danger{color:var(--accent);border-color:var(--accent)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.tabs{display:flex;gap:2px;border-bottom:1.5px solid var(--line);overflow-x:auto;margin-bottom:14px}
+.tab{background:none;border:0;border-bottom:3px solid transparent;font:600 15px var(--font-b);color:var(--muted);padding:10px 14px;cursor:pointer;white-space:nowrap;margin-bottom:-1.5px}
+.tab[aria-selected=true]{color:var(--ink);border-bottom-color:var(--accent)}
+.note{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;padding:10px 14px;border:1.5px solid var(--gold);border-radius:10px;background:var(--surface);margin-bottom:12px;font-size:14px}
+.note span{flex:1 1 260px;min-width:0}
+.bar{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:flex-end;margin-bottom:12px}
+.fld{display:flex;flex-direction:column;gap:4px;min-width:0}
+.fld>label,.lbl{font-size:12px;font-weight:600;letter-spacing:.03em;color:var(--muted)}
+select,input[type=text],input[type=search],input[type=password],textarea{font:inherit;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0;max-width:100%}
+textarea{width:100%;min-height:96px;resize:vertical}
+.chk{display:inline-flex;gap:6px;align-items:center;font-size:14px;padding:8px 0}
+.canvas{border:1.5px solid var(--line);border-radius:12px;background:var(--surface);overflow:auto;max-height:72vh;min-height:240px}
+.zoomer{position:relative}
+.stage{position:absolute;left:0;top:0;transform-origin:0 0}
+svg.edges{position:absolute;left:0;top:0;overflow:visible}
+svg.edges path{fill:none;stroke:var(--edge);stroke-width:1.6}
+svg.edges path.sp{stroke:var(--accent);stroke-width:1.8}
+.node{position:absolute;width:148px;height:74px;border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:6px 8px 6px 30px;text-align:left;font:inherit;color:var(--ink);cursor:pointer;display:flex;flex-direction:column;justify-content:center;gap:1px}
+.node:hover{border-color:var(--edge)}
+.node .nm{font-weight:600;font-size:14px;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.node .mt{font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sym{position:absolute;left:9px;top:11px;width:12px;height:12px;background:var(--ink)}
+.g-F .sym{border-radius:50%}
+.g-O .sym{transform:rotate(45deg) scale(.85)}
+.dead .sym::after,.legend .dd::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:2px;background:var(--accent);transform:rotate(-45deg)}
+.node.ph{border-style:dashed;color:var(--muted)}
+.node.ph .sym{background:var(--edge)}
+.node.sel{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 24%,transparent)}
+.node.me{background:color-mix(in srgb,var(--indigo) 12%,var(--surface))}
+.kin{position:absolute;top:-11px;left:8px;max-width:calc(100% - 16px);font-size:11.5px;font-weight:600;line-height:1.5;padding:0 8px;border-radius:99px;background:var(--indigo);color:var(--on-indigo);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kin.mar{background:var(--gold);color:var(--on-gold)}
+.kin.self{background:var(--accent);color:var(--on-accent)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;color:var(--muted);margin-top:10px;align-items:center}
+.legend .sym{position:relative;display:inline-block;left:auto;top:auto;vertical-align:-1px;margin-right:5px}
+.legend .ln{display:inline-block;width:22px;border-top:2px solid var(--edge);vertical-align:3px;margin-right:5px}
+.legend .ln.dash{border-top-style:dashed}
+.legend .ln.sp{border-top-color:var(--accent)}
+.legend .ln.rb{border-top:2px solid transparent;border-image:linear-gradient(90deg,var(--lc0) 0 25%,var(--lc1) 25% 50%,var(--lc2) 50% 75%,var(--lc3) 75% 100%) 1}
+.empty{border:1.5px dashed var(--line);border-radius:12px;padding:28px 18px;text-align:center;background:var(--surface)}
+.empty h2{font:400 20px var(--font-d);margin:0 0 6px}
+.tw{overflow-x:auto;border:1.5px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:680px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top}
+th{font-size:12px;letter-spacing:.03em;color:var(--muted);background:var(--surface2);font-weight:600}
+tr:last-child td{border-bottom:0}
+tr.clk{cursor:pointer}
+tr.clk:hover td{background:var(--surface2)}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:0 8px;border-radius:99px;background:var(--surface2);color:var(--muted)}
+.pill.k{background:var(--indigo);color:var(--on-indigo)}
+.pill.km{background:var(--gold);color:var(--on-gold)}
+.sec{border:1.5px solid var(--line);border-radius:12px;background:var(--surface);margin-bottom:12px;overflow:hidden}
+.sec>summary{cursor:pointer;padding:12px 14px;font:400 18px var(--font-d);list-style:none;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.sec>summary::-webkit-details-marker{display:none}
+.sec>summary small{font:600 13px var(--font-b);color:var(--muted)}
+.trow{display:grid;grid-template-columns:minmax(150px,1fr) minmax(0,2fr);gap:6px 16px;padding:10px 14px;border-top:1px solid var(--line);align-items:start}
+@media (max-width:640px){.trow{grid-template-columns:1fr}}
+.trow .who b{display:block;font-weight:600}
+.trow .term{color:var(--accent);font-size:13px;font-weight:600}
+.addrow{display:flex;gap:6px;margin-top:4px}
+.addrow input{flex:1 1 auto}
+.chip{display:inline-flex;align-items:center;border:1.5px solid var(--line);background:var(--surface2);border-radius:99px;padding:2px 11px;font:inherit;font-size:14px;color:var(--ink);cursor:pointer;margin:0 6px 5px 0}
+.chip:hover{border-color:var(--edge)}
+.detail{position:fixed;z-index:30;background:var(--surface);border:1.5px solid var(--line);box-shadow:var(--shadow);overflow:auto;
+  left:0;right:0;bottom:0;max-height:60vh;border-radius:16px 16px 0 0;
+  padding:16px max(16px,env(safe-area-inset-right,0px)) calc(18px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.detail h2{font:400 22px/1.25 var(--font-d);margin:0 0 4px;padding-right:36px}
+.detail .x{position:absolute;right:max(12px,env(safe-area-inset-right,0px));top:12px}
+.detail h3{font-size:12px;letter-spacing:.04em;color:var(--muted);margin:14px 0 4px;font-weight:600}
+.detail .acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.kinline{margin:8px 0 0;padding:8px 10px;border-radius:8px;background:var(--surface2);font-size:14px}
+.kinline b{color:var(--accent);font-size:16px}
+@media (min-width:1000px){
+  .detail{left:auto;top:0;bottom:0;right:0;width:350px;max-height:none;border-radius:0;padding-top:max(16px,env(safe-area-inset-top,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  body.hasd{padding-right:calc(366px + env(safe-area-inset-right,0px))}
+}
+.ov{position:fixed;inset:0;z-index:50;background:rgba(8,13,28,.58);display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:max(16px,env(safe-area-inset-top,0px)) 12px 24px}
+.dlg{background:var(--surface);border-radius:14px;width:min(580px,100%);box-shadow:var(--shadow);padding:20px;margin:auto 0}
+.dlg h2{font:400 22px var(--font-d);margin:0 0 12px}
+.dlg .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px}
+@media (max-width:520px){.dlg .grid{grid-template-columns:1fr}}
+.dlg .full{grid-column:1/-1}
+.radios{display:flex;gap:14px;flex-wrap:wrap;padding:6px 0}
+.radios label{display:inline-flex;gap:6px;align-items:center;font-size:14px;color:var(--ink);letter-spacing:0;font-weight:500}
+.mrow{display:flex;gap:6px;margin-bottom:6px}
+.mrow select{flex:1 1 0}
+.mrow select+select{flex:0 0 auto;max-width:42%}
+.ferr{color:var(--accent);font-size:14px;font-weight:600;min-height:20px;margin:8px 0 0}
+.dlg .foot{display:flex;gap:8px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:70;background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:99px;font-size:14px;font-weight:600;box-shadow:var(--shadow);max-width:calc(100% - 32px);text-align:center}
+.card{border:1.5px solid var(--line);border-radius:12px;background:var(--surface);padding:16px;margin-bottom:12px}
+.card h2{font:400 19px var(--font-d);margin:0 0 6px}
+.card p{margin:6px 0}
+.card ol{margin:6px 0;padding-left:22px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px}
+.foot-note{font-size:13px;color:var(--muted);margin-top:18px}
+body.view #tab-table,body.view #tab-share,body.view [data-act="add"],body.view [data-act="edit"],body.view [data-act="relatives"],body.view [data-act="addchild"],body.view [data-act="addspouse"],body.view [data-act="addparent"],body.view [data-act="del"],body.view [data-act="clearsample"]{display:none!important}
+body.view .detail .acts:not(:has([data-act="setme"])){display:none}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style><div id="root"></div><script type="application/json" id="seed">{"meta":{"village":"भूमिकास्थान-६, खिल्जी, खमारीबास","rev":1794138551078,"pw":{"s":"026a2907787486391d7e12e2","h":"ef0378a0293935e4fdaf67d8c0962e6ebac586e100323d1fec4a115420ce3898"}},"persons":[{"id":"pmw6ktw9wsxr16","hints":{},"name":"लुटा कुमारी बन्जाडे","g":"F","by":2035,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"गृहिणी","ph":false,"sample":false,"parents":[],"spouses":["pmw6kxakrylu83"]},{"id":"pmw6kxakrylu83","hints":{},"name":"मनिराम बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kxq31ju3cz","k":"जन्म"},{"id":"pmw6ky1a2oi7z3","k":"जन्म"}],"spouses":["pmw6ktw9wsxr16"]},{"id":"pmw6kxq31ju3cz","hints":{},"name":"प्रेम नारायण बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kyoijq4e9r","k":"जन्म"}],"spouses":["pmw6ky1a2oi7z3"]},{"id":"pmw6ky1a2oi7z3","hints":{},"name":"दमकला बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6kxq31ju3cz"]},{"id":"pmw6kyoijq4e9r","hints":{},"name":"भक्तिराम बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6l2idqmldhg","k":"जन्म"}],"spouses":["pmw6l1365mg0kt","pmw6l1q3hmywps"]},{"id":"pmw6l1365mg0kt","hints":{},"name":"तिलाकला बन्जाडे","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6kyoijq4e9r"]},{"id":"pmw6l1q3hmywps","hints":{},"name":"लिखुरा बन्जाडे","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6kyoijq4e9r"]},{"id":"pmw6l2idqmldhg","hints":{},"name":"खगिश्वर बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6l390qne7qb"]},{"id":"pmw6l390qne7qb","hints":{},"name":"खगिश्वर श्रीमती १","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6l2idqmldhg"]},{"id":"pmw6l58u7052dx","hints":{},"name":"जेदुपति बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kyoijq4e9r","k":"जन्म"}],"spouses":[]},{"id":"pmw6l5tdi7fi1s","hints":{},"name":"तेकलाल बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kyoijq4e9r","k":"जन्म"}],"spouses":["pmw6lpasczxn7e"]},{"id":"pmw6l6458nu2av","hints":{},"name":"धनिराम बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kyoijq4e9r","k":"जन्म"}],"spouses":["pmw6m82uvlcg6a","pmw6m8kgs909yf"]},{"id":"pmw6l6wvldsijq","hints":{},"name":"मित्रकला भुसाल (चौर ठूली दि)","g":"F","by":null,"dead":true,"dy":2081,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kyoijq4e9r","k":"जन्म"}],"spouses":[]},{"id":"pmw6lapokbpf12","hints":{},"name":"टोड्के कान्छि दिदि","g":"F","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kyoijq4e9r","k":"जन्म"}],"spouses":[]},{"id":"pmw6lctq0tdkc6","hints":{},"name":"चिन्तामणी बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kxq31ju3cz","k":"जन्म"},{"id":"pmw6ky1a2oi7z3","k":"जन्म"}],"spouses":["pmw6lhebgets5q"]},{"id":"pmw6le5cgypomq","hints":{},"name":"सुमकला बेल्बासे","g":"F","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kxq31ju3cz","k":"जन्म"},{"id":"pmw6ky1a2oi7z3","k":"जन्म"}],"spouses":["pmw77cwxc2bnqf"]},{"id":"pmw6lf4eahlbto","hints":{},"name":"सावित्रा गैरे","g":"F","by":null,"dead":false,"dy":null,"house":"जुकेना","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kxq31ju3cz","k":"जन्म"},{"id":"pmw6ky1a2oi7z3","k":"जन्म"}],"spouses":[]},{"id":"pmw6lfspxf5ifo","hints":{},"name":"पार्वता ज्ञवाली","g":"F","by":null,"dead":false,"dy":null,"house":"पाकु","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kxq31ju3cz","k":"जन्म"},{"id":"pmw6ky1a2oi7z3","k":"जन्म"}],"spouses":[]},{"id":"pmw6lggj9ew9or","hints":{},"name":"नन्दलाल बन्जाडे","g":"M","by":null,"dead":true,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kxq31ju3cz","k":"जन्म"},{"id":"pmw6ky1a2oi7z3","k":"जन्म"}],"spouses":[]},{"id":"pmw6lhebgets5q","hints":{},"name":"शान्ता बन्जाडे","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6lctq0tdkc6"]},{"id":"pmw6lig5wk61l4","hints":{},"name":"टिकाराम बन्जाडे (कान्छा)","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6l2idqmldhg","k":"जन्म"},{"id":"pmw6l390qne7qb","k":"जन्म"}],"spouses":[]},{"id":"pmw6lmfowny828","hints":{},"name":"निमानन्द बन्जाडे","g":"M","by":null,"dead":true,"dy":null,"house":"थाम्का","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6l58u7052dx","k":"जन्म"}],"spouses":[]},{"id":"pmw6ln22sumlm8","hints":{},"name":"देवीराम बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"साझारुख","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6l58u7052dx","k":"जन्म"}],"spouses":[]},{"id":"pmw6lnoaburgp5","hints":{},"name":"कल्लेरी दिदि","g":"F","by":null,"dead":false,"dy":null,"house":"कल्लेरी","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6l58u7052dx","k":"जन्म"}],"spouses":[]},{"id":"pmw6lo019n10d5","hints":{},"name":"चन्द्रमणी बन्जाडे","g":"M","by":null,"dead":true,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6l58u7052dx","k":"जन्म"}],"spouses":[]},{"id":"pmw6lpasczxn7e","hints":{},"name":"श्रीमती साइँली","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6l5tdi7fi1s"]},{"id":"pmw6lprs1i8xv3","hints":{},"name":"काफलबास दिदि जेठी","g":"F","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6l5tdi7fi1s","k":"जन्म"},{"id":"pmw6lpasczxn7e","k":"जन्म"}],"spouses":[]},{"id":"pmw6lq7i691rx0","hints":{},"name":"माइली लिला दिदि","g":"F","by":null,"dead":true,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6l5tdi7fi1s","k":"जन्म"},{"id":"pmw6lpasczxn7e","k":"जन्म"}],"spouses":[]},{"id":"pmw6lr61zmh8b7","hints":{},"name":"मिना खनाल कान्छि","g":"F","by":null,"dead":false,"dy":null,"house":"सन्धिखर्क","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6l5tdi7fi1s","k":"जन्म"},{"id":"pmw6lpasczxn7e","k":"जन्म"}],"spouses":[]},{"id":"pmw6lso2gin9ee","hints":{},"name":"मनिराम बन्जाडे जेठा","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lig5wk61l4","k":"जन्म"}],"spouses":[]},{"id":"pmw6lt3q77nh2d","hints":{},"name":"जुगलाल बन्जाडे कान्छा","g":"M","by":null,"dead":true,"dy":null,"house":"चोँटा बा","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lig5wk61l4","k":"जन्म"}],"spouses":[]},{"id":"pmw6ltslnq0w29","hints":{},"name":"छोरी ४ वटी","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lig5wk61l4","k":"जन्म"}],"spouses":[]},{"id":"pmw6luj6h1vyaj","hints":{},"name":"झविलाल बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lso2gin9ee","k":"जन्म"}],"spouses":[]},{"id":"pmw6lv51rgzzkt","hints":{},"name":"देवीराम बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"कोलापरी","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lso2gin9ee","k":"जन्म"}],"spouses":[]},{"id":"pmw6lvnjuc5qw5","hints":{},"name":"बोमलाल बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"कोलापरी","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lso2gin9ee","k":"जन्म"}],"spouses":[]},{"id":"pmw6lw3u4af8bk","hints":{},"name":"केशब बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"कोलापरी","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lso2gin9ee","k":"जन्म"}],"spouses":[]},{"id":"pmw6lwgp4dgelq","hints":{},"name":"बाटुली","g":"F","by":null,"dead":false,"dy":null,"house":"कोपाहा","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lso2gin9ee","k":"जन्म"}],"spouses":[]},{"id":"pmw6lxakoz5mtw","hints":{},"name":"काली","g":"F","by":null,"dead":false,"dy":null,"house":"सन्धिखर्क","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lso2gin9ee","k":"जन्म"}],"spouses":[]},{"id":"pmw6lz0k5c02kz","hints":{},"name":"बुद्धिराज बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lt3q77nh2d","k":"जन्म"}],"spouses":[]},{"id":"pmw6m0jfzp1u3s","hints":{},"name":"५ बहिनी छोरी","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lt3q77nh2d","k":"जन्म"}],"spouses":[]},{"id":"pmw6m82uvlcg6a","hints":{},"name":"शान्ता बन्जाडे","g":"F","by":null,"dead":true,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6l6458nu2av"]},{"id":"pmw6m8kgs909yf","hints":{},"name":"चुमा आचार्य","g":"F","by":null,"dead":false,"dy":null,"house":"लमही","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6l6458nu2av"]},{"id":"pmw6m9eey0ymbm","hints":{},"name":"सिर्जना बन्जाडे","g":"F","by":null,"dead":false,"dy":null,"house":"घोराही","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6m8kgs909yf","k":"जन्म"},{"id":"pmw6l6458nu2av","k":"जन्म"}],"spouses":[]},{"id":"pmw6ma33hevi1s","hints":{},"name":"अशोक बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"लमही","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6m8kgs909yf","k":"जन्म"},{"id":"pmw6l6458nu2av","k":"जन्म"}],"spouses":[]},{"id":"pmw6mb9ve6hrrm","hints":{},"name":"नारायण बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6m82uvlcg6a","k":"जन्म"},{"id":"pmw6l6458nu2av","k":"जन्म"}],"spouses":["pmw6n6oja4qugv"]},{"id":"pmw6mbp1hyg09e","hints":{},"name":"रामप्रसाद बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6m82uvlcg6a","k":"जन्म"},{"id":"pmw6l6458nu2av","k":"जन्म"}],"spouses":["pmw6n915psk879"]},{"id":"pmw6mf8wz2thmt","hints":{},"name":"मेघलाल भट्टराई","g":"M","by":null,"dead":false,"dy":null,"house":"टोड्के","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lapokbpf12","k":"जन्म"}],"spouses":[]},{"id":"pmw6mfytgby2kb","hints":{},"name":"तुलसीराम भट्टराई","g":"M","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lapokbpf12","k":"जन्म"}],"spouses":[]},{"id":"pmw6mgc7jxyuyh","hints":{},"name":"केशब भट्टराई","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lapokbpf12","k":"जन्म"}],"spouses":[]},{"id":"pmw6mh36o4ttdc","hints":{},"name":"३ बहिनी छोरी","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lapokbpf12","k":"जन्म"}],"spouses":[]},{"id":"pmw6n5gcrj2pfe","hints":{},"name":"प्रदिप बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lz0k5c02kz","k":"जन्म"}],"spouses":[]},{"id":"pmw6n5tjydkof7","hints":{},"name":"मधु बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lz0k5c02kz","k":"जन्म"}],"spouses":[]},{"id":"pmw6n64of16x0f","hints":{},"name":"सुष्मा बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lz0k5c02kz","k":"जन्म"}],"spouses":[]},{"id":"pmw6n6oja4qugv","hints":{},"name":"पवित्रा बन्जाडे","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6mb9ve6hrrm"]},{"id":"pmw6n915psk879","hints":{},"name":"पार्वता बन्जाडे","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6mbp1hyg09e"]},{"id":"pmw76wp0mz4ajh","hints":{},"name":"तिलक राम बन्जाडे","g":"M","by":2056,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6ktw9wsxr16","k":"जन्म"},{"id":"pmw6kxakrylu83","k":"जन्म"}],"spouses":[]},{"id":"pmw777xp0ja5xy","hints":{},"name":"दोर्ण प्रसाद बन्जाडे","g":"M","by":2056,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kxakrylu83","k":"जन्म"},{"id":"pmw6ktw9wsxr16","k":"जन्म"}],"spouses":[]},{"id":"pmw778e0o946tb","hints":{},"name":"सिमा बन्जाडे","g":"M","by":2064,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kxakrylu83","k":"जन्म"},{"id":"pmw6ktw9wsxr16","k":"जन्म"}],"spouses":[]},{"id":"pmw778xisc6j5o","hints":{},"name":"मिलन बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lctq0tdkc6","k":"जन्म"},{"id":"pmw6lhebgets5q","k":"जन्म"}],"spouses":[]},{"id":"pmw7799yd03do6","hints":{},"name":"पुजा बन्जाडे","g":"F","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lctq0tdkc6","k":"जन्म"},{"id":"pmw6lhebgets5q","k":"जन्म"}],"spouses":[]},{"id":"pmw779t5mfb1gn","hints":{},"name":"सबिना बन्जाडे","g":"F","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lctq0tdkc6","k":"जन्म"},{"id":"pmw6lhebgets5q","k":"जन्म"}],"spouses":[]},{"id":"pmw77azh3cpgyz","hints":{},"name":"प्रकाश बेल्बासे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6le5cgypomq","k":"जन्म"},{"id":"pmw77cwxc2bnqf","k":"जन्म"}],"spouses":[]},{"id":"pmw77brb0n58m4","hints":{},"name":"मधु भुसाल बेल्बासे","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6le5cgypomq","k":"जन्म"},{"id":"pmw77cwxc2bnqf","k":"जन्म"}],"spouses":[]},{"id":"pmw77cwxc2bnqf","hints":{},"name":"गुणानिधि बेल्बासे (ज्ञानु)","g":"M","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6le5cgypomq","pmw77e0c1o0tth"]},{"id":"pmw77e0c1o0tth","hints":{},"name":"जेठि श्रीमती मिना","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw77cwxc2bnqf"]},{"id":"pmw77ek1up8rdw","hints":{},"name":"सीता बेल्बासे","g":"M","by":null,"dead":false,"dy":null,"house":"सिसहनिया","note":"","ph":false,"sample":false,"parents":[{"id":"pmw77e0c1o0tth","k":"जन्म"},{"id":"pmw77cwxc2bnqf","k":"जन्म"}],"spouses":[]},{"id":"pmw77kj66rd1d8","hints":{},"name":"प्रदीप बेल्बासे","g":"M","by":null,"dead":false,"dy":null,"house":"डाँडागाउँ","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6le5cgypomq","k":"जन्म"},{"id":"pmw77cwxc2bnqf","k":"जन्म"}],"spouses":[]},{"id":"pmw77l1n4cyt1k","hints":{},"name":"बिपना बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6n6oja4qugv","k":"जन्म"},{"id":"pmw6mb9ve6hrrm","k":"जन्म"}],"spouses":[]},{"id":"pmw77lfag00fky","hints":{},"name":"विपिन बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6n6oja4qugv","k":"जन्म"},{"id":"pmw6mb9ve6hrrm","k":"जन्म"}],"spouses":[]},{"id":"pmw77m27mkm7di","hints":{},"name":"दिक्षा बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6n915psk879","k":"जन्म"},{"id":"pmw6mbp1hyg09e","k":"जन्म"}],"spouses":[]},{"id":"pmw77nmsnv8u80","hints":{},"name":"लक्ष्मी खनाल","g":"M","by":null,"dead":false,"dy":null,"house":"सन्धिखर्क","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6luj6h1vyaj","k":"जन्म"}],"spouses":[]},{"id":"pmw77o6elbejwg","hints":{},"name":"गणेश बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6luj6h1vyaj","k":"जन्म"}],"spouses":[]}]}</script><script id="appjs">
+(function(){
+'use strict';
+/*LOGIC_START*/
+const NEP='०१२३४५६७८९';
+const N=v=>String(v).replace(/\d/g,d=>NEP[+d]);
+const ASC=s=>String(s).replace(/[०-९]/g,d=>String(NEP.indexOf(d)));
+const BRO=['दा','भा','दाभा'],SIS=['दि','ब','दिब'];
+const DISP={'पि':'बुबा','मा':'आमा','अ':'अभिभावक','छो':'छोरा','छी':'छोरी','स':'सन्तान','पति':'श्रीमान्','पत्नी':'श्रीमती','जी':'जीवनसाथी','दा':'दाजु','भा':'भाइ','दि':'दिदी','ब':'बहिनी','दाभा':'दाजुभाइ','दिब':'दिदीबहिनी','सह':'सहोदर'};
+const FEM=new Set(['मा','छी','पत्नी','दि','ब','दिब']);
+const SPOUSE=new Set(['पति','पत्नी','जी']);
+const KINDS=['जन्म','सौतेनी','धर्म','पालक'];
+
+function buildGraph(persons){
+  const by=new Map(),kids=new Map(),sp=new Map(),par=new Map();
+  persons.forEach(p=>{by.set(p.id,p);kids.set(p.id,[]);sp.set(p.id,new Set());par.set(p.id,[]);});
+  persons.forEach(p=>{
+    (p.parents||[]).forEach(r=>{ if(by.has(r.id)&&r.id!==p.id){ par.get(p.id).push(r); kids.get(r.id).push({id:p.id,k:r.k}); } });
+    (p.spouses||[]).forEach(s=>{ if(by.has(s)&&s!==p.id){ sp.get(p.id).add(s); sp.get(s).add(p.id); } });
+  });
+  return {by,kids,sp,par};
+}
+function sibsOf(G,id){
+  const out=new Set();
+  (G.par.get(id)||[]).forEach(r=>{ (G.kids.get(r.id)||[]).forEach(c=>{ if(c.id!==id) out.add(c.id); }); });
+  return [...out];
+}
+function olderThan(a,b){
+  if(a.by&&b.by&&a.by!==b.by) return a.by<b.by;
+  const h=(a.hints||{})[b.id]; if(h) return h===1;
+  const h2=(b.hints||{})[a.id]; if(h2) return h2!==1;
+  return null;
+}
+function sibTok(to,from){
+  const o=olderThan(to,from);
+  if(to.g==='M') return o===true?'दा':o===false?'भा':'दाभा';
+  if(to.g==='F') return o===true?'दि':o===false?'ब':'दिब';
+  return 'सह';
+}
+function kinFrom(G,root){
+  const dist=new Map([[root,0]]),prev=new Map(),done=new Set();
+  for(;;){
+    let u=null,best=Infinity;
+    for(const [k,d] of dist){ if(!done.has(k)&&d<best){best=d;u=k;} }
+    if(u===null) break;
+    done.add(u);
+    const p=G.by.get(u);
+    const relax=(v,tok,w,kind)=>{ const nd=best+w; if(!dist.has(v)||nd<dist.get(v)-1e-9){ dist.set(v,nd); prev.set(v,{from:u,tok,kind:kind||null}); } };
+    (G.par.get(u)||[]).forEach(r=>{const q=G.by.get(r.id); relax(r.id,q.g==='M'?'पि':q.g==='F'?'मा':'अ',1,r.k);});
+    (G.kids.get(u)||[]).forEach(c=>{const q=G.by.get(c.id); relax(c.id,q.g==='M'?'छो':q.g==='F'?'छी':'स',1,c.k);});
+    G.sp.get(u).forEach(s=>{const q=G.by.get(s); relax(s,q.g==='M'?'पति':q.g==='F'?'पत्नी':'जी',0.95);});
+    sibsOf(G,u).forEach(s=>relax(s,sibTok(G.by.get(s),p),1));
+  }
+  const out=new Map();
+  for(const id of dist.keys()){
+    const path=[],kinds=[],nodes=[id]; let c=id;
+    while(c!==root){ const e=prev.get(c); path.unshift(e.tok); kinds.unshift(e.kind); c=e.from; nodes.unshift(c); }
+    out.set(id,{path,kinds,nodes});
+  }
+  return out;
+}
+function describe(path){
+  if(!path.length) return '';
+  let s=DISP[path[0]]||path[0];
+  for(let i=1;i<path.length;i++) s+=(FEM.has(path[i])?'की ':'को ')+(DISP[path[i]]||path[i]);
+  return s;
+}
+const E=t=>(t==='दा'||t==='दि')?1:(t==='भा'||t==='ब')?-1:0;
+const ch=(t,a,b,c)=>E(t)>0?a:E(t)<0?b:c;
+function cz(ctx,g,pre){
+  const o=ctx.o;
+  const base=g==='M'?(o===true?'दाजु':o===false?'भाइ':'दाजु / भाइ'):(o===true?'दिदी':o===false?'बहिनी':'दिदी / बहिनी');
+  return pre+base;
+}
+const RULES=[
+['पि','बुबा'],['मा','आमा'],['पि,पि','हजुरबुबा'],['पि,मा','हजुरआमा'],['मा,पि','मावली हजुरबुबा'],['मा,मा','मावली हजुरआमा'],
+['BRO',t=>({'दा':'दाजु','भा':'भाइ'})[t[0]]||'दाजु / भाइ'],
+['SIS',t=>({'दि':'दिदी','ब':'बहिनी'})[t[0]]||'दिदी / बहिनी'],
+['पत्नी','श्रीमती'],['पति','श्रीमान्'],['जी','जीवनसाथी'],['छो','छोरा'],['छी','छोरी'],['स','सन्तान'],
+['छो,छो','नाति'],['छो,छी','नातिनी'],['छी,छो','धेवता'],['छी,छी','धेवती'],
+['BRO,छो','भतिजा'],['BRO,छी','भतिजी'],['SIS,छो','भान्जा'],['SIS,छी','भान्जी'],
+['दा,पत्नी','भाउजू'],['भा,पत्नी','भाइबुहारी'],['दाभा,पत्नी','भाउजू / भाइबुहारी'],['SIS,पति','भिनाजु'],
+['पि,BRO',t=>ch(t[1],'ठूलोबुबा (जेठाबुबा)','काका','काका / ठूलोबुबा')],
+['पि,BRO,पत्नी',t=>ch(t[1],'ठूलीआमा','काकी','काकी / ठूलीआमा')],
+['पि,SIS','फुपू'],['पि,SIS,पति','फुपाजु'],
+['पि,BRO,छो',(t,c)=>cz(c,'M','')],['पि,BRO,छी',(t,c)=>cz(c,'F','')],
+['पि,SIS,छो',(t,c)=>cz(c,'M','फुफेरा ')],['पि,SIS,छी',(t,c)=>cz(c,'F','फुफेरी ')],
+['मा,BRO,छो',(t,c)=>cz(c,'M','ममेरा ')],['मा,BRO,छी',(t,c)=>cz(c,'F','ममेरी ')],
+['मा,SIS,छो',(t,c)=>cz(c,'M','मौसेरा ')],['मा,SIS,छी',(t,c)=>cz(c,'F','मौसेरी ')],
+['मा,BRO','मामा'],['मा,BRO,पत्नी','माइजू'],
+['मा,दि','ठूलीआमा'],['मा,ब','सानीआमा'],['मा,दिब','ठूलीआमा / सानीआमा'],
+['मा,दि,पति','ठूलाबुबा (मौसा)'],['मा,ब,पति','सानुबुबा (मौसा)'],['मा,दिब,पति','मौसा'],
+['पि,पि,BRO',t=>ch(t[2],'ठूलो हजुरबुबा','सानो हजुरबुबा','हजुरबुबाका दाजुभाइ')],
+['पि,पि,BRO,पत्नी',t=>ch(t[2],'ठूलो हजुरआमा','सानो हजुरआमा','हजुरबुबाका दाजुभाइकी श्रीमती')],
+['पि,पि,SIS','हजुरफुपू'],['पि,पि,SIS,पति','हजुरफुपाजु'],
+['पि,पि,पत्नी','हजुरआमा (हजुरबुबाकी अर्की श्रीमती)'],
+['मा,पि,BRO',t=>ch(t[2],'ठूलो मावली हजुरबुबा','सानो मावली हजुरबुबा','मावली हजुरबुबाका दाजुभाइ')],
+['मा,पि,BRO,पत्नी',t=>ch(t[2],'ठूलो मावली हजुरआमा','सानो मावली हजुरआमा','मावली हजुरबुबाका दाजुभाइकी श्रीमती')],
+['मा,पि,SIS','हजुरफुपू'],['मा,पि,SIS,पति','हजुरफुपाजु'],
+['पि,मा,BRO','हजुरमामा'],['पि,मा,BRO,पत्नी','हजुरमाइजू'],['मा,मा,BRO','हजुरमामा'],['मा,मा,BRO,पत्नी','हजुरमाइजू'],
+['पि,पत्नी','बुबाकी श्रीमती (सौतेनी आमा)'],['मा,पति','आमाका श्रीमान् (सौतेनी बुबा)'],
+['पि,पत्नी,पि','बुबाका ससुरा (मावली हजुरबुबा)'],['पि,पत्नी,मा','बुबाकी सासू (मावली हजुरआमा)'],
+['पत्नी,पि','ससुरा'],['पत्नी,मा','सासू'],['पति,पि','ससुरा'],['पति,मा','सासू'],
+['पत्नी,BRO',t=>ch(t[1],'जेठान','सालो','जेठान / सालो')],
+['पत्नी,SIS',t=>ch(t[1],'जेठीसाली','साली','साली / जेठीसाली')],
+['पत्नी,SIS,पति','साढु'],
+['पत्नी,दा,पत्नी','जेठानी (प्रचलनअनुसार)'],['पत्नी,भा,पत्नी','सालोकी श्रीमती'],
+['पति,BRO',t=>ch(t[1],'जेठाजु','देवर','जेठाजु / देवर')],
+['पति,BRO,पत्नी',t=>ch(t[1],'जेठानी','देवरानी','जेठानी / देवरानी')],
+['पति,SIS','नन्द'],['पति,SIS,पति','नन्दाजु'],
+['छो,पत्नी','बुहारी'],['छी,पति','ज्वाइँ'],
+['छो,पत्नी,पि','सम्धी'],['छो,पत्नी,मा','सम्धिनी'],['छी,पति,पि','सम्धी'],['छी,पति,मा','सम्धिनी']
+].map(([p,v])=>[p.split(','),v]);
+function matchTok(t,p){ return t===p||(p==='BRO'&&BRO.includes(t))||(p==='SIS'&&SIS.includes(t)); }
+const KT={'पि':{'सौतेनी':'सौतेनी बुबा','धर्म':'धर्मबुबा','पालक':'पालक बुबा'},'मा':{'सौतेनी':'सौतेनी आमा','धर्म':'धर्मआमा','पालक':'पालक आमा'},'छो':{'सौतेनी':'सौतेनो छोरा','धर्म':'धर्मपुत्र','पालक':'पालित छोरा'},'छी':{'सौतेनी':'सौतेनी छोरी','धर्म':'धर्मपुत्री','पालक':'पालित छोरी'}};
+function termFor(path,kinds,ctx){
+  const n=path.length;
+  if(!n) return 'आफू';
+  if(n===1&&kinds[0]&&kinds[0]!=='जन्म'&&KT[path[0]]&&KT[path[0]][kinds[0]]) return KT[path[0]][kinds[0]];
+  if(n>=3&&path.every(t=>t==='छो'||t==='छी'||t==='स')){
+    const f=path[0],l=path[n-1];
+    if(n===3){
+      if(f==='छो') return l==='छो'?'पनाति':l==='छी'?'पनातिनी':'सन्तानको सन्तान';
+      return l==='छो'?'धेवताको छोरा':l==='छी'?'धेवतीकी छोरी':'सन्तानको सन्तान';
+    }
+    return l==='छो'?'खनाति':l==='छी'?'खनातिनी':'सन्तान';
+  }
+  for(const [p,v] of RULES){
+    if(p.length!==n) continue;
+    let ok=true; for(let i=0;i<n;i++){ if(!matchTok(path[i],p[i])){ok=false;break;} }
+    if(ok) return typeof v==='function'?v(path,ctx):v;
+  }
+  return null;
+}
+function kinInfo(G,fromId,id,map){
+  const r=map.get(id); if(!r) return null;
+  const me=G.by.get(fromId),t=G.by.get(id);
+  const desc=describe(r.path);
+  const term=termFor(r.path,r.kinds,{o:olderThan(t,me)});
+  return {term:term||desc,desc,known:!!term,marriage:r.path.some(x=>SPOUSE.has(x)),path:r.path};
+}
+function component(G,id){
+  const seen=new Set([id]),st=[id];
+  while(st.length){
+    const x=st.pop();
+    [...G.par.get(x).map(r=>r.id),...G.kids.get(x).map(c=>c.id),...G.sp.get(x)].forEach(y=>{ if(!seen.has(y)){seen.add(y);st.push(y);} });
+  }
+  return [...seen];
+}
+function countComponents(G){
+  const seen=new Set(); let n=0;
+  for(const id of G.by.keys()){ if(seen.has(id)) continue; n++; component(G,id).forEach(x=>seen.add(x)); }
+  return n;
+}
+function isDescendant(G,cand,of){
+  const seen=new Set(),st=[of];
+  while(st.length){ const x=st.pop(); (G.kids.get(x)||[]).forEach(c=>{ if(!seen.has(c.id)){seen.add(c.id);st.push(c.id);} }); }
+  return seen.has(cand);
+}
+function stepFind(G,cur,tok){
+  const by=id=>G.by.get(id),c=by(cur);
+  if(tok==='पि'||tok==='मा'){ const g=tok==='पि'?'M':'F'; return G.par.get(cur).filter(r=>by(r.id).g===g).map(r=>r.id); }
+  if(tok==='छो'||tok==='छी'){ const g=tok==='छो'?'M':'F'; return G.kids.get(cur).filter(k=>by(k.id).g===g).map(k=>k.id); }
+  if(tok==='पति'||tok==='पत्नी'){ const g=tok==='पति'?'M':'F'; return [...G.sp.get(cur)].filter(s=>by(s).g===g); }
+  const male=tok==='BRO'||BRO.includes(tok),fem=tok==='SIS'||SIS.includes(tok);
+  return sibsOf(G,cur).filter(s=>{
+    const p=by(s);
+    if(male&&p.g!=='M') return false;
+    if(fem&&p.g!=='F') return false;
+    const o=olderThan(p,c);
+    if(tok==='दा'||tok==='दि') return o!==false;
+    if(tok==='भा'||tok==='ब') return o!==true;
+    return true;
+  });
+}
+function walkPath(G,start,path){
+  let cur=[start];
+  for(const t of path){ const nx=[]; cur.forEach(id=>stepFind(G,id,t).forEach(x=>{ if(!nx.includes(x)) nx.push(x); })); cur=nx; }
+  return cur;
+}
+function computeLevels(G,ids){
+  const set=new Set(ids),lv=new Map(ids.map(i=>[i,0]));
+  const par=i=>G.par.get(i).filter(r=>set.has(r.id)).map(r=>r.id);
+  const kid=i=>G.kids.get(i).filter(c=>set.has(c.id)).map(c=>c.id);
+  const spo=i=>[...G.sp.get(i)].filter(s=>set.has(s));
+  const cap=ids.length+2;
+  for(let it=0;it<ids.length*2+10;it++){
+    let changed=false;
+    for(const i of ids){
+      let L=lv.get(i);
+      const p=par(i); if(p.length){ const need=Math.max(...p.map(x=>lv.get(x)))+1; if(need>L) L=need; }
+      const s=spo(i); if(s.length){ const need=Math.max(...s.map(x=>lv.get(x))); if(need>L) L=need; }
+      L=Math.min(L,cap);
+      if(L!==lv.get(i)){ lv.set(i,L); changed=true; }
+    }
+    for(const i of ids){
+      if(par(i).length===0){ const k=kid(i); if(k.length){ const need=Math.min(...k.map(x=>lv.get(x)))-1; if(need>lv.get(i)&&need<=cap){ lv.set(i,need); changed=true; } } }
+    }
+    if(!changed) break;
+  }
+  return lv;
+}
+function orderUnit(G,comp){
+  if(comp.length===1) return comp;
+  if(comp.length===2){ const [a,b]=comp; return (G.by.get(a).g==='F'&&G.by.get(b).g!=='F')?[b,a]:[a,b]; }
+  const deg=x=>[...G.sp.get(x)].filter(s=>comp.includes(s)).length;
+  const c=comp.slice().sort((a,b)=>deg(b)-deg(a))[0];
+  const out=[c],nb=[...G.sp.get(c)].filter(s=>comp.includes(s));
+  nb.forEach((n,i)=>{ if(i%2===0) out.push(n); else out.unshift(n); });
+  comp.filter(x=>!out.includes(x)).forEach(x=>{
+    const anchor=[...G.sp.get(x)].find(s=>out.includes(s));
+    const i=anchor!==undefined?out.indexOf(anchor):out.length-1;
+    if(i===0) out.unshift(x); else out.splice(i+1,0,x);
+  });
+  return out;
+}
+function buildUnits(G,ids){
+  const set=new Set(ids),seen=new Set(),units=[];
+  for(const id of ids){
+    if(seen.has(id)) continue;
+    const comp=[],st=[id]; seen.add(id);
+    while(st.length){ const x=st.pop(); comp.push(x); G.sp.get(x).forEach(s=>{ if(set.has(s)&&!seen.has(s)){seen.add(s);st.push(s);} }); }
+    units.push(orderUnit(G,comp));
+  }
+  return units;
+}
+function layout(G,ids,o){
+  if(!ids.length) return {X:new Map(),Y:new Map(),ord:new Map(),units:[],width:0,height:0};
+  const W=o.w,GX=o.gx,UX=o.ux;
+  const lv=computeLevels(G,ids),units=buildUnits(G,ids),cx=new Map();
+  const uLevel=units.map(u=>Math.max(...u.map(x=>lv.get(x))));
+  const maxL=Math.max(...uLevel);
+  const levels=[]; for(let l=0;l<=maxL;l++) levels.push([]);
+  units.forEach((u,i)=>levels[uLevel[i]].push(i));
+  const uw=u=>u.length*W+(u.length-1)*GX;
+  const place=l=>{
+    const L=levels[l]; if(!L.length) return;
+    const tot=L.reduce((a,ui)=>a+uw(units[ui]),0)+(L.length-1)*UX; let x=-tot/2;
+    L.forEach(ui=>{ units[ui].forEach((m,j)=>cx.set(m,x+j*(W+GX)+W/2)); x+=uw(units[ui])+UX; });
+  };
+  levels.forEach((_,l)=>place(l));
+  const inSet=new Set(ids);
+  const parentsOf=m=>G.par.get(m).filter(r=>inSet.has(r.id)).map(r=>r.id);
+  const kidsOf=m=>G.kids.get(m).filter(c=>inSet.has(c.id)).map(c=>c.id);
+  const ucenter=ui=>{const u=units[ui];return (cx.get(u[0])+cx.get(u[u.length-1]))/2;};
+  const want=(ui,fn)=>{ const v=[]; units[ui].forEach(m=>fn(m).forEach(x=>v.push(cx.get(x)))); return v.length?v.reduce((a,b)=>a+b,0)/v.length:null; };
+  for(let pass=0;pass<4;pass++){
+    const down=pass%2===0,seq=levels.map((_,i)=>i); if(!down) seq.reverse();
+    for(const l of seq){
+      const L=levels[l].map((ui,i)=>{ const b=want(ui,down?parentsOf:kidsOf); return {ui,i,b:b===null?ucenter(ui):b}; });
+      L.sort((a,b)=>a.b-b.b||a.i-b.i); levels[l]=L.map(k=>k.ui); place(l);
+    }
+  }
+  const shift=(ui,d)=>units[ui].forEach(m=>cx.set(m,cx.get(m)+d));
+  const resolve=l=>{
+    const L=levels[l];
+    for(let i=1;i<L.length;i++){ const a=units[L[i-1]],b=units[L[i]]; const need=cx.get(a[a.length-1])+W+UX-cx.get(b[0]); if(need>0) shift(L[i],need); }
+  };
+  for(let it=0;it<5;it++){
+    for(let l=0;l<levels.length;l++){ levels[l].forEach(ui=>{const w=want(ui,parentsOf); if(w!==null) shift(ui,w-ucenter(ui));}); resolve(l); }
+    for(let l=levels.length-1;l>=0;l--){ levels[l].forEach(ui=>{const w=want(ui,kidsOf); if(w!==null) shift(ui,w-ucenter(ui));}); resolve(l); }
+  }
+  let minX=Infinity,maxX=-Infinity;
+  ids.forEach(i=>{const x=cx.get(i); minX=Math.min(minX,x-W/2); maxX=Math.max(maxX,x+W/2);});
+  const mar=o.margin,dx=mar-minX,X=new Map(),Y=new Map(),ord=new Map();
+  units.forEach((u,ui)=>u.forEach((m,j)=>{ X.set(m,cx.get(m)+dx); Y.set(m,mar+uLevel[ui]*(o.h+o.gy)); ord.set(m,{u:ui,i:j}); }));
+  return {X,Y,ord,units,width:maxX-minX+mar*2,height:mar*2+(maxL+1)*o.h+maxL*o.gy};
+}
+/*LOGIC_END*/
+
+/* ---------- अवस्था र भण्डारण ---------- */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const FONT='https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&family=Yatra+One&display=swap';
+const SK_HEAD='<!doctype html><html lang="ne"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>नातागोता ट्रयाकिङ</title><meta name="description" content="गाउँका परिवारको नातागोता र वंशावली"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&family=Yatra+One&display=swap"></head><body>';
+const LS='ntg_local_v1',LSP='ntg_pending_rev',LSU='ntg_ui_v1';
+let ADMIN=false;
+const TABS=[['chart','वंशावली'],['list','सदस्य सूची'],['table','नाता तालिका'],['share','वेबसाइट र ब्याकअप']];
+const uid=()=>'p'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const dn=p=>p&&p.name?p.name:'(नाम खुलेको छैन)';
+const byName=(a,b)=>String(a.name).localeCompare(String(b.name),'ne');
+const lsGet=k=>{try{return localStorage.getItem(k);}catch(e){return null;}};
+const lsSet=(k,v)=>{try{localStorage.setItem(k,v);return true;}catch(e){return false;}};
+const lsDel=k=>{try{localStorage.removeItem(k);}catch(e){}};
+
+let seedData={meta:{village:'',rev:0},persons:[]};
+try{ const s=JSON.parse(document.getElementById('seed').textContent); if(s&&Array.isArray(s.persons)) seedData=s; }catch(e){}
+let local={docs:{},meta:{}};
+try{ const l=JSON.parse(lsGet(LS)||'null'); if(l&&l.docs) local={docs:l.docs,meta:l.meta||{}}; }catch(e){}
+(function(){
+  const pend=lsGet(LSP);
+  if(pend&&String(seedData.meta.rev)===pend){ local={docs:{},meta:{}}; lsSet(LS,JSON.stringify(local)); lsDel(LSP); }
+})();
+let pcache=null,gcache=null;
+const persons=()=>{
+  if(pcache) return pcache;
+  const m=new Map(); (seedData.persons||[]).forEach(p=>m.set(p.id,p));
+  Object.values(local.docs).forEach(d=>{ if(d._del) m.delete(d.id); else m.set(d.id,d); });
+  return (pcache=[...m.values()]);
+};
+const GR=()=>gcache||(gcache=buildGraph(persons()));
+const village=()=>local.meta.village!=null?local.meta.village:(seedData.meta.village||'');
+const localCount=()=>Object.keys(local.docs).length+(local.meta.village!=null&&local.meta.village!==(seedData.meta.village||'')?1:0);
+const state={tab:'chart',sel:null,me:null,anchor:null,scope:'family',kin:true,zoom:1,q:'',house:'',confirmDel:null,open:{}};
+const caps={art:null,dl:null,canPub:false};
+try{ const u=JSON.parse(lsGet(LSU)||'null'); if(u){ if(typeof u.kin==='boolean') state.kin=u.kin; if(u.scope) state.scope=u.scope; if(u.me) state.me=u.me; if(u.zoom) state.zoom=u.zoom; } }catch(e){}
+const saveUI=()=>lsSet(LSU,JSON.stringify({kin:state.kin,scope:state.scope,me:state.me,zoom:state.zoom}));
+function persistLocal(){ return lsSet(LS,JSON.stringify(local)); }
+function commit(docs){
+  docs.forEach(d=>{ if(d._del) local.docs[d.id]={id:d.id,_del:1}; else local.docs[d.id]=Object.assign({},d,{ts:Date.now()}); });
+  pcache=null;gcache=null;
+  if(!persistLocal()) toast('ब्राउजरमा सुरक्षित हुन सकेन; यो पृष्ठ बन्द गर्दा परिवर्तन हराउन सक्छ।');
+  fixSel(); render();
+}
+function fixSel(){
+  const g=GR();
+  if(state.sel&&!g.by.has(state.sel)) state.sel=null;
+  if(state.me&&!g.by.has(state.me)) state.me=null;
+  if(state.anchor&&!g.by.has(state.anchor)) state.anchor=null;
+  if(!state.me){ const s=persons().find(p=>p.sample&&p.id==='s11'); if(s) state.me=s.id; }
+}
+function deleteMany(ids){
+  const set=new Set(ids),out=[];
+  persons().forEach(p=>{
+    if(set.has(p.id)){ out.push({id:p.id,_del:1}); return; }
+    const par=(p.parents||[]).filter(r=>!set.has(r.id)),sp=(p.spouses||[]).filter(s=>!set.has(s));
+    if(par.length!==(p.parents||[]).length||sp.length!==(p.spouses||[]).length){ const c=JSON.parse(JSON.stringify(p)); c.parents=par; c.spouses=sp; out.push(c); }
+  });
+  if(state.sel&&set.has(state.sel)) state.sel=null;
+  commit(out);
+}
+
+/* ---------- सानातिना सहायक ---------- */
+let toastT=null;
+function toast(msg){
+  const t=$('#toast'); if(!t) return;
+  t.textContent=msg; t.hidden=false; clearTimeout(toastT); toastT=setTimeout(()=>{t.hidden=true;},3200);
+}
+const GLBL={M:'पुरुष',F:'महिला',O:'अन्य'};
+const meta=p=>[p.dead?'दिवंगत':null,p.by?'जन्म '+N(p.by):null,p.house].filter(Boolean).join(' · ');
+const label=p=>p.name+(p.by?' · '+N(p.by):'')+(p.house?' · '+p.house:'');
+function opts(excl,sel){
+  return '<option value="">— छान्नुहोस् —</option>'+persons().filter(p=>!p.ph&&p.id!==excl).sort(byName).map(p=>`<option value="${esc(p.id)}"${p.id===sel?' selected':''}>${esc(label(p))}</option>`).join('');
+}
+const MARK='<svg viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="15" y="3" width="10" height="10" rx="2" fill="currentColor"/><path d="M20 13v6M8 19h24M8 19v6M32 19v6"/><circle cx="8" cy="31" r="5" fill="currentColor"/><rect x="27" y="26" width="10" height="10" rx="2" fill="currentColor"/></svg>';
+
+/* ---------- मुख्य प्रस्तुति ---------- */
+function shell(){
+  $('#root').innerHTML=`
+  <header class="top">
+    <div class="brand">${MARK}<div><h1>नातागोता ट्रयाकिङ</h1><p class="sub" id="vil"></p></div></div>
+    <div class="stats" id="stats"></div>
+    <button class="btn pri" data-act="add">+ सदस्य थप्नुहोस्</button>
+  </header>
+  <nav class="tabs" role="tablist" aria-label="खण्डहरू">${TABS.map(([k,t])=>`<button class="tab" role="tab" data-act="tab" data-t="${k}" id="tab-${k}">${t}</button>`).join('')}</nav>
+  <div id="notice"></div>
+  <main>${TABS.map(([k])=>`<section id="p-${k}" role="tabpanel" aria-labelledby="tab-${k}" hidden></section>`).join('')}</main>
+  <p class="foot-note"><button class="btn sm" data-act="admin" style="float:right;margin-left:10px">प्रशासक</button>यो पृष्ठको लिङ्क भएका सबैले यहाँका नाम देख्न सक्छन्। फोन नम्बर वा घरको ठ्याक्कै ठेगाना नराख्नुहोस्; टोल वा वडा मात्र पर्याप्त हुन्छ।</p>
+  <aside class="detail" id="detail" hidden aria-label="व्यक्तिको विवरण"></aside>
+  <div id="modal"></div>
+  <div class="toast" id="toast" hidden role="status"></div>`;
+}
+function render(){
+  if(!ADMIN&&state.tab!=='chart'&&state.tab!=='list') state.tab='chart';
+  const all=persons(),g=GR();
+  $('#vil').textContent=village()||'गाउँ, टोल र घरपरिवारको नाता-सम्बन्ध';
+  $('#stats').innerHTML=`<div><b>${N(all.filter(p=>!p.ph).length)}</b>सदस्य</div><div><b>${N(countComponents(g))}</b>परिवार समूह</div>`;
+  $$('.tab').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.t===state.tab)));
+  TABS.forEach(([k])=>{ $('#p-'+k).hidden=k!==state.tab; });
+  renderNotice();
+  ({chart:renderChart,list:renderList,table:renderTable,share:renderShare})[state.tab]();
+  renderDetail();
+}
+function renderNotice(){
+  const hasSample=persons().some(p=>p.sample),n=localCount();
+  let h='';
+  if(hasSample) h+=`<div class="note"><span>यो नमुना परिवार हो, यो उपकरणले के गर्छ भनी देखाउन राखिएको हो। आफ्नो गाउँको विवरण राख्न सुरु गर्नुअघि नमुना हटाउनुहोस्।</span>${ADMIN?'<button class="btn sm" data-act="clearsample">नमुना हटाउनुहोस्</button>':''}</div>`;
+  if(n>0&&ADMIN) h+=`<div class="note"><span>यो ब्राउजरमा ${N(n)} परिवर्तन छन्। यी वेबसाइटमा देखिन 'वेबसाइट र ब्याकअप' ट्याबबाट नयाँ index.html बनाएर फेरि अपलोड गर्नुहोस्।</span><button class="btn sm pri" data-act="dlsite">index.html बनाउनुहोस्</button></div>`;
+  $('#notice').innerHTML=h;
+}
+function setTab(t){ state.tab=t; try{ if(location.hash!=='#'+t) location.hash=t; }catch(e){} render(); }
+
+/* ---------- वंशावली चार्ट ---------- */
+const LO={w:148,h:74,gx:14,ux:40,gy:76,margin:34};
+function renderChart(){
+  const el=$('#p-chart'),all=persons().filter(Boolean);
+  if(!all.length){
+    el.innerHTML=`<div class="empty"><h2>अहिलेसम्म कुनै सदस्य छैनन्</h2><p class="mut">पहिले आफ्नो नाम थप्नुहोस्, अनि आमाबुबा, श्रीमान्-श्रीमती र छोराछोरी जोड्दै जानुहोस्। वंशावली आफैं बन्छ।</p><button class="btn pri" data-act="add">+ आफ्नो नाम थप्नुहोस्</button></div>`;
+    return;
+  }
+  const people=all.filter(p=>!p.ph).sort(byName);
+  el.innerHTML=`
+  <div class="bar">
+    <div class="fld"><label for="me-sel">म (नाता हेर्ने व्यक्ति)</label><select id="me-sel"><option value="">— छान्नुहोस् —</option>${people.map(p=>`<option value="${esc(p.id)}"${p.id===state.me?' selected':''}>${esc(label(p))}</option>`).join('')}</select></div>
+    <div class="fld"><label for="scope-sel">देखाउने दायरा</label><select id="scope-sel"><option value="family"${state.scope==='family'?' selected':''}>मेरो परिवार समूह</option><option value="all"${state.scope==='all'?' selected':''}>सबै सदस्य</option></select></div>
+    <label class="chk"><input type="checkbox" id="kin-chk"${state.kin?' checked':''}> नाता देखाउनुहोस्</label>
+    <div class="row" style="margin:0"><button class="btn sm" data-act="zoom" data-d="-0.15" aria-label="सानो पार्नुहोस्">−</button><span class="mut" id="zl" style="min-width:44px;text-align:center">${N(Math.round(state.zoom*100))}%</span><button class="btn sm" data-act="zoom" data-d="0.15" aria-label="ठूलो पार्नुहोस्">+</button></div>
+    <div class="row" style="margin:0"><button class="btn sm pri" data-act="dlimgall" title="गाउँका सबै सदस्यको वंशावली PNG चित्रमा">⬇ सबै सदस्यको चित्र डाउनलोड</button><button class="btn sm" data-act="dlimg" title="अहिले देखिएको दृश्य PNG चित्रमा">⬇ यो दृश्य डाउनलोड</button></div>
+  </div>
+  <div class="canvas" id="canvas"><div class="zoomer" id="zoomer"><div class="stage" id="stage"></div></div></div>
+  <div class="legend"><span><i class="sym"></i>पुरुष</span><span><i class="sym" style="border-radius:50%"></i>महिला</span><span><i class="sym" style="transform:rotate(45deg) scale(.85)"></i>अन्य</span><span><i class="sym dd"></i>दिवंगत</span><span><i class="ln sp"></i>श्रीमान्-श्रीमती</span><span><i class="ln rb"></i>आमाबुबाबाट सन्तानतिर (हरेक जोडीको अलग रङ)</span><span><i class="ln dash"></i>सौतेनी / धर्म / पालक</span><span>धर्सो घेरा: नाम खुल्न बाँकी</span></div>`;
+  drawStage();
+}
+function drawStage(){
+  const g=GR(),stage=$('#stage'); if(!stage) return;
+  let ids=g.by.keys?[...g.by.keys()]:[];
+  if(state.scope==='family'&&state.me&&g.by.has(state.me)) ids=component(g,state.me);
+  const L=layout(g,ids,LO),idset=new Set(ids);
+  const kinMap=(state.kin&&state.me&&g.by.has(state.me))?kinFrom(g,state.me):null;
+  const mid=LO.h/2,hw=LO.w/2;
+  const curve=(x1,y1,x2,y2)=>{const m=(y1+y2)/2;return `M${x1.toFixed(1)} ${y1.toFixed(1)}C${x1.toFixed(1)} ${m.toFixed(1)},${x2.toFixed(1)} ${m.toFixed(1)},${x2.toFixed(1)} ${y2.toFixed(1)}`;};
+  let paths='';const lcMap=new Map();const lcOf=ps=>{const k=ps.map(r=>r.id).sort().join('|');if(!lcMap.has(k)) lcMap.set(k,lcMap.size%8);return lcMap.get(k);};
+  L.units.forEach(u=>{
+    for(let i=1;i<u.length;i++){
+      const a=u[i-1],b=u[i],y=L.Y.get(a)+mid,x1=L.X.get(a)+hw,x2=L.X.get(b)-hw;
+      paths+=`<path class="sp" d="M${x1} ${y-2.5}H${x2}"/><path class="sp" d="M${x1} ${y+2.5}H${x2}"/>`;
+    }
+  });
+  ids.forEach(c=>{
+    const ps=g.par.get(c).filter(r=>idset.has(r.id));
+    const cx=L.X.get(c),cy=L.Y.get(c);
+    if(ps.length===2){
+      const a=L.ord.get(ps[0].id),b=L.ord.get(ps[1].id);
+      if(a.u===b.u&&Math.abs(a.i-b.i)===1){
+        const mx=(L.X.get(ps[0].id)+L.X.get(ps[1].id))/2,my=L.Y.get(ps[0].id)+mid,yb=L.Y.get(ps[0].id)+LO.h;
+        const dash=ps.some(r=>r.k&&r.k!=='जन्म');
+        paths+=`<path d="M${mx.toFixed(1)} ${my}V${yb}${curve(mx,yb,cx,cy).replace(/^M[^C]*/,'')}"${dash?' stroke-dasharray="5 4"':''} data-lc="${lcOf(ps)}" style="stroke:var(--lc${lcOf(ps)})"/>`;
+        return;
+      }
+    }
+    ps.forEach(r=>{ const dash=r.k&&r.k!=='जन्म'; paths+=`<path d="${curve(L.X.get(r.id),L.Y.get(r.id)+LO.h,cx,cy)}"${dash?' stroke-dasharray="5 4"':''} data-lc="${lcOf(ps)}" style="stroke:var(--lc${lcOf(ps)})"/>`; });
+  });
+  let nodes='';
+  ids.forEach(id=>{
+    const p=g.by.get(id),x=L.X.get(id)-hw,y=L.Y.get(id);
+    let kin='';
+    if(kinMap){
+      if(id===state.me) kin='<span class="kin self">आफू</span>';
+      else { const k=kinInfo(g,state.me,id,kinMap); if(k) kin=`<span class="kin${k.marriage?' mar':''}" title="${esc(k.desc)}">${esc(k.term)}</span>`; }
+    }
+    nodes+=`<button class="node g-${p.g}${p.dead?' dead':''}${p.ph?' ph':''}${id===state.sel?' sel':''}${id===state.me?' me':''}" data-act="pick" data-id="${esc(id)}" style="left:${x.toFixed(1)}px;top:${y}px" title="${esc(dn(p))}">${kin}<i class="sym"></i><span class="nm">${esc(dn(p))}</span><span class="mt">${esc(meta(p))}</span></button>`;
+  });
+  const z=state.zoom;
+  stage.style.width=L.width+'px'; stage.style.height=L.height+'px'; stage.style.transform=`scale(${z})`;
+  $('#zoomer').style.width=(L.width*z)+'px'; $('#zoomer').style.height=(L.height*z)+'px';
+  stage.innerHTML=`<svg class="edges" width="${L.width}" height="${L.height}" aria-hidden="true">${paths}</svg>${nodes}`;
+}
+
+/* ---------- वंशावली चित्रका रूपमा डाउनलोड ---------- */
+async function exportChartImage(btn,all){
+  if(!$('#stage')) return;
+  const prevScope=state.scope;
+  if(all&&state.scope!=='all'){ state.scope='all'; drawStage(); }
+  const stage=$('#stage');
+  const restore=()=>{ if(state.scope!==prevScope){ state.scope=prevScope; drawStage(); } };
+  const nodes=$$('.node',stage);
+  const W=parseFloat(stage.style.width),H=parseFloat(stage.style.height);
+  if(!nodes.length||!W||!H){ restore(); toast('चित्र बनाउन चार्टमा सदस्य छैनन्।'); return; }
+  if(btn) btn.disabled=true;
+  toast('चित्र बनाउँदै…');
+  try{
+    try{ if(document.fonts) await Promise.all([document.fonts.load('600 14px Mukta','अआक'),document.fonts.load('400 12px Mukta','अआक'),document.fonts.load('400 26px "Yatra One"','नाता')]); }catch(e){}
+    const C={bg:'#ffffff',ink:'#15203a',muted:'#56627f',line:'#d2d8e6',edge:'#8792b0',accent:'#ab2438',indigo:'#2a4890',gold:'#946508',me:'#e9edf7'};
+    const FB=', "Noto Sans Devanagari", system-ui, sans-serif';
+    const LC=['#2563eb','#ea580c','#16a34a','#9333ea','#0891b2','#c026d3','#92400e','#334155'];
+    const HEAD=76,FOOT=46;
+    const cw=Math.max(W,780),ch=H+HEAD+FOOT,ox=(cw-W)/2;
+    const s=Math.min(2,12000/cw,12000/ch,Math.sqrt(40e6/(cw*ch)));
+    const canvas=document.createElement('canvas');
+    canvas.width=Math.round(cw*s); canvas.height=Math.round(ch*s);
+    const ctx=canvas.getContext('2d');
+    ctx.scale(s,s);
+    const seg=t=>(typeof Intl!=='undefined'&&Intl.Segmenter)?Array.from(new Intl.Segmenter('ne',{granularity:'grapheme'}).segment(t),x=>x.segment):Array.from(t);
+    const rr=(x,y,w,h,r)=>{ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); };
+    const fit=(t,maxW)=>{ if(ctx.measureText(t).width<=maxW) return t; const a=seg(t); while(a.length&&ctx.measureText(a.join('')+'…').width>maxW) a.pop(); return a.join('')+'…'; };
+    const wrap=(t,maxW,maxL)=>{
+      const words=t.split(/\s+/).filter(Boolean),lines=[]; let cur='';
+      for(const w of words){
+        const tr=cur?cur+' '+w:w;
+        if(ctx.measureText(tr).width<=maxW){ cur=tr; continue; }
+        if(cur){ lines.push(cur); cur=''; }
+        if(ctx.measureText(w).width<=maxW){ cur=w; }
+        else { let part=''; for(const g of seg(w)){ if(part&&ctx.measureText(part+g).width>maxW){ lines.push(part); part=''; } part+=g; } cur=part; }
+      }
+      if(cur) lines.push(cur);
+      if(lines.length>maxL){ const rest=lines.slice(maxL-1).join(' '); lines.length=maxL-1; lines.push(fit(rest,maxW)); }
+      return lines;
+    };
+    ctx.fillStyle=C.bg; ctx.fillRect(0,0,cw,ch);
+    ctx.textBaseline='middle'; ctx.textAlign='left';
+    ctx.fillStyle=C.accent; ctx.font='400 28px "Yatra One"'+FB; ctx.fillText('नातागोता ट्रयाकिङ',24,28);
+    const meP=state.kin&&state.me?GR().by.get(state.me):null;
+    const sub=[village(),N(nodes.length)+' सदस्य',meP?dn(meP)+' बाट हेरिएको नाता':''].filter(Boolean).join(' · ');
+    ctx.fillStyle=C.muted; ctx.font='500 14px Mukta'+FB; ctx.fillText(fit(sub,cw-48),24,56);
+    ctx.strokeStyle=C.line; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(24,HEAD-6); ctx.lineTo(cw-24,HEAD-6); ctx.stroke();
+    ctx.save(); ctx.translate(ox,HEAD); ctx.lineJoin='round';
+    $$('svg.edges path',stage).forEach(p=>{
+      const sp=p.classList.contains('sp');
+      const li=p.getAttribute('data-lc'); ctx.strokeStyle=sp?C.accent:(li!==null?LC[+li]:C.edge); ctx.lineWidth=sp?1.8:1.6; ctx.setLineDash(p.getAttribute('stroke-dasharray')?[5,4]:[]);
+      ctx.stroke(new Path2D(p.getAttribute('d')));
+    });
+    ctx.setLineDash([]);
+    nodes.forEach(n=>{
+      const x=parseFloat(n.style.left),y=parseFloat(n.style.top),w=148,h=74;
+      const ph=n.classList.contains('ph'),dead=n.classList.contains('dead'),isMe=n.classList.contains('me');
+      const g=n.classList.contains('g-F')?'F':n.classList.contains('g-O')?'O':'M';
+      rr(x,y,w,h,10); ctx.fillStyle=isMe?C.me:C.bg; ctx.fill();
+      ctx.lineWidth=1.5; ctx.strokeStyle=C.line; ctx.setLineDash(ph?[5,4]:[]); ctx.stroke(); ctx.setLineDash([]);
+      const sx=x+15,sy=y+17;
+      ctx.fillStyle=ph?C.edge:C.ink; ctx.beginPath();
+      if(g==='F') ctx.arc(sx,sy,6,0,Math.PI*2);
+      else if(g==='O'){ ctx.moveTo(sx,sy-7.2); ctx.lineTo(sx+7.2,sy); ctx.lineTo(sx,sy+7.2); ctx.lineTo(sx-7.2,sy); ctx.closePath(); }
+      else ctx.rect(sx-6,sy-6,12,12);
+      ctx.fill();
+      if(dead){ ctx.strokeStyle=C.accent; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(sx-8,sy+8); ctx.lineTo(sx+8,sy-8); ctx.stroke(); }
+      const nm=($('.nm',n)||{}).textContent||'',mt=($('.mt',n)||{}).textContent||'';
+      ctx.font='600 14px Mukta'+FB;
+      const lines=wrap(nm,110,2),total=lines.length*17.5+(mt?15:0),top=y+(h-total)/2;
+      ctx.fillStyle=ph?C.muted:C.ink;
+      lines.forEach((l,i)=>ctx.fillText(l,x+30,top+17.5*i+8.75));
+      if(mt){ ctx.font='400 11.5px Mukta'+FB; ctx.fillStyle=C.muted; ctx.fillText(fit(mt,110),x+30,top+lines.length*17.5+7.5); }
+      const k=$('.kin',n);
+      if(k){
+        ctx.font='600 11.5px Mukta'+FB;
+        const t=fit(k.textContent,w-32),pw=ctx.measureText(t).width+16;
+        rr(x+8,y-11,pw,18,9);
+        ctx.fillStyle=k.classList.contains('self')?C.accent:k.classList.contains('mar')?C.gold:C.indigo; ctx.fill();
+        ctx.fillStyle='#ffffff'; ctx.fillText(t,x+16,y-2);
+      }
+    });
+    ctx.restore();
+    let lx=24; const ly=HEAD+H+FOOT/2-4;
+    ctx.font='500 12px Mukta'+FB;
+    const item=(draw,label)=>{ draw(lx,ly); lx+=26; ctx.fillStyle=C.muted; ctx.fillText(label,lx,ly); lx+=ctx.measureText(label).width+20; };
+    const shape=(kind,dead)=>(x,y)=>{
+      ctx.fillStyle=C.ink; ctx.beginPath();
+      if(kind==='F') ctx.arc(x+6,y,6,0,Math.PI*2);
+      else if(kind==='O'){ ctx.moveTo(x+6,y-7); ctx.lineTo(x+13,y); ctx.lineTo(x+6,y+7); ctx.lineTo(x-1,y); ctx.closePath(); }
+      else ctx.rect(x,y-6,12,12);
+      ctx.fill();
+      if(dead){ ctx.strokeStyle=C.accent; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(x-2,y+8); ctx.lineTo(x+14,y-8); ctx.stroke(); }
+    };
+    const line=(col,dash)=>(x,y)=>{ ctx.strokeStyle=col; ctx.lineWidth=2; ctx.setLineDash(dash?[5,4]:[]); ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x+20,y); ctx.stroke(); ctx.setLineDash([]); };
+    item(shape('M'),'पुरुष'); item(shape('F'),'महिला'); item(shape('O'),'अन्य'); item(shape('M',true),'दिवंगत');
+    item(line(C.accent),'श्रीमान्-श्रीमती'); item((x,y)=>{ LC.slice(0,4).forEach((c,i)=>{ ctx.strokeStyle=c; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(x+i*5,y); ctx.lineTo(x+i*5+5,y); ctx.stroke(); }); },'आमाबुबाबाट सन्तानतिर (हरेक जोडीको अलग रङ)'); item(line(C.edge,true),'सौतेनी / धर्म / पालक');
+    const blob=await new Promise((res,rej)=>canvas.toBlob(b=>b?res(b):rej(new Error('blob')),'image/png'));
+    if(caps.dl){ await caps.dl.save({filename:'natagota-vanshavali.png',data:blob}); toast('चित्र सुरक्षित भयो'); }
+    else{
+      const url=canvas.toDataURL('image/png');
+      $('#modal').innerHTML='<div class="ov"><div class="dlg" style="width:min(900px,100%)"><h2>वंशावलीको चित्र</h2><p class="mut">चित्रमा थिचिराख्नुहोस् (कम्प्युटरमा दायाँ क्लिक गर्नुहोस्) र "चित्र सुरक्षित गर्नुहोस्" छान्नुहोस्।</p><img alt="वंशावली" src="'+url+'" style="width:100%;border:1px solid var(--line);border-radius:8px"><div class="foot"><a class="btn pri" style="text-decoration:none" download="natagota-vanshavali.png" href="'+url+'">चित्र डाउनलोड गर्नुहोस्</a><button class="btn" data-act="close">बन्द गर्नुहोस्</button></div></div></div>';
+    }
+  }catch(er){
+    if(!er||er.code!=='declined') toast('चित्र बनाउन सकिएन। सदस्य धेरै भए सानो दायरा छानेर फेरि प्रयास गर्नुहोस्।');
+  }finally{ restore(); if(btn) btn.disabled=false; }
+}
+
+/* ---------- सदस्य सूची ---------- */
+function renderList(){
+  const el=$('#p-list'),g=GR(),all=persons(),houses=[...new Set(all.map(p=>p.house).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'ne'));
+  const q=state.q.trim().toLowerCase();
+  const rows=all.filter(p=>(!state.house||p.house===state.house)&&(!q||(p.name+' '+(p.house||'')+' '+(p.note||'')).toLowerCase().includes(q))).sort((a,b)=>((a.ph?1:0)-(b.ph?1:0))||byName(a,b));
+  const kinMap=state.me&&g.by.has(state.me)?kinFrom(g,state.me):null;
+  const names=ids=>ids.map(i=>g.by.get(i)).filter(Boolean).map(dn).join(', ')||'—';
+  el.innerHTML=`
+  <div class="bar">
+    <div class="fld" style="flex:1 1 220px"><label for="q-in">खोज्नुहोस्</label><input type="search" id="q-in" placeholder="नाम, टोल वा टिप्पणी" value="${esc(state.q)}"></div>
+    <div class="fld"><label for="h-sel">टोल / वडा</label><select id="h-sel"><option value="">सबै</option>${houses.map(h=>`<option${h===state.house?' selected':''}>${esc(h)}</option>`).join('')}</select></div>
+    <span class="mut" style="padding-bottom:9px">${N(rows.length)} जना</span>
+  </div>
+  ${rows.length?`<div class="tw"><table><thead><tr><th>नाम</th><th>लिङ्ग</th><th>जन्म साल</th><th>आमाबुबा</th><th>श्रीमान्/श्रीमती</th><th>टोल / वडा</th>${kinMap?`<th>${esc(dn(g.by.get(state.me)))} सँगको नाता</th>`:''}</tr></thead><tbody>
+  ${rows.map(p=>{
+    let kc='';
+    if(kinMap){ if(p.id===state.me) kc='<td><span class="pill k">आफू</span></td>'; else { const k=kinInfo(g,state.me,p.id,kinMap); kc=`<td>${k?`<span class="pill ${k.marriage?'km':'k'}">${esc(k.term)}</span>`:'<span class="mut">नाता नजोडिएको</span>'}</td>`; } }
+    return `<tr class="clk" tabindex="0" data-act="pick" data-id="${esc(p.id)}"><td><b>${esc(dn(p))}</b>${p.dead?' <span class="pill">दिवंगत</span>':''}</td><td>${GLBL[p.g]||''}</td><td>${p.by?N(p.by):'—'}</td><td>${esc(names(g.par.get(p.id).map(r=>r.id)))}</td><td>${esc(names([...g.sp.get(p.id)]))}</td><td>${esc(p.house||'—')}</td>${kc}</tr>`;
+  }).join('')}</tbody></table></div>`:'<div class="empty"><p class="mut">कुनै सदस्य भेटिएन।</p></div>'}`;
+}
+
+/* ---------- नाता तालिका (प्रविष्टि) ---------- */
+const SECS=[
+['१. आफ्नो परिवार तथा पुस्तागत नाताहरू',[
+['बुबा','पिता',['पि']],['आमा','माता',['मा']],['बुबाको बुबा','हजुरबुबा',['पि','पि']],['बुबाकी आमा','हजुरआमा',['पि','मा']],
+['आमाको बुबा','मावली हजुरबुबा',['मा','पि']],['आमाकी आमा','मावली हजुरआमा',['मा','मा']],
+['दाजु','दाजु',['दा']],['भाइ','भाइ',['भा']],['दिदी','दिदी',['दि']],['बहिनी','बहिनी',['ब']],
+['श्रीमती','पत्नी',['पत्नी']],['श्रीमान्','पति',['पति']],['छोरा','पुत्र',['छो']],['छोरी','पुत्री',['छी']],
+['छोराको छोरा','नाति',['छो','छो']],['छोराको छोरी','नातिनी',['छो','छी']],['छोरीको छोरा','धेवता',['छी','छो']],['छोरीको छोरी','धेवती',['छी','छी']],
+['छोराको नाति','पनाति',['छो','छो','छो']],['छोराको नातिनी','पनातिनी',['छो','छो','छी']],
+['छोरीको नाति','धेवताको छोरा / नाति',['छी','छो','छो']],['छोरीको नातिनी','धेवतीकी छोरी',['छी','छो','छी']],
+['नातिको छोरा','खनाति',['छो','छो','छो','छो']],['नातिकी छोरी','खनातिनी',['छो','छो','छो','छी']],
+['दाजुको छोरा','भतिजा',['दा','छो']],['दाजुकी छोरी','भतिजी',['दा','छी']],['भाइको छोरा','भतिजा',['भा','छो']],['भाइकी छोरी','भतिजी',['भा','छी']],
+['दिदीको छोरा','भान्जा',['दि','छो']],['दिदीकी छोरी','भान्जी',['दि','छी']],['बहिनीको छोरा','भान्जा',['ब','छो']],['बहिनीकी छोरी','भान्जी',['ब','छी']],
+['दिदीका श्रीमान्','भिनाजु',['दि','पति']],['बहिनीका श्रीमान्','भिनाजु',['ब','पति']]
+]],
+['२. बुबापट्टिका नातेदार तथा थप हाँगाहरू',[
+['बुबाको दाजु','ठूलोबुबा / जेठाबुबा',['पि','दा']],['ठूलोबुबाकी श्रीमती','ठूलीआमा',['पि','दा','पत्नी']],
+['बुबाको भाइ','काका',['पि','भा']],['काकाकी श्रीमती','काकी',['पि','भा','पत्नी']],
+['बुबाको दिदी','फुपू',['पि','दि']],['बुबाको बहिनी','फुपू',['पि','ब']],['फुपूका श्रीमान्','फुपाजु',['पि','SIS','पति']],
+['ठूलोबुबाका छोरा','दाजु / भाइ',['पि','दा','छो']],['ठूलोबुबाकी छोरी','दिदी / बहिनी',['पि','दा','छी']],
+['काकाका छोरा','दाजु / भाइ',['पि','भा','छो']],['काकाकी छोरी','दिदी / बहिनी',['पि','भा','छी']],
+['हजुरबुबाका दाजु','ठूलो हजुरबुबा',['पि','पि','दा']],['हजुरबुबाका भाइ','सानो हजुरबुबा',['पि','पि','भा']],
+['हजुरबुबाका दाजुकी श्रीमती','ठूलो हजुरआमा',['पि','पि','दा','पत्नी']],['हजुरबुबाका भाइकी श्रीमती','सानो हजुरआमा',['पि','पि','भा','पत्नी']],
+['हजुरबुबाकी दिदी / बहिनी','हजुरफुपू',['पि','पि','SIS']],['हजुरफुपूका श्रीमान्','हजुरफुपाजु',['पि','पि','SIS','पति']],
+['बुबाको मामा','हजुरमामा',['पि','मा','BRO']],['बुबाको माइजू','हजुरमाइजू',['पि','मा','BRO','पत्नी']]
+]],
+['३. आमापट्टिका नातेदार तथा थप हाँगाहरू',[
+['आमाको दाजु','मामा',['मा','दा']],['आमाको भाइ','मामा',['मा','भा']],['मामाकी श्रीमती','माइजू',['मा','BRO','पत्नी']],
+['आमाकी दिदी','ठूलीआमा',['मा','दि']],['आमाकी बहिनी','सानीआमा',['मा','ब']],
+['ठूलीआमाका श्रीमान्','ठूलाबुबा (चलनअनुसार)',['मा','दि','पति']],['सानीआमाका श्रीमान्','सानुबुबा (चलनअनुसार)',['मा','ब','पति']],
+['मामाका छोरा','ममेरा दाजु / भाइ',['मा','BRO','छो']],['मामाकी छोरी','ममेरी दिदी / बहिनी',['मा','BRO','छी']],
+['ठूलीआमाका छोरा','मौसेरा दाजु / भाइ',['मा','दि','छो']],['ठूलीआमाकी छोरी','मौसेरी दिदी / बहिनी',['मा','दि','छी']],
+['सानीआमाका छोरा','मौसेरा दाजु / भाइ',['मा','ब','छो']],['सानीआमाकी छोरी','मौसेरी दिदी / बहिनी',['मा','ब','छी']],
+['आमाको मामा','हजुरमामा',['मा','मा','BRO']],['आमाकी माइजू','हजुरमाइजू',['मा','मा','BRO','पत्नी']],
+['आमाको फुपू','हजुरफुपू',['मा','पि','SIS']],['आमाको फुपाजु','हजुरफुपाजु',['मा','पि','SIS','पति']],
+['मावली हजुरबुबाका दाजु','ठूलो मावली हजुरबुबा',['मा','पि','दा']],['मावली हजुरबुबाका भाइ','सानो मावली हजुरबुबा',['मा','पि','भा']]
+]],
+['४. विवाहपछि जोडिने नाताहरू तथा थप हाँगाहरू',[
+['श्रीमतीका बुबा','ससुरा',['पत्नी','पि']],['श्रीमतीकी आमा','सासू',['पत्नी','मा']],['श्रीमान्का बुबा','ससुरा',['पति','पि']],['श्रीमान्की आमा','सासू',['पति','मा']],
+['श्रीमतीको दाजु','जेठान',['पत्नी','दा']],['श्रीमतीको भाइ','सालो',['पत्नी','भा']],['श्रीमतीकी दिदी','जेठीसाली',['पत्नी','दि']],['श्रीमतीकी बहिनी','साली',['पत्नी','ब']],
+['श्रीमान्को दाजु','जेठाजु',['पति','दा']],['जेठाजुकी श्रीमती','जेठानी',['पति','दा','पत्नी']],['श्रीमान्को भाइ','देवर',['पति','भा']],['देवरकी श्रीमती','देवरानी',['पति','भा','पत्नी']],
+['श्रीमान्की दिदी','नन्द',['पति','दि']],['श्रीमान्की बहिनी','नन्द',['पति','ब']],['नन्दका श्रीमान्','नन्दाजु',['पति','SIS','पति']],
+['श्रीमतीकी दिदीका श्रीमान्','साढु',['पत्नी','दि','पति']],['श्रीमतीकी बहिनीका श्रीमान्','साढु',['पत्नी','ब','पति']],
+['दाजुको श्रीमती','भाउजू',['दा','पत्नी']],['भाइकी श्रीमती','बुहारी / भाइबुहारी',['भा','पत्नी']],
+['छोराको श्रीमती','बुहारी',['छो','पत्नी']],['छोरीको श्रीमान्','ज्वाइँ',['छी','पति']],
+['ज्वाइँका बुबा','सम्धी',['छी','पति','पि']],['ज्वाइँकी आमा','सम्धिनी',['छी','पति','मा']],
+['बुहारीका बुबा','सम्धी',['छो','पत्नी','पि']],['बुहारीकी आमा','सम्धिनी',['छो','पत्नी','मा']]
+]]
+];
+const REL=[];
+SECS.forEach((s,si)=>s[1].forEach(r=>REL.push({sec:si,who:r[0],term:r[1],path:r[2]})));
+function rowHTML(i,anchor){
+  const r=REL[i],g=GR();
+  const found=walkPath(g,anchor,r.path).map(id=>g.by.get(id));
+  const real=found.filter(p=>!p.ph),ph=found.some(p=>p.ph);
+  return `<div class="trow" id="row-${i}"><div class="who"><b>${esc(r.who)}</b><span class="term">${esc(r.term)}</span></div><div>
+    ${real.map(p=>`<button class="chip" data-act="pick" data-id="${esc(p.id)}">${esc(dn(p))}</button>`).join('')}
+    ${ph&&!real.length?'<span class="mut" style="font-size:13px">नाम खुल्न बाँकी</span>':''}
+    <div class="addrow"><input type="text" class="tname" data-r="${i}" placeholder="${real.length?'अर्को नाम थप्नुहोस्':'नामथर लेख्नुहोस्'}" aria-label="${esc(r.who)}को नामथर"><button class="btn sm" data-act="addrel" data-r="${i}">थप्नुहोस्</button></div></div></div>`;
+}
+function secCount(si,anchor){
+  const g=GR(); let f=0,t=0;
+  REL.forEach((r,i)=>{ if(r.sec!==si) return; t++; if(walkPath(g,anchor,r.path).some(id=>!g.by.get(id).ph)) f++; });
+  return `${N(f)} / ${N(t)} भरिएको`;
+}
+function renderTable(){
+  const el=$('#p-table'),people=persons().filter(p=>!p.ph).sort(byName);
+  let body='';
+  if(state.anchor&&GR().by.has(state.anchor)){
+    body=SECS.map((s,si)=>`<details class="sec" data-s="${si}"${state.open[si]?' open':''}><summary><span>${s[0]}</span><small id="cnt-${si}">${secCount(si,state.anchor)}</small></summary>${REL.map((r,i)=>r.sec===si?rowHTML(i,state.anchor):'').join('')}</details>`).join('')
+      +'<p class="mut" style="font-size:13px">टाढाका नाता (जस्तै मावली कुटुम्ब) को हकमा तिनका आमाबुबा र श्रीमान्-श्रीमती \'सदस्य थप्नुहोस्\' बाट जोड्नुहोस्।</p>';
+  } else {
+    body=`<div class="empty"><h2>पहिले केन्द्रमा को हुन्, छान्नुहोस्</h2><p class="mut">माथि आफ्नो नाम छान्नुहोस्। नाम नभए नयाँ व्यक्ति बनाउनुहोस्। त्यसपछि उनको नातागोताको नाम तलका खाली ठाउँमा लेख्दै जानुहोस्।</p></div>`;
+  }
+  el.innerHTML=`<div class="bar"><div class="fld"><label for="anch-sel">केन्द्रमा रहेको व्यक्ति (आफू)</label><select id="anch-sel"><option value="">— छान्नुहोस् —</option>${people.map(p=>`<option value="${esc(p.id)}"${p.id===state.anchor?' selected':''}>${esc(label(p))}</option>`).join('')}</select></div><button class="btn" data-act="newanchor">नयाँ व्यक्ति बनाउनुहोस्</button></div>${body}`;
+}
+function addRel(i,name){
+  name=name.trim(); if(!name) return;
+  addAt(state.anchor,REL[i].path,name);
+}
+const GEN_OF={'पि':'M','छो':'M','पति':'M','दा':'M','भा':'M','BRO':'M','मा':'F','छी':'F','पत्नी':'F','दि':'F','ब':'F','SIS':'F'};
+function addAt(anchor,path,name){
+  const work=new Map();
+  const base=()=>{ const m=new Map(persons().map(p=>[p.id,p])); work.forEach((d,id)=>m.set(id,d)); return [...m.values()]; };
+  const gr=()=>buildGraph(base());
+  const mod=id=>{ if(!work.has(id)) work.set(id,JSON.parse(JSON.stringify(gr().by.get(id)))); return work.get(id); };
+  const mk=(g,nm,ph)=>{ const d={id:uid(),name:nm,g,by:null,dead:false,dy:null,house:'',note:'',ph:!!ph,parents:[],spouses:[],hints:{}}; work.set(d.id,d); return d; };
+  const link=(a,b)=>{ const A=mod(a),B=mod(b); if(!A.spouses.includes(b)) A.spouses.push(b); if(!B.spouses.includes(a)) B.spouses.push(a); };
+  const make=(cur,tok,nm,ph)=>{
+    const g=GEN_OF[tok],c=mod(cur);
+    if(tok==='पि'||tok==='मा'){
+      const d=mk(g,nm,ph); c.parents.push({id:d.id,k:'जन्म'});
+      const GG=gr();
+      const other=c.parents.filter(r=>r.id!==d.id).map(r=>GG.by.get(r.id)).find(p=>p&&p.g!==g&&p.g!=='O');
+      if(other&&!GG.sp.get(other.id).size) link(d.id,other.id);
+      return d;
+    }
+    if(tok==='छो'||tok==='छी'){
+      const d=mk(g,nm,ph); d.parents.push({id:cur,k:'जन्म'});
+      const sp=[...gr().sp.get(cur)]; if(sp.length===1) d.parents.push({id:sp[0],k:'जन्म'});
+      return d;
+    }
+    if(tok==='पति'||tok==='पत्नी'){ const d=mk(g,nm,ph); link(cur,d.id); return d; }
+    const d=mk(g,nm,ph);
+    let ps=c.parents.slice();
+    if(!ps.length){ const f=mk('M','',true),m=mk('F','',true); link(f.id,m.id); ps=[{id:f.id,k:'जन्म'},{id:m.id,k:'जन्म'}]; c.parents=ps.slice(); }
+    d.parents=ps.map(r=>({id:r.id,k:r.k}));
+    if(tok==='दा'||tok==='दि') d.hints[cur]=1;
+    if(tok==='भा'||tok==='ब') d.hints[cur]=-1;
+    return d;
+  };
+  let cur=anchor;
+  for(let i=0;i<path.length-1;i++){
+    const f=stepFind(gr(),cur,path[i]);
+    cur=f.length?f[0]:make(cur,path[i],'',true).id;
+  }
+  const last=path[path.length-1],f=stepFind(gr(),cur,last),GG=gr();
+  const phs=f.map(id=>GG.by.get(id)).find(p=>p.ph);
+  if(phs){ const d=mod(phs.id); d.name=name; d.ph=false; }
+  else make(cur,last,name,false);
+  commit([...work.values()]);
+}
+
+/* ---------- साझा र सुरक्षित ---------- */
+function exportCode(){ return 'NTG1'+JSON.stringify({docs:Object.values(local.docs),village:local.meta.village!=null?local.meta.village:undefined}); }
+const K256=[],H256=[];
+(function(){ let pc=0; for(let c=2;pc<64;c++){ let p=true; for(let d=2;d*d<=c;d++) if(c%d===0){p=false;break;} if(p){ if(pc<8) H256[pc]=(Math.pow(c,.5)%1*4294967296)|0; K256[pc++]=(Math.pow(c,1/3)%1*4294967296)|0; } } })();
+function sha256(msg){
+  const bytes=new TextEncoder().encode(msg),l=bytes.length,n=((l+9+63)>>6)<<6,buf=new Uint8Array(n);
+  buf.set(bytes); buf[l]=0x80;
+  const dv=new DataView(buf.buffer); dv.setUint32(n-4,(l*8)>>>0); dv.setUint32(n-8,Math.floor(l*8/4294967296));
+  const H=H256.slice(),w=new Int32Array(64);
+  for(let o=0;o<n;o+=64){
+    for(let i=0;i<16;i++) w[i]=dv.getInt32(o+i*4);
+    for(let i=16;i<64;i++){ const a=w[i-15],b=w[i-2]; const s0=((a>>>7)|(a<<25))^((a>>>18)|(a<<14))^(a>>>3); const s1=((b>>>17)|(b<<15))^((b>>>19)|(b<<13))^(b>>>10); w[i]=(w[i-16]+s0+w[i-7]+s1)|0; }
+    let a=H[0],b=H[1],c=H[2],d=H[3],e=H[4],f=H[5],g=H[6],h=H[7];
+    for(let i=0;i<64;i++){
+      const S1=((e>>>6)|(e<<26))^((e>>>11)|(e<<21))^((e>>>25)|(e<<7)),ch=(e&f)^(~e&g),t1=(h+S1+ch+K256[i]+w[i])|0;
+      const S0=((a>>>2)|(a<<30))^((a>>>13)|(a<<19))^((a>>>22)|(a<<10)),mj=(a&b)^(a&c)^(b&c),t2=(S0+mj)|0;
+      h=g;g=f;f=e;e=(d+t1)|0;d=c;c=b;b=a;a=(t1+t2)|0;
+    }
+    H[0]=(H[0]+a)|0;H[1]=(H[1]+b)|0;H[2]=(H[2]+c)|0;H[3]=(H[3]+d)|0;H[4]=(H[4]+e)|0;H[5]=(H[5]+f)|0;H[6]=(H[6]+g)|0;H[7]=(H[7]+h)|0;
+  }
+  return H.map(x=>(x>>>0).toString(16).padStart(8,'0')).join('');
+}
+function hashPw(salt,pw){ let h=sha256(salt+':'+pw); for(let i=0;i<3000;i++) h=sha256(h+salt); return h; }
+function mkPw(pw){ const a=new Uint8Array(12); (window.crypto||{getRandomValues:x=>{for(let i=0;i<x.length;i++)x[i]=Math.random()*256;}}).getRandomValues(a); const s=Array.from(a,x=>x.toString(16).padStart(2,'0')).join(''); return {s,h:hashPw(s,pw)}; }
+const pwRec=()=>local.meta.pw||seedData.meta.pw||null;
+function openLogin(){
+  const has=!!pwRec();
+  $('#modal').innerHTML=`<div class="ov"><form class="dlg" id="lform" autocomplete="off" style="width:min(420px,100%)"><h2>${has?'प्रशासक प्रवेश':'प्रशासकको पासवर्ड बनाउनुहोस्'}</h2>
+  ${has?'':'<p class="mut">यो पहिलो पटक हो। आफूलाई मात्र थाहा हुने पासवर्ड राख्नुहोस् र सुरक्षित लेखेर राख्नुहोस्। यो पासवर्ड नयाँ index.html मा बसेपछि मात्र वेबसाइटमा लागू हुन्छ।</p>'}
+  <div class="fld"><label for="lg-pw">पासवर्ड</label><input type="password" id="lg-pw" name="pw" autocomplete="${has?'current-password':'new-password'}"></div>
+  ${has?'':'<div class="fld" style="margin-top:8px"><label for="lg-pw2">पासवर्ड फेरि लेख्नुहोस्</label><input type="password" id="lg-pw2" name="pw2" autocomplete="new-password"></div>'}
+  <p class="ferr" id="lg-err" role="alert"></p>
+  <div class="foot"><button type="button" class="btn" data-act="close">रद्द</button><button class="btn pri" type="submit">${has?'भित्र जानुहोस्':'पासवर्ड राख्नुहोस्'}</button></div></form></div>`;
+  setTimeout(()=>{ const i=$('#lg-pw'); if(i) i.focus(); },30);
+}
+function enterAdmin(){ ADMIN=true; try{ sessionStorage.setItem('ntg_adm','1'); }catch(e){} closeModal(); document.body.classList.remove('view'); state.tab='share'; try{ location.hash='share'; }catch(e){} render(); }
+function doLogin(f){
+  const err=m=>{ const e=$('#lg-err'); if(e) e.textContent=m; },pw=f.elements.pw.value,rec=pwRec();
+  if(!rec){
+    if(pw.length<6) return err('पासवर्ड कम्तीमा ६ अक्षरको राख्नुहोस्।');
+    if(pw!==f.elements.pw2.value) return err('दुवै पासवर्ड मिलेन।');
+    local.meta.pw=mkPw(pw); persistLocal(); enterAdmin(); toast('पासवर्ड राखियो');
+  } else {
+    if(hashPw(rec.s,pw)!==rec.h) return err('पासवर्ड मिलेन। फेरि प्रयास गर्नुहोस्।');
+    enterAdmin();
+  }
+}
+function saveFile(name,data,type){
+  const u=URL.createObjectURL(new Blob([data],{type:type||'application/octet-stream'}));
+  const a=document.createElement('a'); a.href=u; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(u),4000);
+}
+function renderShare(){
+  const el=$('#p-share'),n=localCount();
+  el.innerHTML=`
+  <div class="card"><h2>गाउँ वा टोलको नाम</h2><div class="row"><input type="text" id="vil-in" value="${esc(village())}" placeholder="जस्तै: कालीगण्डकी गाउँपालिका, वडा ३" style="flex:1 1 260px"></div><p class="mut" style="font-size:13px">वेबसाइट बनाएपछि यो नाम सबैले देख्छन्।</p></div>
+  <div class="card"><h2>१. पुरानो पेजबाट डाटा ल्याउनुहोस्</h2>
+    <ol><li>Claude मा बनेको पुरानो पेजको 'साझा र सुरक्षित' ट्याबमा 'सबै विवरण कपी गर्नुहोस्' थिच्नुहोस्।</li><li>कपी भएको लेख यहाँ टाँस्नुहोस् र 'कोड मिलाउनुहोस्' थिच्नुहोस्।</li></ol>
+    <textarea id="code-in" placeholder="NTG1 बाट सुरु हुने कोड यहाँ टाँस्नुहोस्" aria-label="प्राप्त कोड"></textarea>
+    <div class="row"><button class="btn" data-act="importcode">कोड मिलाउनुहोस्</button></div></div>
+  <div class="card"><h2>२. वेबसाइटको फाइल बनाउनुहोस्</h2>
+    <p>यो प्रशासक पृष्ठमा राखेका सबै सदस्यसहितको 'index.html' फाइल बन्छ। यो फाइललाई निःशुल्क होस्टिङमा राख्दा अरुले हेर्न मात्र पाउँछन्, सम्पादन गर्न पाउँदैनन्।</p>
+    <p class="mut" style="font-size:13px">${n?`यो ब्राउजरमा ${N(n)} परिवर्तन छन्।`:'यो ब्राउजरमा अपलोड गर्न बाँकी परिवर्तन छैन।'}</p>
+    <div class="row"><button class="btn pri" data-act="dlsite">index.html बनाएर डाउनलोड गर्नुहोस्</button></div></div>
+  <div class="card"><h2>ब्याकअप</h2><p>सबै सदस्यको विवरण फाइलमा राख्न सकिन्छ।</p>
+    <div class="row"><button class="btn" data-act="copyall">सबै विवरण कपी गर्नुहोस्</button><button class="btn" data-act="dlall">फाइलमा सुरक्षित गर्नुहोस्</button></div></div>
+  <div class="card"><h2>यो ब्राउजरका परिवर्तन हटाउनुहोस्</h2><p class="mut">वेबसाइटमा राखिसकेको विवरणलाई केही हुँदैन।</p>
+    <div class="row">${state.confirmDel==='local'?'<button class="btn danger" data-act="clearlocal2">हो, हटाउनुहोस्</button><button class="btn" data-act="clearlocal0">रद्द</button>':`<button class="btn danger" data-act="clearlocal1"${n?'':' disabled'}>परिवर्तन हटाउनुहोस्</button>`}</div></div>
+  <div class="card"><h2>प्रशासकको पासवर्ड</h2><p class="mut" style="font-size:13px">नयाँ पासवर्ड राखेपछि नयाँ index.html बनाएर फेरि अपलोड गर्नुहोस्।</p>
+    <div class="row"><input type="password" id="pw-n1" placeholder="नयाँ पासवर्ड" autocomplete="new-password" aria-label="नयाँ पासवर्ड"><input type="password" id="pw-n2" placeholder="फेरि लेख्नुहोस्" autocomplete="new-password" aria-label="नयाँ पासवर्ड फेरि"><button class="btn" data-act="setpw">पासवर्ड बदल्नुहोस्</button></div></div>
+  <div class="card"><h2>प्रशासक मोडबाट निस्कनुहोस्</h2><div class="row"><button class="btn" data-act="exitadmin">निस्कनुहोस्</button></div></div>`;
+}
+function fullData(){
+  return {meta:{village:village(),rev:Date.now(),pw:pwRec()||undefined},persons:persons().map(p=>{ const c=Object.assign({},p); delete c.ts; return c; })};
+}
+function buildDoc(seed){
+  const css=document.getElementById('appcss').textContent,js=document.getElementById('appjs').textContent;
+  const json=JSON.stringify(seed).replace(/</g,'\\u003c');
+  return SK_HEAD+'<style id="appcss">'+css+'</style><div id="root"></div><script type="application/json" id="seed">'+json+'<\/script><script id="appjs">'+js+'<\/script></body></html>';
+}
+async function doPublish(btn){
+  if(!caps.art){ toast('प्रकाशित गर्ने अनुमति उपलब्ध छैन।'); return; }
+  if(SK_HEAD.indexOf('<!doctype')!==0){ toast('प्रकाशन अहिले तयार छैन।'); return; }
+  const seed=fullData();
+  seed.persons=seed.persons.filter(p=>!p._del);
+  lsSet(LSP,String(seed.meta.rev));
+  if(btn) btn.disabled=true;
+  toast('प्रकाशित गर्दै…');
+  try{ await caps.art.publish(buildDoc(seed)); }
+  catch(e){
+    lsDel(LSP); if(btn) btn.disabled=false;
+    const c=e&&e.code;
+    if(c==='conflict') return;
+    toast(c==='not_writer'||c==='not_granted'?'तपाईंसँग यो पृष्ठ प्रकाशित गर्ने अधिकार छैन।':'प्रकाशित हुन सकेन। केही बेरपछि फेरि प्रयास गर्नुहोस्।');
+  }
+}
+async function copyText(txt,ta){
+  try{ await navigator.clipboard.writeText(txt); toast('कपी भयो'); }
+  catch(e){ if(ta){ ta.focus(); ta.select(); } toast('स्वतः कपी भएन; चयन गरिएको लेख आफैं कपी गर्नुहोस्।'); }
+}
+
+/* ---------- विवरण पाटी ---------- */
+function renderDetail(){
+  const d=$('#detail'),g=GR(),p=state.sel&&g.by.get(state.sel);
+  document.body.classList.toggle('hasd',!!p);
+  if(!p){ d.hidden=true; d.innerHTML=''; return; }
+  d.hidden=false;
+  const chip=(id,k)=>{ const q=g.by.get(id); return q?`<button class="chip" data-act="pick" data-id="${esc(id)}">${esc(dn(q))}${k&&k!=='जन्म'?' ('+esc(k)+')':''}</button>`:''; };
+  const list=a=>a.length?a.join(''):'<span class="mut">—</span>';
+  let kin='';
+  if(state.me&&g.by.has(state.me)&&state.me!==p.id){
+    const k=kinInfo(g,state.me,p.id,kinFrom(g,state.me));
+    if(k) kin=`<p class="kinline"><b>${esc(k.term)}</b><br><span class="mut">${esc(dn(g.by.get(state.me)))} को ${esc(k.desc)}</span></p>`;
+    else kin=`<p class="kinline mut">${esc(dn(g.by.get(state.me)))} सँग नाता जोडिएको छैन।</p>`;
+  } else if(state.me===p.id) kin='<p class="kinline"><b>आफू</b> <span class="mut">(नाता यही व्यक्तिबाट हेरिँदै छ)</span></p>';
+  const sib=sibsOf(g,p.id).map(i=>chip(i));
+  d.innerHTML=`<button class="btn sm x" data-act="closedetail" aria-label="बन्द गर्नुहोस्">✕</button>
+  <h2>${esc(dn(p))}</h2>
+  <p class="mut" style="margin:0">${[GLBL[p.g],p.dead?'दिवंगत'+(p.dy?' ('+N(p.dy)+')':''):null,p.by?'जन्म '+N(p.by)+' वि.सं.':null,p.house].filter(Boolean).map(esc).join(' · ')}</p>
+  ${p.note?`<p style="margin:6px 0 0">${esc(p.note)}</p>`:''}
+  ${kin}
+  <h3>आमाबुबा</h3><div>${list(g.par.get(p.id).map(r=>chip(r.id,r.k)))}</div>
+  <h3>श्रीमान् / श्रीमती</h3><div>${list([...g.sp.get(p.id)].map(i=>chip(i)))}</div>
+  <h3>छोराछोरी</h3><div>${list(g.kids.get(p.id).map(c=>chip(c.id,c.k)))}</div>
+  <h3>दाजुभाइ / दिदीबहिनी</h3><div>${list(sib)}</div>
+  <div class="acts">
+    <button class="btn sm pri" data-act="setme" data-id="${esc(p.id)}"${state.me===p.id?' disabled':''}>यो म हुँ — मेरो नाता हेर्नुहोस्</button>
+    <button class="btn sm" data-act="edit" data-id="${esc(p.id)}">सम्पादन</button>
+    <button class="btn sm" data-act="relatives" data-id="${esc(p.id)}">नाता तालिकामा थप्नुहोस्</button>
+  </div>
+  <div class="acts">
+    <button class="btn sm" data-act="addchild" data-id="${esc(p.id)}">+ छोराछोरी</button>
+    <button class="btn sm" data-act="addspouse" data-id="${esc(p.id)}">+ श्रीमान्/श्रीमती</button>
+    <button class="btn sm" data-act="addparent" data-id="${esc(p.id)}">+ आमा/बुबा</button>
+  </div>
+  <div class="acts">${state.confirmDel===p.id?`<span style="flex:1 1 100%">यो व्यक्तिलाई मेटाउने? अरुसँगका नाता पनि हट्छन्।</span><button class="btn sm danger" data-act="delok" data-id="${esc(p.id)}">हो, मेटाउनुहोस्</button><button class="btn sm" data-act="delno">रद्द</button>`:`<button class="btn sm danger" data-act="del" data-id="${esc(p.id)}">मेटाउनुहोस्</button>`}</div>`;
+}
+function pick(id){
+  state.sel=id; state.confirmDel=null;
+  $$('.node.sel').forEach(n=>n.classList.remove('sel'));
+  const n=$$('.node').find(x=>x.dataset.id===id); if(n) n.classList.add('sel');
+  renderDetail();
+}
+
+/* ---------- सदस्य फारम ---------- */
+function openModal(html){
+  const m=$('#modal');
+  m.innerHTML=`<div class="ov" data-act="ovclose"><div class="dlg" role="dialog" aria-modal="true">${html}</div></div>`;
+  const f=$('input[type=text],select',m); if(f) f.focus();
+}
+function closeModal(){ $('#modal').innerHTML=''; }
+const mrow=(kind,sel,k)=>`<div class="mrow" data-kind="${kind}"><select name="${kind}" aria-label="${kind==='par'?'आमा वा बुबा':'श्रीमान् वा श्रीमती'}">${opts(null,sel)}</select>${kind==='par'?`<select name="pk" aria-label="नाताको प्रकार">${KINDS.map(x=>`<option${x===(k||'जन्म')?' selected':''}>${x}</option>`).join('')}</select>`:''}<button type="button" class="btn sm" data-act="rmrow" aria-label="हटाउनुहोस्">✕</button></div>`;
+function openForm(id,preset){
+  preset=preset||{};
+  const g=GR(),p=id?g.by.get(id):null;
+  const pars=p?g.par.get(id):(preset.parents||[]);
+  const sps=p?[...g.sp.get(id)]:(preset.spouses||[]);
+  const v=p||{name:'',g:preset.g||'M',by:'',dead:false,dy:'',house:preset.house||'',note:''};
+  openModal(`<form id="pform" data-id="${esc(id||'')}" data-childof="${esc(preset.childOf||'')}">
+  <h2>${p?'सदस्य सम्पादन':preset.title||'नयाँ सदस्य'}</h2>
+  <div class="grid">
+    <div class="fld full"><label for="f-name">पूरा नाम</label><input type="text" id="f-name" name="name" value="${esc(v.name)}" autocomplete="off" required></div>
+    <div class="fld"><span class="lbl">लिङ्ग</span><div class="radios">${['M','F','O'].map(x=>`<label><input type="radio" name="g" value="${x}"${v.g===x?' checked':''}> ${GLBL[x]}</label>`).join('')}</div></div>
+    <div class="fld"><label for="f-by">जन्म साल (वि.सं.)</label><input type="text" id="f-by" name="by" inputmode="numeric" value="${v.by?N(v.by):''}" placeholder="जस्तै २०४५"></div>
+    <div class="fld"><label class="chk" style="padding:0 0 4px"><input type="checkbox" name="dead"${v.dead?' checked':''}> दिवंगत</label><input type="text" name="dy" inputmode="numeric" value="${v.dy?N(v.dy):''}" placeholder="दिवंगत साल (ऐच्छिक)" aria-label="दिवंगत साल"></div>
+    <div class="fld"><label for="f-house">टोल / वडा</label><input type="text" id="f-house" name="house" value="${esc(v.house||'')}" placeholder="जस्तै वडा ३, माथिल्लो टोल"></div>
+    <div class="fld full"><label for="f-note">थप जानकारी</label><input type="text" id="f-note" name="note" value="${esc(v.note||'')}" placeholder="उपनाम, पेशा आदि (ऐच्छिक)"></div>
+    <div class="fld full"><span class="lbl">आमाबुबा (दुई वा बढी थप्न सकिन्छ)</span><div id="f-par">${pars.map(r=>mrow('par',r.id,r.k)).join('')}</div><div><button type="button" class="btn sm" data-act="addpar">+ आमा / बुबा थप्नुहोस्</button></div></div>
+    <div class="fld full"><span class="lbl">श्रीमान् / श्रीमती (एकभन्दा बढी भए सबै थप्नुहोस्)</span><div id="f-sp">${sps.map(s=>mrow('sp',s)).join('')}</div><div><button type="button" class="btn sm" data-act="addsp">+ श्रीमान् / श्रीमती थप्नुहोस्</button></div></div>
+  </div>
+  <p class="ferr" id="ferr" role="alert"></p>
+  <div class="foot"><button type="button" class="btn" data-act="close">रद्द</button><button type="submit" class="btn pri">सुरक्षित गर्नुहोस्</button></div></form>`);
+}
+function ferr(m){ const e=$('#ferr'); if(e) e.textContent=m; }
+function yearOf(s){
+  s=ASC(String(s||'')).trim(); if(!s) return {v:null};
+  const n=parseInt(s,10); if(!/^\d{4}$/.test(s)||n<1900||n>2200) return {err:true};
+  return {v:n};
+}
+function submitPerson(form){
+  const id=form.dataset.id,childOf=form.dataset.childof,fe=form.elements;
+  const name=fe.name.value.trim();
+  if(!name){ ferr('नाम लेख्नुहोस्।'); return; }
+  const by=yearOf(fe.by.value),dy=yearOf(fe.dy.value);
+  if(by.err||dy.err){ ferr('साल वि.सं. मा चार अंकमा लेख्नुहोस्, जस्तै २०४५।'); return; }
+  const g0=GR(),gen=fe.g.value||'M';
+  const pr=$$('.mrow[data-kind=par]',form).map(r=>({id:$('select',r).value,k:$$('select',r)[1].value})).filter(r=>r.id);
+  const par=[]; pr.forEach(r=>{ if(!par.some(x=>x.id===r.id)) par.push(r); });
+  const sps=[...new Set($$('.mrow[data-kind=sp] select',form).map(s=>s.value).filter(Boolean))];
+  const newId=id||uid();
+  if(par.some(r=>r.id===newId)||sps.includes(newId)){ ferr('व्यक्ति आफ्नै आमाबुबा वा श्रीमान्-श्रीमती हुन सक्दैन।'); return; }
+  if(id&&par.some(r=>isDescendant(g0,r.id,id))){ ferr('आफ्नै सन्तानलाई आमाबुबा बनाउन मिल्दैन।'); return; }
+  const old=id?g0.by.get(id):null;
+  const doc=Object.assign(old?JSON.parse(JSON.stringify(old)):{id:newId,hints:{}},{name,g:gen,by:by.v,dead:!!fe.dead.checked,dy:dy.v,house:fe.house.value.trim(),note:fe.note.value.trim(),ph:false,sample:false,parents:par,spouses:sps});
+  const out=[doc],newSp=new Set(sps);
+  persons().forEach(o=>{
+    if(o.id===newId) return;
+    let sp=(o.spouses||[]).slice(),chg=false;
+    if(newSp.has(o.id)&&!sp.includes(newId)){ sp.push(newId); chg=true; }
+    if(!newSp.has(o.id)&&sp.includes(newId)){ sp=sp.filter(x=>x!==newId); chg=true; }
+    if(chg){ const c=JSON.parse(JSON.stringify(o)); c.spouses=sp; out.push(c); }
+  });
+  if(childOf&&g0.by.has(childOf)){
+    const c=out.find(x=>x.id===childOf)||JSON.parse(JSON.stringify(g0.by.get(childOf)));
+    if(!(c.parents||[]).some(r=>r.id===newId)) c.parents=(c.parents||[]).concat([{id:newId,k:'जन्म'}]);
+    if(!out.includes(c)) out.push(c);
+  }
+  closeModal(); state.sel=newId;
+  commit(out); toast('सुरक्षित भयो');
+}
+function newAnchorForm(){
+  openModal(`<form id="aform"><h2>नयाँ व्यक्ति बनाउनुहोस्</h2><div class="grid"><div class="fld full"><label for="a-name">पूरा नाम</label><input type="text" id="a-name" name="name" autocomplete="off" required></div>
+  <div class="fld"><span class="lbl">लिङ्ग</span><div class="radios">${['M','F','O'].map(x=>`<label><input type="radio" name="g" value="${x}"${x==='M'?' checked':''}> ${GLBL[x]}</label>`).join('')}</div></div>
+  <div class="fld"><label for="a-by">जन्म साल (वि.सं.)</label><input type="text" id="a-by" name="by" inputmode="numeric" placeholder="जस्तै २०४५"></div></div>
+  <p class="ferr" id="ferr" role="alert"></p><div class="foot"><button type="button" class="btn" data-act="close">रद्द</button><button type="submit" class="btn pri">बनाउनुहोस्</button></div></form>`);
+}
+
+/* ---------- घटना ---------- */
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-act]'); if(!t) return;
+  const a=t.dataset.act,id=t.dataset.id;
+  if(a==='ovclose'){ if(e.target===t) closeModal(); return; }
+  if(a==='tab') setTab(t.dataset.t);
+  else if(a==='add') openForm(null);
+  else if(a==='pick'){ if(e.target.closest('.chip')&&state.tab==='table'){ pick(id); } else pick(id); }
+  else if(a==='closedetail'){ state.sel=null; $$('.node.sel').forEach(n=>n.classList.remove('sel')); renderDetail(); }
+  else if(a==='setme'){ state.me=id; saveUI(); render(); }
+  else if(a==='edit') openForm(id);
+  else if(a==='relatives'){ state.anchor=id; setTab('table'); }
+  else if(a==='addchild'){ const g=GR(),sp=[...g.sp.get(id)],h=g.by.get(id); openForm(null,{title:'छोराछोरी थप्नुहोस्',parents:[{id,k:'जन्म'}].concat(sp.length===1?[{id:sp[0],k:'जन्म'}]:[]),house:h.house}); }
+  else if(a==='addspouse'){ const h=GR().by.get(id); openForm(null,{title:'श्रीमान् / श्रीमती थप्नुहोस्',spouses:[id],g:h.g==='M'?'F':'M'}); }
+  else if(a==='addparent'){ const h=GR().by.get(id); openForm(null,{title:'आमा / बुबा थप्नुहोस्',childOf:id,house:h.house}); }
+  else if(a==='del'){ state.confirmDel=id; renderDetail(); }
+  else if(a==='delno'){ state.confirmDel=null; renderDetail(); }
+  else if(a==='delok'){ state.confirmDel=null; deleteMany([id]); toast('मेटाइयो'); }
+  else if(a==='close') closeModal();
+  else if(a==='rmrow') t.closest('.mrow').remove();
+  else if(a==='addpar'){ $('#f-par').insertAdjacentHTML('beforeend',mrow('par','')); }
+  else if(a==='addsp'){ $('#f-sp').insertAdjacentHTML('beforeend',mrow('sp','')); }
+  else if(a==='zoom'){ state.zoom=Math.min(1.6,Math.max(.4,Math.round((state.zoom+parseFloat(t.dataset.d))*100)/100)); saveUI(); const z=$('#zl'); if(z) z.textContent=N(Math.round(state.zoom*100))+'%'; drawStage(); }
+  else if(a==='clearsample'){ deleteMany(persons().filter(p=>p.sample).map(p=>p.id)); toast('नमुना हटाइयो'); }
+  else if(a==='newanchor') newAnchorForm();
+  else if(a==='addrel'){
+    const inp=$('.tname[data-r="'+t.dataset.r+'"]');
+    if(inp&&inp.value.trim()){
+      const i=+t.dataset.r,typed=$$('.tname').filter(x=>x!==inp&&x.value).map(x=>[x.dataset.r,x.value]);
+      state.open[REL[i].sec]=true; addRel(i,inp.value);
+      typed.forEach(([r,v])=>{ const x=$('.tname[data-r="'+r+'"]'); if(x) x.value=v; });
+      toast('थपियो');
+    }
+  }
+  else if(a==='copycode') copyText(exportCode(),$('#code-out'));
+  else if(a==='copyall') copyText('NTG1'+JSON.stringify({docs:persons(),village:village()}),null);
+  else if(a==='dlall'){ saveFile('natagota-backup.json',JSON.stringify(fullData(),null,1),'application/json'); toast('फाइल तयार भयो'); }
+  else if(a==='dlsite'){ const seed=fullData(); lsSet(LSP,String(seed.meta.rev)); saveFile('index.html',buildDoc(seed),'text/html'); toast('index.html तयार भयो। यसलाई होस्टिङमा अपलोड गर्नुहोस्।'); }
+  else if(a==='admin'){ if(ADMIN) setTab('share'); else openLogin(); }
+  else if(a==='exitadmin'){ ADMIN=false; try{ sessionStorage.removeItem('ntg_adm'); }catch(e){} document.body.classList.add('view'); state.tab='chart'; try{ location.hash='chart'; }catch(e){} render(); }
+  else if(a==='setpw'){ const p1=$('#pw-n1').value,p2=$('#pw-n2').value; if(p1.length<6) toast('पासवर्ड कम्तीमा ६ अक्षरको राख्नुहोस्।'); else if(p1!==p2) toast('दुवै पासवर्ड मिलेन।'); else { local.meta.pw=mkPw(p1); persistLocal(); $('#pw-n1').value=''; $('#pw-n2').value=''; toast('नयाँ पासवर्ड राखियो। नयाँ index.html बनाएर अपलोड गर्नुहोस्।'); } }
+  else if(a==='dlimg') exportChartImage(t);
+  else if(a==='dlimgall') exportChartImage(t,true);
+  else if(a==='importcode'){
+    const raw=($('#code-in').value||'').trim();
+    try{
+      if(!raw.startsWith('NTG1')) throw 0;
+      const o=JSON.parse(raw.slice(4)); if(!o||!Array.isArray(o.docs)) throw 0;
+      let c=0; o.docs.forEach(d=>{ if(d&&typeof d.id==='string'){ local.docs[d.id]=d; c++; } });
+      if(typeof o.village==='string'&&o.village) local.meta.village=o.village;
+      pcache=null;gcache=null; persistLocal(); fixSel(); render(); toast(N(c)+' विवरण मिलाइयो');
+    }catch(er){ toast('कोड मिलेन। पूरै कोड NTG1 सहित टाँस्नुहोस्।'); }
+  }
+  else if(a==='publish') doPublish(t);
+  else if(a==='clearlocal1'){ state.confirmDel='local'; renderShare(); }
+  else if(a==='clearlocal0'){ state.confirmDel=null; renderShare(); }
+  else if(a==='clearlocal2'){ state.confirmDel=null; local={docs:{},meta:{}}; pcache=null;gcache=null; persistLocal(); fixSel(); render(); toast('परिवर्तन हटाइयो'); }
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&$('#modal')&&$('#modal').innerHTML) { closeModal(); return; }
+  if(e.key==='Enter'){
+    const t=e.target;
+    if(t.classList&&t.classList.contains('tname')){ e.preventDefault(); const b=t.parentElement.querySelector('[data-act=addrel]'); if(b) b.click(); }
+    else if(t.matches&&t.matches('tr.clk')){ pick(t.dataset.id); }
+  }
+});
+document.addEventListener('submit',e=>{
+  e.preventDefault();
+  const f=e.target;
+  if(f.id==='lform') doLogin(f);
+  else if(f.id==='pform') submitPerson(f);
+  else if(f.id==='aform'){
+    const name=f.elements.name.value.trim(),by=yearOf(f.elements.by.value);
+    if(!name){ ferr('नाम लेख्नुहोस्।'); return; }
+    if(by.err){ ferr('साल वि.सं. मा चार अंकमा लेख्नुहोस्।'); return; }
+    const d={id:uid(),name,g:f.elements.g.value||'M',by:by.v,dead:false,dy:null,house:'',note:'',ph:false,parents:[],spouses:[],hints:{}};
+    closeModal(); state.anchor=d.id; commit([d]);
+  }
+});
+document.addEventListener('change',e=>{
+  const t=e.target;
+  if(t.id==='me-sel'){ state.me=t.value||null; saveUI(); render(); }
+  else if(t.id==='scope-sel'){ state.scope=t.value; saveUI(); drawStage(); }
+  else if(t.id==='kin-chk'){ state.kin=t.checked; saveUI(); drawStage(); }
+  else if(t.id==='anch-sel'){ state.anchor=t.value||null; renderTable(); }
+  else if(t.id==='h-sel'){ state.house=t.value; renderList(); }
+  else if(t.id==='vil-in'){ local.meta.village=t.value.trim(); persistLocal(); render(); }
+});
+document.addEventListener('input',e=>{
+  if(e.target.id==='q-in'){ const v=e.target.value,pos=e.target.selectionStart; state.q=v; renderList(); const n=$('#q-in'); if(n){ n.focus(); try{n.setSelectionRange(pos,pos);}catch(x){} } }
+});
+document.addEventListener('toggle',e=>{ const d=e.target; if(d&&d.classList&&d.classList.contains('sec')) state.open[d.dataset.s]=d.open; },true);
+window.addEventListener('hashchange',()=>{ const h=(location.hash||'').slice(1); if(TABS.some(t=>t[0]===h)&&h!==state.tab){ state.tab=h; render(); } });
+
+/* ---------- सुरु ---------- */
+try{ if(sessionStorage.getItem('ntg_adm')==='1'&&pwRec()) ADMIN=true; }catch(e){}
+document.body.classList.toggle('view',!ADMIN);
+shell();
+(function(){ const h=(location.hash||'').slice(1); if(TABS.some(t=>t[0]===h)) state.tab=h; })();
+fixSel(); render();
+(async function(){
+  try{
+    if(!window.claude||!window.claude.use) return;
+    const [a,u,d]=await Promise.all([window.claude.use('artifact'),window.claude.use('user'),window.claude.use('downloads')]);
+    caps.art=a; caps.dl=d;
+    if(a&&u){ try{ caps.canPub=!!(await u.canEdit()); }catch(e){} }
+    render();
+  }catch(e){}
+})();
+})();
+</script></body></html>
