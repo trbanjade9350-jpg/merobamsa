@@ -1,4 +1,5 @@
-<!doctype html><html lang="ne"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>नातागोता ट्रयाकिङ</title><meta name="description" content="गाउँका परिवारको नातागोता र वंशावली"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&family=Yatra+One&display=swap"></head><body><style id="appcss">
+<!doctype html><html lang="ne"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>नातागोता ट्रयाकिङ</title><meta name="description" content="गाउँका परिवारको नातागोता र वंशावली"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&family=Yatra+One&display=swap"></head><body>
+<style id="appcss">
 /* Layout: औजार-जस्तो एप शेल। माथि नाम पट्टी, तल ट्याब, बीचमा कार्यक्षेत्र। वंशावली स्क्रोल हुने क्यानभास हो, व्यक्तिको विवरण चौडा स्क्रिनमा दायाँ टाँसिन्छ र साँघुरो स्क्रिनमा तलको पाना बन्छ। */
 :root{
   --bg:#f0f2f8; --surface:#ffffff; --surface2:#e8ecf5; --ink:#15203a; --muted:#56627f; --line:#d2d8e6; --edge:#8792b0;
@@ -148,7 +149,183 @@ body:not(.adm) #tab-share{display:none}
 body.view #tab-table,body.view #tab-share,body.view [data-act="add"],body.view [data-act="edit"],body.view [data-act="relatives"],body.view [data-act="addchild"],body.view [data-act="addspouse"],body.view [data-act="addparent"],body.view [data-act="del"],body.view [data-act="clearsample"]{display:none!important}
 body.view .detail .acts:not(:has([data-act="setme"])){display:none}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
-</style><div id="root"></div><script type="application/json" id="seed">{"meta":{"village":"बन्जाडे वंशावली, भूमिकास्थान-६, खिल्जी, अर्घाखाँची, लुम्बिनी प्रदेश, नेपाल","rev":1794194228207,"pw":{"s":"92a6857a974aa317e90ef347","h":"e927cef438cad9bea8edb5187203c6ccec71639fa33e15a27e333aab55b4714c"},"trees":[{"id":"main","name":"बन्जाडे वंशावली, खिल्जी"},{"id":"tmw8ov3osut6","name":"आचार्य वंशावली"}]},"persons":[{"id":"pmw6ktw9wsxr16","hints":{},"name":"लुटा कुमारी बन्जाडे","g":"F","by":2035,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"गृहिणी","ph":false,"sample":false,"parents":[],"spouses":["pmw6kxakrylu83"]},{"id":"pmw6kxakrylu83","hints":{},"name":"मनिराम बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kxq31ju3cz","k":"जन्म"},{"id":"pmw6ky1a2oi7z3","k":"जन्म"}],"spouses":["pmw6ktw9wsxr16"]},{"id":"pmw6kxq31ju3cz","hints":{},"name":"प्रेम नारायण बन्जाडे","g":"M","by":null,"dead":true,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kyoijq4e9r","k":"जन्म"}],"spouses":["pmw6ky1a2oi7z3"]},{"id":"pmw6ky1a2oi7z3","hints":{},"name":"दमकला बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6kxq31ju3cz"]},{"id":"pmw6kyoijq4e9r","hints":{},"name":"भक्तिराम बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6l2idqmldhg","k":"जन्म"}],"spouses":["pmw6l1365mg0kt","pmw6l1q3hmywps"]},{"id":"pmw6l1365mg0kt","hints":{},"name":"तिलाकला बन्जाडे","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6kyoijq4e9r"]},{"id":"pmw6l1q3hmywps","hints":{},"name":"लिखुरा बन्जाडे","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6kyoijq4e9r"]},{"id":"pmw6l2idqmldhg","hints":{},"name":"खगिश्वर बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6l390qne7qb"]},{"id":"pmw6l390qne7qb","hints":{},"name":"खगिश्वर श्रीमती १","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6l2idqmldhg"]},{"id":"pmw6l58u7052dx","hints":{},"name":"जेदुपति बन्जाडे","g":"M","by":null,"dead":true,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kyoijq4e9r","k":"जन्म"}],"spouses":[]},{"id":"pmw6l5tdi7fi1s","hints":{},"name":"तेकलाल बन्जाडे","g":"M","by":null,"dead":true,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kyoijq4e9r","k":"जन्म"}],"spouses":["pmw6lpasczxn7e"]},{"id":"pmw6l6458nu2av","hints":{},"name":"धनिराम बन्जाडे","g":"M","by":null,"dead":true,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kyoijq4e9r","k":"जन्म"}],"spouses":["pmw6m82uvlcg6a","pmw6m8kgs909yf"]},{"id":"pmw6l6wvldsijq","hints":{},"name":"मित्रकला भुसाल (चौर ठूली दि)","g":"F","by":null,"dead":true,"dy":2081,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kyoijq4e9r","k":"जन्म"}],"spouses":[]},{"id":"pmw6lapokbpf12","hints":{},"name":"टोड्के कान्छि दिदि","g":"F","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kyoijq4e9r","k":"जन्म"}],"spouses":[]},{"id":"pmw6lctq0tdkc6","hints":{},"name":"चिन्तामणी बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kxq31ju3cz","k":"जन्म"},{"id":"pmw6ky1a2oi7z3","k":"जन्म"}],"spouses":["pmw6lhebgets5q"]},{"id":"pmw6le5cgypomq","hints":{},"name":"सुमकला बेल्बासे","g":"F","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kxq31ju3cz","k":"जन्म"},{"id":"pmw6ky1a2oi7z3","k":"जन्म"}],"spouses":["pmw77cwxc2bnqf"]},{"id":"pmw6lf4eahlbto","hints":{},"name":"सावित्रा गैरे","g":"F","by":null,"dead":false,"dy":null,"house":"जुकेना","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kxq31ju3cz","k":"जन्म"},{"id":"pmw6ky1a2oi7z3","k":"जन्म"}],"spouses":[]},{"id":"pmw6lfspxf5ifo","hints":{},"name":"पार्वता ज्ञवाली","g":"F","by":null,"dead":false,"dy":null,"house":"पाकु","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kxq31ju3cz","k":"जन्म"},{"id":"pmw6ky1a2oi7z3","k":"जन्म"}],"spouses":[]},{"id":"pmw6lggj9ew9or","hints":{},"name":"नन्दलाल बन्जाडे","g":"M","by":null,"dead":true,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kxq31ju3cz","k":"जन्म"},{"id":"pmw6ky1a2oi7z3","k":"जन्म"}],"spouses":[]},{"id":"pmw6lhebgets5q","hints":{},"name":"शान्ता बन्जाडे","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6lctq0tdkc6"]},{"id":"pmw6lig5wk61l4","hints":{},"name":"टिकाराम बन्जाडे (कान्छा)","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6l2idqmldhg","k":"जन्म"},{"id":"pmw6l390qne7qb","k":"जन्म"}],"spouses":[]},{"id":"pmw6lmfowny828","hints":{},"name":"निमानन्द बन्जाडे","g":"M","by":null,"dead":true,"dy":2082,"house":"थाम्का","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6l58u7052dx","k":"जन्म"}],"spouses":["pmw8no1e2o0n3r"]},{"id":"pmw6ln22sumlm8","hints":{},"name":"देवीराम बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"साझारुख","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6l58u7052dx","k":"जन्म"}],"spouses":["pmw8nfmzikaue5","pmw8niqqg8xf9w"]},{"id":"pmw6lnoaburgp5","hints":{},"name":"कल्लेरी दिदि","g":"F","by":null,"dead":false,"dy":null,"house":"कल्लेरी","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6l58u7052dx","k":"जन्म"}],"spouses":[]},{"id":"pmw6lo019n10d5","hints":{},"name":"चन्द्रमणी बन्जाडे","g":"M","by":null,"dead":true,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6l58u7052dx","k":"जन्म"}],"spouses":["pmw8n8hi0z5d7p"]},{"id":"pmw6lpasczxn7e","hints":{},"name":"श्रीमती साइँली","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6l5tdi7fi1s"]},{"id":"pmw6lprs1i8xv3","hints":{},"name":"काफलबास दिदि जेठी","g":"F","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6l5tdi7fi1s","k":"जन्म"},{"id":"pmw6lpasczxn7e","k":"जन्म"}],"spouses":[]},{"id":"pmw6lq7i691rx0","hints":{},"name":"माइली लिला दिदि","g":"F","by":null,"dead":true,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6l5tdi7fi1s","k":"जन्म"},{"id":"pmw6lpasczxn7e","k":"जन्म"}],"spouses":[]},{"id":"pmw6lr61zmh8b7","hints":{},"name":"मिना खनाल कान्छि","g":"F","by":null,"dead":false,"dy":null,"house":"सन्धिखर्क","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6l5tdi7fi1s","k":"जन्म"},{"id":"pmw6lpasczxn7e","k":"जन्म"}],"spouses":[]},{"id":"pmw6lso2gin9ee","hints":{},"name":"मनिराम बन्जाडे जेठा","g":"M","by":null,"dead":true,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lig5wk61l4","k":"जन्म"}],"spouses":[]},{"id":"pmw6lt3q77nh2d","hints":{},"name":"जुगलाल बन्जाडे कान्छा","g":"M","by":null,"dead":true,"dy":null,"house":"चोँटा बा","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lig5wk61l4","k":"जन्म"}],"spouses":[]},{"id":"pmw6ltslnq0w29","hints":{},"name":"छोरी ४ वटी","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lig5wk61l4","k":"जन्म"}],"spouses":[]},{"id":"pmw6luj6h1vyaj","hints":{},"name":"झविलाल बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lso2gin9ee","k":"जन्म"}],"spouses":[]},{"id":"pmw6lv51rgzzkt","hints":{},"name":"देवीराम बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"कोलापरी","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lso2gin9ee","k":"जन्म"}],"spouses":[]},{"id":"pmw6lvnjuc5qw5","hints":{},"name":"बोमलाल बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"कोलापरी","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lso2gin9ee","k":"जन्म"}],"spouses":[]},{"id":"pmw6lw3u4af8bk","hints":{},"name":"केशब बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"कोलापरी","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lso2gin9ee","k":"जन्म"}],"spouses":[]},{"id":"pmw6lwgp4dgelq","hints":{},"name":"बाटुली","g":"F","by":null,"dead":false,"dy":null,"house":"कोपाहा","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lso2gin9ee","k":"जन्म"}],"spouses":[]},{"id":"pmw6lxakoz5mtw","hints":{},"name":"काली","g":"F","by":null,"dead":false,"dy":null,"house":"सन्धिखर्क","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lso2gin9ee","k":"जन्म"}],"spouses":[]},{"id":"pmw6lz0k5c02kz","hints":{},"name":"बुद्धिराज बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lt3q77nh2d","k":"जन्म"}],"spouses":["pmw8nx46rkch7m"]},{"id":"pmw6m0jfzp1u3s","hints":{},"name":"५ बहिनी छोरी","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lt3q77nh2d","k":"जन्म"}],"spouses":[]},{"id":"pmw6m82uvlcg6a","hints":{},"name":"शान्ता बन्जाडे","g":"F","by":null,"dead":true,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6l6458nu2av"]},{"id":"pmw6m8kgs909yf","hints":{},"name":"चुमा आचार्य","g":"F","by":null,"dead":false,"dy":null,"house":"लमही","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6l6458nu2av"]},{"id":"pmw6m9eey0ymbm","hints":{},"name":"सिर्जना बन्जाडे","g":"F","by":null,"dead":false,"dy":null,"house":"घोराही","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6m8kgs909yf","k":"जन्म"},{"id":"pmw6l6458nu2av","k":"जन्म"}],"spouses":[]},{"id":"pmw6ma33hevi1s","hints":{},"name":"अशोक बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"लमही","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6m8kgs909yf","k":"जन्म"},{"id":"pmw6l6458nu2av","k":"जन्म"}],"spouses":[]},{"id":"pmw6mb9ve6hrrm","hints":{},"name":"नारायण बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6m82uvlcg6a","k":"जन्म"},{"id":"pmw6l6458nu2av","k":"जन्म"}],"spouses":["pmw6n6oja4qugv"]},{"id":"pmw6mbp1hyg09e","hints":{},"name":"रामप्रसाद बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6m82uvlcg6a","k":"जन्म"},{"id":"pmw6l6458nu2av","k":"जन्म"}],"spouses":["pmw6n915psk879"]},{"id":"pmw6mf8wz2thmt","hints":{},"name":"मेघलाल भट्टराई","g":"M","by":null,"dead":false,"dy":null,"house":"टोड्के","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lapokbpf12","k":"जन्म"}],"spouses":[]},{"id":"pmw6mfytgby2kb","hints":{},"name":"तुलसीराम भट्टराई","g":"M","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lapokbpf12","k":"जन्म"}],"spouses":[]},{"id":"pmw6mgc7jxyuyh","hints":{},"name":"केशब भट्टराई","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lapokbpf12","k":"जन्म"}],"spouses":[]},{"id":"pmw6mh36o4ttdc","hints":{},"name":"३ बहिनी छोरी","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lapokbpf12","k":"जन्म"}],"spouses":[]},{"id":"pmw6n5gcrj2pfe","hints":{},"name":"प्रदिप बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lz0k5c02kz","k":"जन्म"},{"id":"pmw8nx46rkch7m","k":"जन्म"}],"spouses":[]},{"id":"pmw6n5tjydkof7","hints":{},"name":"मधु बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lz0k5c02kz","k":"जन्म"},{"id":"pmw8nx46rkch7m","k":"जन्म"}],"spouses":[]},{"id":"pmw6n64of16x0f","hints":{},"name":"सुष्मा बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lz0k5c02kz","k":"जन्म"},{"id":"pmw8nx46rkch7m","k":"जन्म"}],"spouses":[]},{"id":"pmw6n6oja4qugv","hints":{},"name":"पवित्रा बन्जाडे","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6mb9ve6hrrm"]},{"id":"pmw6n915psk879","hints":{},"name":"पार्वता बन्जाडे","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6mbp1hyg09e"]},{"id":"pmw76wp0mz4ajh","hints":{},"name":"तिलक राम बन्जाडे","g":"M","by":2054,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6ktw9wsxr16","k":"जन्म"},{"id":"pmw6kxakrylu83","k":"जन्म"}],"spouses":[]},{"id":"pmw777xp0ja5xy","hints":{},"name":"दोर्ण प्रसाद बन्जाडे","g":"M","by":2056,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kxakrylu83","k":"जन्म"},{"id":"pmw6ktw9wsxr16","k":"जन्म"}],"spouses":[]},{"id":"pmw778e0o946tb","hints":{},"name":"सिमा बन्जाडे","g":"F","by":2064,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6kxakrylu83","k":"जन्म"},{"id":"pmw6ktw9wsxr16","k":"जन्म"}],"spouses":[]},{"id":"pmw778xisc6j5o","hints":{},"name":"मिलन बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lctq0tdkc6","k":"जन्म"},{"id":"pmw6lhebgets5q","k":"जन्म"}],"spouses":[]},{"id":"pmw7799yd03do6","hints":{},"name":"पुजा बन्जाडे","g":"F","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lctq0tdkc6","k":"जन्म"},{"id":"pmw6lhebgets5q","k":"जन्म"}],"spouses":[]},{"id":"pmw779t5mfb1gn","hints":{},"name":"सबिना बन्जाडे","g":"F","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lctq0tdkc6","k":"जन्म"},{"id":"pmw6lhebgets5q","k":"जन्म"}],"spouses":[]},{"id":"pmw77azh3cpgyz","hints":{},"name":"प्रकाश बेल्बासे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6le5cgypomq","k":"जन्म"},{"id":"pmw77cwxc2bnqf","k":"जन्म"}],"spouses":[]},{"id":"pmw77brb0n58m4","hints":{},"name":"मधु भुसाल बेल्बासे","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6le5cgypomq","k":"जन्म"},{"id":"pmw77cwxc2bnqf","k":"जन्म"}],"spouses":[]},{"id":"pmw77cwxc2bnqf","hints":{},"name":"गुणानिधि बेल्बासे (ज्ञानु)","g":"M","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6le5cgypomq","pmw77e0c1o0tth"]},{"id":"pmw77e0c1o0tth","hints":{},"name":"जेठि श्रीमती मिना","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw77cwxc2bnqf"]},{"id":"pmw77ek1up8rdw","hints":{},"name":"सीता बेल्बासे","g":"M","by":null,"dead":false,"dy":null,"house":"सिसहनिया","note":"","ph":false,"sample":false,"parents":[{"id":"pmw77e0c1o0tth","k":"जन्म"},{"id":"pmw77cwxc2bnqf","k":"जन्म"}],"spouses":[]},{"id":"pmw77kj66rd1d8","hints":{},"name":"प्रदीप बेल्बासे","g":"M","by":null,"dead":false,"dy":null,"house":"डाँडागाउँ","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6le5cgypomq","k":"जन्म"},{"id":"pmw77cwxc2bnqf","k":"जन्म"}],"spouses":[]},{"id":"pmw77l1n4cyt1k","hints":{},"name":"बिपना बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6n6oja4qugv","k":"जन्म"},{"id":"pmw6mb9ve6hrrm","k":"जन्म"}],"spouses":[]},{"id":"pmw77lfag00fky","hints":{},"name":"विपिन बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6n6oja4qugv","k":"जन्म"},{"id":"pmw6mb9ve6hrrm","k":"जन्म"}],"spouses":[]},{"id":"pmw77m27mkm7di","hints":{},"name":"दिक्षा बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6n915psk879","k":"जन्म"},{"id":"pmw6mbp1hyg09e","k":"जन्म"}],"spouses":[]},{"id":"pmw77nmsnv8u80","hints":{},"name":"लक्ष्मी खनाल","g":"M","by":null,"dead":false,"dy":null,"house":"सन्धिखर्क","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6luj6h1vyaj","k":"जन्म"}],"spouses":[]},{"id":"pmw77o6elbejwg","hints":{},"name":"गणेश बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"भुमिकास्थान-६, खिल्जी, अर्घाखाँची","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6luj6h1vyaj","k":"जन्म"}],"spouses":[]},{"id":"pmw8n7jw0d37y7","hints":{},"name":"शान्ता बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"डाँडागाउँ","note":"","ph":false,"sample":false,"parents":[{"id":"pmw6lo019n10d5","k":"जन्म"},{"id":"pmw8n8hi0z5d7p","k":"जन्म"}],"spouses":[]},{"id":"pmw8n8hi0z5d7p","hints":{},"name":"जानका बन्जाडे","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6lo019n10d5"]},{"id":"pmw8n9nlsloqho","hints":{},"name":"पुष्पा बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw8n8hi0z5d7p","k":"जन्म"},{"id":"pmw6lo019n10d5","k":"जन्म"}],"spouses":[]},{"id":"pmw8na0pk8q9fn","hints":{},"name":"विष्णु बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw8n8hi0z5d7p","k":"जन्म"},{"id":"pmw6lo019n10d5","k":"जन्म"}],"spouses":[]},{"id":"pmw8nakplbhdg8","hints":{},"name":"सीता बन्जाडै","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw8n8hi0z5d7p","k":"जन्म"},{"id":"pmw6lo019n10d5","k":"जन्म"}],"spouses":[]},{"id":"pmw8nfmzikaue5","hints":{},"name":"बालादेवी बन्जाडे","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6ln22sumlm8"]},{"id":"pmw8niqqg8xf9w","hints":{},"name":"सरस्वती बन्जाडे","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6ln22sumlm8"]},{"id":"pmw8nj3jyc5aka","hints":{},"name":"ऋषिराम बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw8nfmzikaue5","k":"जन्म"},{"id":"pmw6ln22sumlm8","k":"जन्म"}],"spouses":["pmw8noyt347jzr"]},{"id":"pmw8njibslf17g","hints":{},"name":"कान्तप्रसाद बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw8nfmzikaue5","k":"जन्म"},{"id":"pmw6ln22sumlm8","k":"जन्म"}],"spouses":["pmw8nphw5xa08r"]},{"id":"pmw8no1e2o0n3r","hints":{},"name":"डिलादेवी बन्जाडे","g":"F","by":null,"dead":true,"dy":2082,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6lmfowny828"]},{"id":"pmw8noyt347jzr","hints":{},"name":"लक्ष्मी बेल्बासे","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw8nj3jyc5aka"]},{"id":"pmw8nphw5xa08r","hints":{},"name":"निर्मला बन्जाडे","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw8njibslf17g"]},{"id":"pmw8nr5hqg019z","hints":{},"name":"सम्राट बन्जाडे","g":"M","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[{"id":"pmw8noyt347jzr","k":"जन्म"},{"id":"pmw8nj3jyc5aka","k":"जन्म"}],"spouses":[]},{"id":"pmw8nx46rkch7m","hints":{},"name":"भगवता बन्जाडे","g":"F","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"sample":false,"parents":[],"spouses":["pmw6lz0k5c02kz"]},{"id":"pmw8ov3os09qgk","name":"जगत आचार्य","g":"M","by":null,"dead":false,"dy":null,"house":"","note":"","ph":false,"parents":[],"spouses":[],"hints":{},"tr":"tmw8ov3osut6"}]}</script><script id="appjs">
+</style>
+<div id="root"></div>
+<script type="application/json" id="seed">{"meta":{"village":"","rev":1},"persons":[
+{"id":"s1","name":"रामप्रसाद अधिकारी","g":"M","by":2010,"dead":true,"dy":2078,"house":"वडा ३, माथिल्लो टोल","note":"","ph":false,"parents":[],"spouses":["s2","s3"],"hints":{},"sample":true},
+{"id":"s2","name":"सीता अधिकारी","g":"F","by":2015,"dead":false,"dy":null,"house":"वडा ३, माथिल्लो टोल","note":"","ph":false,"parents":[],"spouses":["s1"],"hints":{},"sample":true},
+{"id":"s3","name":"धनमाया अधिकारी","g":"F","by":2022,"dead":false,"dy":null,"house":"वडा ३, माथिल्लो टोल","note":"दोस्रो श्रीमती","ph":false,"parents":[],"spouses":["s1"],"hints":{},"sample":true},
+{"id":"s4","name":"हरिप्रसाद अधिकारी","g":"M","by":2036,"dead":false,"dy":null,"house":"वडा ३, माथिल्लो टोल","note":"","ph":false,"parents":[{"id":"s1","k":"जन्म"},{"id":"s2","k":"जन्म"}],"spouses":["s7"],"hints":{},"sample":true},
+{"id":"s5","name":"कमला पौडेल","g":"F","by":2039,"dead":false,"dy":null,"house":"वडा ४, तल्लो टोल","note":"","ph":false,"parents":[{"id":"s1","k":"जन्म"},{"id":"s2","k":"जन्म"}],"spouses":["s13"],"hints":{},"sample":true},
+{"id":"s6","name":"गोपाल अधिकारी","g":"M","by":2047,"dead":false,"dy":null,"house":"वडा ३, माथिल्लो टोल","note":"","ph":false,"parents":[{"id":"s1","k":"जन्म"},{"id":"s3","k":"जन्म"}],"spouses":[],"hints":{},"sample":true},
+{"id":"s7","name":"सुनिता अधिकारी","g":"F","by":2040,"dead":false,"dy":null,"house":"वडा ३, माथिल्लो टोल","note":"","ph":false,"parents":[{"id":"s8","k":"जन्म"},{"id":"s9","k":"जन्म"}],"spouses":["s4"],"hints":{},"sample":true},
+{"id":"s8","name":"भक्तबहादुर कार्की","g":"M","by":2015,"dead":false,"dy":null,"house":"वडा ५, पारिको टोल","note":"","ph":false,"parents":[],"spouses":["s9"],"hints":{},"sample":true},
+{"id":"s9","name":"लक्ष्मी कार्की","g":"F","by":2018,"dead":false,"dy":null,"house":"वडा ५, पारिको टोल","note":"","ph":false,"parents":[],"spouses":["s8"],"hints":{},"sample":true},
+{"id":"s10","name":"रमेश कार्की","g":"M","by":2045,"dead":false,"dy":null,"house":"वडा ५, पारिको टोल","note":"","ph":false,"parents":[{"id":"s8","k":"जन्म"},{"id":"s9","k":"जन्म"}],"spouses":[],"hints":{},"sample":true},
+{"id":"s11","name":"आशिष अधिकारी","g":"M","by":2062,"dead":false,"dy":null,"house":"वडा ३, माथिल्लो टोल","note":"","ph":false,"parents":[{"id":"s4","k":"जन्म"},{"id":"s7","k":"जन्म"}],"spouses":[],"hints":{},"sample":true},
+{"id":"s12","name":"अनिशा अधिकारी","g":"F","by":2065,"dead":false,"dy":null,"house":"वडा ३, माथिल्लो टोल","note":"","ph":false,"parents":[{"id":"s4","k":"जन्म"},{"id":"s7","k":"जन्म"}],"spouses":[],"hints":{},"sample":true},
+{"id":"s13","name":"बिमल पौडेल","g":"M","by":2037,"dead":false,"dy":null,"house":"वडा ४, तल्लो टोल","note":"","ph":false,"parents":[],"spouses":["s5"],"hints":{},"sample":true},
+{"id":"s14","name":"सुजल पौडेल","g":"M","by":2064,"dead":false,"dy":null,"house":"वडा ४, तल्लो टोल","note":"","ph":false,"parents":[{"id":"s5","k":"जन्म"},{"id":"s13","k":"जन्म"}],"spouses":[],"hints":{},"sample":true}
+]}</script>
+<script type="text/plain" id="sqltext">-- नातागोता ट्रयाकिङ: Supabase सेटअप (एक पटक मात्र चलाउनुहोस्)
+-- सबै डाटा तालिकामा सिधै कसैले पढ्न/लेख्न नपाउने, पासवर्ड जाँच्ने फङ्सनबाट मात्र पहुँच हुने बनाइएको छ।
+
+create extension if not exists pgcrypto with schema extensions;
+
+create table if not exists public.ntg_admin (
+  id int primary key default 1 check (id = 1),
+  pw_hash text not null
+);
+
+create table if not exists public.ntg_trees (
+  id uuid primary key default gen_random_uuid(),
+  name text not null,
+  data jsonb not null default '[]'::jsonb,
+  edit_hash text not null,
+  view_hash text,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+alter table public.ntg_admin enable row level security;
+alter table public.ntg_trees enable row level security;
+revoke all on table public.ntg_admin from anon, authenticated;
+revoke all on table public.ntg_trees from anon, authenticated;
+
+-- प्रशासक पासवर्ड जाँच (भित्री प्रयोगका लागि मात्र)
+create or replace function public.ntg_is_admin(p_pw text) returns boolean
+language sql security definer set search_path = public, extensions as $$
+  select coalesce((select a.pw_hash = crypt(p_pw, a.pw_hash) from public.ntg_admin a limit 1), false)
+$$;
+revoke execute on function public.ntg_is_admin(text) from public, anon, authenticated;
+
+create or replace function public.ntg_admin_status(p_pw text) returns text
+language plpgsql security definer set search_path = public, extensions as $$
+begin
+  if not exists (select 1 from public.ntg_admin) then return 'unset'; end if;
+  if public.ntg_is_admin(p_pw) then return 'ok'; end if;
+  perform pg_sleep(0.4);
+  return 'bad';
+end $$;
+
+create or replace function public.ntg_admin_setup(p_pw text) returns boolean
+language plpgsql security definer set search_path = public, extensions as $$
+begin
+  if p_pw is null or length(p_pw) < 6 then raise exception 'password too short'; end if;
+  if exists (select 1 from public.ntg_admin) then return false; end if;
+  insert into public.ntg_admin(id, pw_hash) values (1, crypt(p_pw, gen_salt('bf')));
+  return true;
+end $$;
+
+-- वंशावलीको सूची: नाम र सदस्य संख्या मात्र (डाटा होइन)
+create or replace function public.ntg_list_trees()
+returns table(id uuid, name text, n integer, has_view boolean, created_at timestamptz, updated_at timestamptz)
+language sql security definer set search_path = public, extensions as $$
+  select t.id, t.name, jsonb_array_length(t.data), (t.view_hash is not null), t.created_at, t.updated_at
+  from public.ntg_trees t
+  order by t.created_at
+$$;
+
+create or replace function public.ntg_create_tree(p_name text, p_data jsonb, p_edit text) returns uuid
+language plpgsql security definer set search_path = public, extensions as $$
+declare v_id uuid;
+begin
+  if p_name is null or length(btrim(p_name)) = 0 or length(p_name) > 120 then raise exception 'bad name'; end if;
+  if p_edit is null or length(p_edit) < 6 then raise exception 'password too short'; end if;
+  if p_data is null or jsonb_typeof(p_data) <> 'array' or length(p_data::text) > 400000 then raise exception 'bad data'; end if;
+  if (select count(*) from public.ntg_trees) >= 500 then raise exception 'limit reached'; end if;
+  insert into public.ntg_trees(name, data, edit_hash)
+  values (btrim(p_name), p_data, crypt(p_edit, gen_salt('bf')))
+  returning ntg_trees.id into v_id;
+  return v_id;
+end $$;
+
+-- वंशावली पढ्ने: प्रशासक, बनाउने (सम्पादन पासवर्ड) वा हेर्ने पासवर्ड भएकाले मात्र
+create or replace function public.ntg_get_tree(p_id uuid, p_pw text) returns jsonb
+language plpgsql security definer set search_path = public, extensions as $$
+declare t public.ntg_trees%rowtype; v_role text;
+begin
+  select * into t from public.ntg_trees where ntg_trees.id = p_id;
+  if not found then return null; end if;
+  if public.ntg_is_admin(p_pw) then v_role := 'admin';
+  elsif p_pw is not null and t.edit_hash = crypt(p_pw, t.edit_hash) then v_role := 'edit';
+  elsif p_pw is not null and t.view_hash is not null and t.view_hash = crypt(p_pw, t.view_hash) then v_role := 'view';
+  else
+    perform pg_sleep(0.4);
+    return null;
+  end if;
+  return jsonb_build_object('name', t.name, 'data', t.data, 'role', v_role, 'updated_at', t.updated_at);
+end $$;
+
+-- सुरक्षित गर्ने: प्रशासक वा बनाउनेले मात्र। p_base ले अर्कैले बीचमा फेरेको पत्ता लगाउँछ।
+create or replace function public.ntg_save_tree(p_id uuid, p_pw text, p_name text, p_data jsonb, p_base timestamptz default null) returns jsonb
+language plpgsql security definer set search_path = public, extensions as $$
+declare t public.ntg_trees%rowtype; v_new timestamptz;
+begin
+  select * into t from public.ntg_trees where ntg_trees.id = p_id;
+  if not found then return jsonb_build_object('ok', false, 'reason', 'notfound'); end if;
+  if not (public.ntg_is_admin(p_pw) or (p_pw is not null and t.edit_hash = crypt(p_pw, t.edit_hash))) then
+    perform pg_sleep(0.4);
+    return jsonb_build_object('ok', false, 'reason', 'denied');
+  end if;
+  if p_base is not null and t.updated_at <> p_base then
+    return jsonb_build_object('ok', false, 'reason', 'conflict');
+  end if;
+  if p_data is null or jsonb_typeof(p_data) <> 'array' or length(p_data::text) > 400000 then raise exception 'bad data'; end if;
+  v_new := clock_timestamp();
+  update public.ntg_trees
+     set data = p_data,
+         name = coalesce(nullif(left(btrim(p_name), 120), ''), ntg_trees.name),
+         updated_at = v_new
+   where ntg_trees.id = p_id;
+  return jsonb_build_object('ok', true, 'updated_at', v_new);
+end $$;
+
+create or replace function public.ntg_set_view_pw(p_id uuid, p_admin text, p_view text) returns boolean
+language plpgsql security definer set search_path = public, extensions as $$
+begin
+  if not public.ntg_is_admin(p_admin) then perform pg_sleep(0.4); return false; end if;
+  if p_view is not null and length(p_view) > 0 and length(p_view) < 4 then raise exception 'password too short'; end if;
+  update public.ntg_trees
+     set view_hash = case when p_view is null or p_view = '' then null else crypt(p_view, gen_salt('bf')) end
+   where ntg_trees.id = p_id;
+  return found;
+end $$;
+
+create or replace function public.ntg_reset_edit_pw(p_id uuid, p_admin text, p_new text) returns boolean
+language plpgsql security definer set search_path = public, extensions as $$
+begin
+  if not public.ntg_is_admin(p_admin) then perform pg_sleep(0.4); return false; end if;
+  if p_new is null or length(p_new) < 6 then raise exception 'password too short'; end if;
+  update public.ntg_trees set edit_hash = crypt(p_new, gen_salt('bf')) where ntg_trees.id = p_id;
+  return found;
+end $$;
+
+create or replace function public.ntg_delete_tree(p_id uuid, p_pw text) returns boolean
+language plpgsql security definer set search_path = public, extensions as $$
+declare t public.ntg_trees%rowtype;
+begin
+  select * into t from public.ntg_trees where ntg_trees.id = p_id;
+  if not found then return false; end if;
+  if not (public.ntg_is_admin(p_pw) or (p_pw is not null and t.edit_hash = crypt(p_pw, t.edit_hash))) then
+    perform pg_sleep(0.4);
+    return false;
+  end if;
+  delete from public.ntg_trees where ntg_trees.id = p_id;
+  return true;
+end $$;
+
+grant execute on function public.ntg_admin_status(text) to anon, authenticated;
+grant execute on function public.ntg_admin_setup(text) to anon, authenticated;
+grant execute on function public.ntg_list_trees() to anon, authenticated;
+grant execute on function public.ntg_create_tree(text, jsonb, text) to anon, authenticated;
+grant execute on function public.ntg_get_tree(uuid, text) to anon, authenticated;
+grant execute on function public.ntg_save_tree(uuid, text, text, jsonb, timestamptz) to anon, authenticated;
+grant execute on function public.ntg_set_view_pw(uuid, text, text) to anon, authenticated;
+grant execute on function public.ntg_reset_edit_pw(uuid, text, text) to anon, authenticated;
+grant execute on function public.ntg_delete_tree(uuid, text) to anon, authenticated;
+</script>
+<script id="appjs">
 (function(){
 'use strict';
 /*LOGIC_START*/
@@ -446,6 +623,7 @@ let pcache=null,gcache=null;
 const persons=()=>{
   if(pcache) return pcache;
   const m=new Map(); (seedData.persons||[]).forEach(p=>m.set(p.id,p));
+  remote.forEach(R=>R.persons.forEach(p=>m.set(p.id,p)));
   Object.values(local.docs).forEach(d=>{ if(d._del) m.delete(d.id); else m.set(d.id,d); });
   return (pcache=[...m.values()]);
 };
@@ -457,6 +635,7 @@ const trees=()=>{
   const gone=new Set(local.meta.gone||[]),m=new Map(); m.set(MAIN,{id:MAIN,name:MAIN_NAME});
   ((seedData.meta&&seedData.meta.trees)||[]).forEach(t=>{ if(t&&t.id&&!gone.has(t.id)) m.set(t.id,{id:t.id,name:t.name||'वंशावली'}); });
   (local.meta.trees||[]).forEach(t=>{ if(t&&t.id&&!gone.has(t.id)) m.set(t.id,{id:t.id,name:t.name||(m.get(t.id)||{}).name||'वंशावली'}); });
+  rlist.forEach(t=>{ m.set('r:'+t.id,{id:'r:'+t.id,name:t.name||'वंशावली',remote:true}); });
   return [...m.values()];
 };
 const treeName=id=>(trees().find(t=>t.id===id)||{name:MAIN_NAME}).name;
@@ -464,15 +643,27 @@ const ownTree=id=>id!==MAIN&&(local.meta.trees||[]).some(t=>t.id===id);
 const hasOwn=()=>(local.meta.trees||[]).some(t=>t.id!==MAIN);
 const inTree=p=>treeOf(p)===state.tree;
 const treePeople=()=>persons().filter(inTree);
-const canEdit=()=>ADMIN||ownTree(state.tree);
-const localCount=()=>Object.keys(local.docs).length+(local.meta.village!=null&&local.meta.village!==(seedData.meta.village||'')?1:0)+(local.meta.trees||[]).length+(local.meta.gone||[]).length;
+const isRemote=id=>typeof id==='string'&&id.indexOf('r:')===0;
+const rid=id=>id.slice(2);
+const canEdit=()=>{ if(isRemote(state.tree)){ const R=remote.get(state.tree); return !!R&&(R.role==='edit'||R.role==='admin'); } return ADMIN||ownTree(state.tree); };
+const locked=()=>isRemote(state.tree)&&!remote.has(state.tree);
+const remote=new Map();
+let rlist=[],rlistReady=false,adminPw='',pollT=null;
+const cfg=()=>{ const c=local.meta.cfg||seedData.meta.cfg; return c&&c.url&&c.key?c:null; };
+const localCount=()=>Object.keys(local.docs).length+(local.meta.village!=null&&local.meta.village!==(seedData.meta.village||'')?1:0)+(local.meta.trees||[]).length+(local.meta.gone||[]).length+(local.meta.cfg?1:0);
 const state={tab:'chart',tree:'main',sel:null,me:null,anchor:null,scope:'family',kin:true,zoom:1,q:'',house:'',confirmDel:null,open:{}};
 const caps={art:null,dl:null,canPub:false};
 try{ const u=JSON.parse(lsGet(LSU)||'null'); if(u){ if(typeof u.kin==='boolean') state.kin=u.kin; if(u.scope) state.scope=u.scope; if(u.me) state.me=u.me; if(u.zoom) state.zoom=u.zoom; if(u.tree) state.tree=u.tree; } }catch(e){}
 const saveUI=()=>lsSet(LSU,JSON.stringify({kin:state.kin,scope:state.scope,me:state.me,zoom:state.zoom,tree:state.tree}));
 function persistLocal(){ return lsSet(LS,JSON.stringify(local)); }
 function commit(docs){
-  docs.forEach(d=>{ if(d._del){ local.docs[d.id]={id:d.id,_del:1}; return; } const nd=Object.assign({},d,{ts:Date.now()}); if(nd.tr===undefined&&state.tree!==MAIN&&!GR().by.has(nd.id)) nd.tr=state.tree; local.docs[nd.id]=nd; });
+  const touched=new Set();
+  docs.forEach(d=>{
+    const ex=GR().by.get(d.id); let tr=d.tr!==undefined?d.tr:(ex?ex.tr:undefined);
+    if(tr===undefined&&state.tree!==MAIN&&!ex) tr=state.tree;
+    if(tr&&remote.has(tr)){ const R=remote.get(tr); if(d._del) R.persons.delete(d.id); else R.persons.set(d.id,Object.assign({},d,{tr})); touched.add(tr); return; }
+    if(d._del){ local.docs[d.id]={id:d.id,_del:1}; return; } const nd=Object.assign({},d,{ts:Date.now()}); if(nd.tr===undefined&&state.tree!==MAIN&&!GR().by.has(nd.id)) nd.tr=state.tree; local.docs[nd.id]=nd; });
+  touched.forEach(t=>{ const R=remote.get(t); if(R&&(R.role==='edit'||R.role==='admin')) scheduleSave(t); });
   pcache=null;gcache=null;
   if(!persistLocal()) toast('ब्राउजरमा सुरक्षित हुन सकेन; यो पृष्ठ बन्द गर्दा परिवर्तन हराउन सक्छ।');
   fixSel(); render();
@@ -482,7 +673,7 @@ function fixSel(){
   if(state.sel&&!g.by.has(state.sel)) state.sel=null;
   if(state.me&&!g.by.has(state.me)) state.me=null;
   if(state.anchor&&!g.by.has(state.anchor)) state.anchor=null;
-  if(!trees().some(t=>t.id===state.tree)) state.tree=MAIN;
+  if(!trees().some(t=>t.id===state.tree)&&!(isRemote(state.tree)&&!rlistReady)) state.tree=MAIN;
   if(state.me){ const mp=g.by.get(state.me); if(mp&&!inTree(mp)) state.me=null; }
   if(state.anchor){ const ap=g.by.get(state.anchor); if(ap&&!inTree(ap)) state.anchor=null; }
   if(!state.me){ const s=treePeople().find(p=>p.sample&&p.id==='s11'); if(s) state.me=s.id; }
@@ -531,12 +722,19 @@ function shell(){
   <div class="toast" id="toast" hidden role="status"></div>`;
 }
 const tabOK=t=>t==='chart'||t==='list'||(t==='table'&&canEdit())||(t==='share'&&ADMIN)||(t==='send'&&!ADMIN&&hasOwn());
+const seenTs=()=>{ try{ return localStorage.getItem('ntg_seen')||''; }catch(e){ return ''; } };
+const isNew=id=>{ const x=rlist.find(r=>'r:'+r.id===id); return !!x&&String(x.created_at)>seenTs(); };
+const hasViewPw=id=>{ const x=rlist.find(r=>'r:'+r.id===id); return !!(x&&x.has_view); };
 function renderTreebar(){
   const el=$('#treebar'); if(!el) return;
-  const cnt=id=>persons().filter(p=>!p.ph&&treeOf(p)===id).length,cur=state.tree,mgr=canEdit(),ask=state.confirmDel==='tree';
-  el.innerHTML=`<div class="fld"><label for="tree-sel">वंशावली छान्नुहोस्</label><select id="tree-sel">${trees().map(t=>`<option value="${esc(t.id)}"${t.id===cur?' selected':''}>${esc(t.name)} (${N(cnt(t.id))} जना)</option>`).join('')}</select></div>
+  const cur=state.tree,mgr=canEdit(),ask=state.confirmDel==='tree',c=cfg();
+  const cnt=t=>{ if(isRemote(t.id)){ const R=remote.get(t.id); if(R) return [...R.persons.values()].filter(p=>!p.ph).length; const x=rlist.find(r=>'r:'+r.id===t.id); return x?x.n:0; } return persons().filter(p=>!p.ph&&treeOf(p)===t.id).length; };
+  const lab=t=>{ let x=t.name+' ('+N(cnt(t))+' जना)'; if(isRemote(t.id)&&!remote.has(t.id)) x+=' · पासवर्ड चाहिन्छ'; if(ADMIN&&isNew(t.id)) x+=' · नयाँ'; return x; };
+  el.innerHTML=`<div class="fld"><label for="tree-sel">वंशावली छान्नुहोस्</label><select id="tree-sel">${trees().map(t=>`<option value="${esc(t.id)}"${t.id===cur?' selected':''}>${esc(lab(t))}</option>`).join('')}</select></div>
   <button class="btn pri" data-act="newtree">+ नयाँ वंशावली बनाउनुहोस्</button>
+  ${c?'<button class="btn sm" data-act="reflist">ताजा गर्नुहोस्</button>':''}
   ${mgr?'<button class="btn sm" data-act="renametree">नाम बदल्नुहोस्</button>':''}
+  ${ADMIN&&isRemote(cur)?`<button class="btn sm" data-act="setviewpw">हेर्ने पासवर्ड दिनुहोस् ${hasViewPw(cur)?'(राखिएको)':'(नराखिएको)'}</button><button class="btn sm" data-act="resetedit">सम्पादन पासवर्ड रिसेट</button>`:''}
   ${mgr&&cur!==MAIN?(ask?'<span>यो वंशावली र यसका सबै सदस्य मेट्ने?</span><button class="btn sm danger" data-act="deltreeok">हो, मेट्नुहोस्</button><button class="btn sm" data-act="deltreeno">रद्द</button>':'<button class="btn sm danger" data-act="deltree">वंशावली मेट्नुहोस्</button>'):''}`;
 }
 function render(){
@@ -559,6 +757,7 @@ function renderNotice(){
   let h='';
   if(hasSample) h+=`<div class="note"><span>यो नमुना परिवार हो, यो उपकरणले के गर्छ भनी देखाउन राखिएको हो। आफ्नो गाउँको विवरण राख्न सुरु गर्नुअघि नमुना हटाउनुहोस्।</span>${ADMIN?'<button class="btn sm" data-act="clearsample">नमुना हटाउनुहोस्</button>':''}</div>`;
   if(n>0&&ADMIN) h+=`<div class="note"><span>यो ब्राउजरमा ${N(n)} परिवर्तन छन्। यी वेबसाइटमा देखिन 'वेबसाइट र ब्याकअप' ट्याबबाट नयाँ index.html बनाएर फेरि अपलोड गर्नुहोस्।</span><button class="btn sm pri" data-act="dlsite">index.html बनाउनुहोस्</button></div>`;
+  if(ADMIN&&cfg()){ const nn=rlist.filter(r=>String(r.created_at)>seenTs()).length; if(nn>0) h+=`<div class="note"><span>${N(nn)} नयाँ वंशावली बनेका छन्। माथिको सूचीमा 'नयाँ' लेखिएका हेर्नुहोस् र चाहिएमा हेर्ने पासवर्ड दिनुहोस्।</span><button class="btn sm" data-act="markseen">देखिसकेँ</button></div>`; }
   if(!ADMIN&&ownTree(state.tree)) h+=`<div class="note"><span>यो वंशावली अहिले यही ब्राउजरमा मात्र छ। अरुले देख्न 'मेरो वंशावली पठाउनुहोस्' को कोड प्रशासकलाई पठाउनुहोस्।</span><button class="btn sm pri" data-act="tab" data-t="send">कोड लिनुहोस्</button></div>`;
   $('#notice').innerHTML=h;
 }
@@ -568,6 +767,7 @@ function setTab(t){ state.tab=t; try{ if(location.hash!=='#'+t) location.hash=t;
 const LO={w:148,h:74,gx:14,ux:40,gy:76,margin:34};
 function renderChart(){
   const el=$('#p-chart'),all=treePeople();
+  if(locked()){ el.innerHTML=lockHTML(); return; }
   if(!all.length){
     el.innerHTML=`<div class="empty"><h2>अहिलेसम्म कुनै सदस्य छैनन्</h2><p class="mut">पहिले आफ्नो नाम थप्नुहोस्, अनि आमाबुबा, श्रीमान्-श्रीमती र छोराछोरी जोड्दै जानुहोस्। वंशावली आफैं बन्छ।</p><button class="btn pri" data-act="add">+ आफ्नो नाम थप्नुहोस्</button></div>`;
     return;
@@ -772,7 +972,9 @@ function applyZoom(z,fx,fy,anchor){
 
 /* ---------- सदस्य सूची ---------- */
 function renderList(){
-  const el=$('#p-list'),g=GR(),all=treePeople(),houses=[...new Set(all.map(p=>p.house).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'ne'));
+  const el=$('#p-list');
+  if(locked()){ el.innerHTML=lockHTML(); return; }
+  const g=GR(),all=treePeople(),houses=[...new Set(all.map(p=>p.house).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'ne'));
   const q=state.q.trim().toLowerCase();
   const rows=all.filter(p=>(!state.house||p.house===state.house)&&(!q||(p.name+' '+(p.house||'')+' '+(p.note||'')).toLowerCase().includes(q))).sort((a,b)=>((a.ph?1:0)-(b.ph?1:0))||byName(a,b));
   const kinMap=state.me&&g.by.has(state.me)?kinFrom(g,state.me):null;
@@ -939,26 +1141,40 @@ function sha256(msg){
 function hashPw(salt,pw){ let h=sha256(salt+':'+pw); for(let i=0;i<3000;i++) h=sha256(h+salt); return h; }
 function mkPw(pw){ const a=new Uint8Array(12); (window.crypto||{getRandomValues:x=>{for(let i=0;i<x.length;i++)x[i]=Math.random()*256;}}).getRandomValues(a); const s=Array.from(a,x=>x.toString(16).padStart(2,'0')).join(''); return {s,h:hashPw(s,pw)}; }
 const pwRec=()=>local.meta.pw||seedData.meta.pw||null;
-function openLogin(){
-  const has=!!pwRec();
-  $('#modal').innerHTML=`<div class="ov"><form class="dlg" id="lform" autocomplete="off" style="width:min(420px,100%)"><h2>${has?'प्रशासक प्रवेश':'प्रशासकको पासवर्ड बनाउनुहोस्'}</h2>
-  ${has?'':'<p class="mut">यो पहिलो पटक हो। आफूलाई मात्र थाहा हुने पासवर्ड राख्नुहोस् र सुरक्षित लेखेर राख्नुहोस्। यो पासवर्ड नयाँ index.html मा बसेपछि मात्र वेबसाइटमा लागू हुन्छ।</p>'}
+async function openLogin(){
+  let via='local',mode=pwRec()?'login':'create';
+  if(cfg()){
+    $('#modal').innerHTML='<div class="ov"><div class="dlg" style="width:min(420px,100%)"><p>सर्भरसँग जोड्दै…</p></div></div>';
+    try{ const st=await rpc('ntg_admin_status',{p_pw:''}); via='server'; mode=st==='unset'?'create':'login'; }
+    catch(e){ if(!pwRec()){ $('#modal').innerHTML='<div class="ov"><div class="dlg" style="width:min(420px,100%)"><h2>सर्भरसँग जोडिएन</h2><p class="mut">इन्टरनेट जाँचेर फेरि प्रयास गर्नुहोस्।</p><div class="foot"><button type="button" class="btn" data-act="close">बन्द गर्नुहोस्</button></div></div></div>'; return; } }
+  }
+  const has=mode==='login';
+  $('#modal').innerHTML=`<div class="ov"><form class="dlg" id="lform" data-via="${via}" data-mode="${mode}" autocomplete="off" style="width:min(420px,100%)"><h2>${has?'प्रशासक प्रवेश':'प्रशासकको पासवर्ड बनाउनुहोस्'}</h2>
+  ${has?'':'<p class="mut">यो पहिलो पटक हो। आफूलाई मात्र थाहा हुने पासवर्ड राख्नुहोस् र सुरक्षित लेखेर राख्नुहोस्।'+(via==='server'?' यही पासवर्ड सबै वंशावलीको प्रशासक पासवर्ड हुन्छ।':'')+'</p>'}
   <div class="fld"><label for="lg-pw">पासवर्ड</label><input type="password" id="lg-pw" name="pw" autocomplete="${has?'current-password':'new-password'}"></div>
   ${has?'':'<div class="fld" style="margin-top:8px"><label for="lg-pw2">पासवर्ड फेरि लेख्नुहोस्</label><input type="password" id="lg-pw2" name="pw2" autocomplete="new-password"></div>'}
   <p class="ferr" id="lg-err" role="alert"></p>
   <div class="foot"><button type="button" class="btn" data-act="close">रद्द</button><button class="btn pri" type="submit">${has?'भित्र जानुहोस्':'पासवर्ड राख्नुहोस्'}</button></div></form></div>`;
   setTimeout(()=>{ const i=$('#lg-pw'); if(i) i.focus(); },30);
 }
-function enterAdmin(){ ADMIN=true; try{ sessionStorage.setItem('ntg_adm','1'); }catch(e){} closeModal(); document.body.classList.remove('view'); state.tab='share'; try{ location.hash='share'; }catch(e){} render(); }
-function doLogin(f){
-  const err=m=>{ const e=$('#lg-err'); if(e) e.textContent=m; },pw=f.elements.pw.value,rec=pwRec();
-  if(!rec){
+function enterAdmin(pw){
+  ADMIN=true; adminPw=pw||''; try{ sessionStorage.setItem('ntg_adm','1'); if(pw) sessionStorage.setItem('ntg_apw',pw); }catch(e){}
+  closeModal(); document.body.classList.remove('view'); state.tab='share'; try{ location.hash='share'; }catch(e){} render();
+  if(cfg()){ refreshList(true).then(autoUnlock); startPoll(); }
+}
+async function doLogin(f){
+  const err=m=>{ const e=$('#lg-err'); if(e) e.textContent=m; },pw=f.elements.pw.value,via=f.dataset.via,mode=f.dataset.mode;
+  if(mode==='create'){
     if(pw.length<6) return err('पासवर्ड कम्तीमा ६ अक्षरको राख्नुहोस्।');
     if(pw!==f.elements.pw2.value) return err('दुवै पासवर्ड मिलेन।');
-    local.meta.pw=mkPw(pw); persistLocal(); enterAdmin(); toast('पासवर्ड राखियो');
+    if(via==='server'){ try{ const ok=await rpc('ntg_admin_setup',{p_pw:pw}); if(!ok) return err('प्रशासक पासवर्ड पहिले नै राखिसकिएको छ।'); }catch(e){ return err('सर्भरसँग जोडिएन। फेरि प्रयास गर्नुहोस्।'); } }
+    local.meta.pw=mkPw(pw); persistLocal(); enterAdmin(pw); toast('पासवर्ड राखियो');
+  } else if(via==='server'){
+    try{ const st=await rpc('ntg_admin_status',{p_pw:pw}); if(st!=='ok') return err('पासवर्ड मिलेन। फेरि प्रयास गर्नुहोस्।'); }catch(e){ return err('सर्भरसँग जोडिएन। फेरि प्रयास गर्नुहोस्।'); }
+    enterAdmin(pw);
   } else {
-    if(hashPw(rec.s,pw)!==rec.h) return err('पासवर्ड मिलेन। फेरि प्रयास गर्नुहोस्।');
-    enterAdmin();
+    const rec=pwRec(); if(!rec||hashPw(rec.s,pw)!==rec.h) return err('पासवर्ड मिलेन। फेरि प्रयास गर्नुहोस्।');
+    enterAdmin(pw);
   }
 }
 function saveFile(name,data,type){
@@ -982,17 +1198,23 @@ function renderShare(){
     <div class="row"><button class="btn" data-act="copyall">सबै विवरण कपी गर्नुहोस्</button><button class="btn" data-act="dlall">फाइलमा सुरक्षित गर्नुहोस्</button></div></div>
   <div class="card"><h2>यो ब्राउजरका परिवर्तन हटाउनुहोस्</h2><p class="mut">वेबसाइटमा राखिसकेको विवरणलाई केही हुँदैन।</p>
     <div class="row">${state.confirmDel==='local'?'<button class="btn danger" data-act="clearlocal2">हो, हटाउनुहोस्</button><button class="btn" data-act="clearlocal0">रद्द</button>':`<button class="btn danger" data-act="clearlocal1"${n?'':' disabled'}>परिवर्तन हटाउनुहोस्</button>`}</div></div>
+  <div class="card"><h2>डाटाबेस जोड्नुहोस् (Supabase)</h2>
+    <p class="mut" style="font-size:13px">यसले सबैले बनाएका वंशावली सिधै सर्भरमा जम्मा गर्छ र तपाईंको सूचीमा देखाउँछ। जोडेपछि नयाँ index.html बनाएर फेरि अपलोड गर्नुपर्छ।</p>
+    <div class="fld"><label for="cfg-url">Project URL</label><input type="text" id="cfg-url" value="${esc((cfg()||{}).url||'')}" placeholder="https://xxxxxxxx.supabase.co" autocomplete="off"></div>
+    <div class="fld" style="margin-top:8px"><label for="cfg-key">Publishable (anon) key</label><input type="text" id="cfg-key" value="${esc((cfg()||{}).key||'')}" placeholder="sb_publishable_... वा eyJ..." autocomplete="off"></div>
+    <div class="row"><button class="btn pri" data-act="savecfg">जाँचेर जोड्नुहोस्</button><button class="btn" data-act="copysql">SQL कपी गर्नुहोस्</button></div>
+    <p class="mut" style="font-size:13px" id="cfg-msg">${cfg()?'डाटाबेस जोडिएको छ।':'अहिले जोडिएको छैन।'}</p></div>
   <div class="card"><h2>प्रशासकको पासवर्ड</h2><p class="mut" style="font-size:13px">नयाँ पासवर्ड राखेपछि नयाँ index.html बनाएर फेरि अपलोड गर्नुहोस्।</p>
     <div class="row"><input type="password" id="pw-n1" placeholder="नयाँ पासवर्ड" autocomplete="new-password" aria-label="नयाँ पासवर्ड"><input type="password" id="pw-n2" placeholder="फेरि लेख्नुहोस्" autocomplete="new-password" aria-label="नयाँ पासवर्ड फेरि"><button class="btn" data-act="setpw">पासवर्ड बदल्नुहोस्</button></div></div>
   <div class="card"><h2>प्रशासक मोडबाट निस्कनुहोस्</h2><div class="row"><button class="btn" data-act="exitadmin">निस्कनुहोस्</button></div></div>`;
 }
 function fullData(){
-  return {meta:{village:village(),rev:Date.now(),pw:pwRec()||undefined,trees:trees().filter(t=>t.id!==MAIN||t.name!==MAIN_NAME)},persons:persons().map(p=>{ const c=Object.assign({},p); delete c.ts; return c; })};
+  return {meta:{village:village(),rev:Date.now(),pw:pwRec()||undefined,trees:trees().filter(t=>!isRemote(t.id)&&(t.id!==MAIN||t.name!==MAIN_NAME)),cfg:cfg()||undefined},persons:persons().filter(p=>!isRemote(treeOf(p))).map(p=>{ const c=Object.assign({},p); delete c.ts; return c; })};
 }
 function buildDoc(seed){
-  const css=document.getElementById('appcss').textContent,js=document.getElementById('appjs').textContent;
+  const css=document.getElementById('appcss').textContent,js=document.getElementById('appjs').textContent,sqlt=(document.getElementById('sqltext')||{}).textContent||'';
   const json=JSON.stringify(seed).replace(/</g,'\\u003c');
-  return SK_HEAD+'<style id="appcss">'+css+'</style><div id="root"></div><script type="application/json" id="seed">'+json+'<\/script><script id="appjs">'+js+'<\/script></body></html>';
+  return SK_HEAD+'<style id="appcss">'+css+'</style><div id="root"></div><script type="application/json" id="seed">'+json+'<\/script><script type="text/plain" id="sqltext">'+sqlt+'<\/script><script id="appjs">'+js+'<\/script></body></html>';
 }
 async function doPublish(btn){
   if(!caps.art){ toast('प्रकाशित गर्ने अनुमति उपलब्ध छैन।'); return; }
@@ -1152,7 +1374,7 @@ function openTreeForm(){
   <div class="grid"><div class="fld full"><label for="t-name">वंशावलीको नाम</label><input type="text" id="t-name" name="tname" autocomplete="off" placeholder="जस्तै: कार्की परिवार, वडा ५" required></div>
   <div class="fld full"><label for="t-p">पहिलो व्यक्तिको पूरा नाम</label><input type="text" id="t-p" name="pname" autocomplete="off" required></div>
   <div class="fld"><span class="lbl">लिङ्ग</span><div class="radios">${['M','F','O'].map(x=>`<label><input type="radio" name="g" value="${x}"${x==='M'?' checked':''}> ${GLBL[x]}</label>`).join('')}</div></div>
-  <div class="fld"><label for="t-by">जन्म साल (वि.सं.)</label><input type="text" id="t-by" name="by" inputmode="numeric" placeholder="जस्तै २०४५"></div></div>
+  <div class="fld"><label for="t-by">जन्म साल (वि.सं.)</label><input type="text" id="t-by" name="by" inputmode="numeric" placeholder="जस्तै २०४५"></div>${cfg()?'<div class="fld full"><label for="t-ep1">आफ्नो सम्पादन पासवर्ड (पछि सम्पादन गर्न चाहिन्छ)</label><input type="password" id="t-ep1" name="ep1" autocomplete="new-password"></div><div class="fld full"><label for="t-ep2">पासवर्ड फेरि लेख्नुहोस्</label><input type="password" id="t-ep2" name="ep2" autocomplete="new-password"></div><p class="mut full" style="font-size:13px;margin:0">अरुले यो वंशावली हेर्न प्रशासकले दिएको पासवर्ड चाहिन्छ। सम्पादन पासवर्ड बिर्सनुभयो भने प्रशासकले रिसेट गर्न सक्छन्।</p>':''}</div>
   <p class="ferr" id="ferr" role="alert"></p><div class="foot"><button type="button" class="btn" data-act="close">रद्द</button><button type="submit" class="btn pri">बनाउनुहोस्</button></div></form>`);
 }
 function submitTree(f){
@@ -1160,6 +1382,12 @@ function submitTree(f){
   if(!tn){ ferr('वंशावलीको नाम लेख्नुहोस्।'); return; }
   if(!pn){ ferr('पहिलो व्यक्तिको नाम लेख्नुहोस्।'); return; }
   if(by.err){ ferr('साल वि.सं. मा चार अंकमा लेख्नुहोस्, जस्तै २०४५।'); return; }
+  if(cfg()){
+    const e1=f.elements.ep1?f.elements.ep1.value:'',e2=f.elements.ep2?f.elements.ep2.value:'';
+    if(e1.length<6){ ferr('सम्पादन पासवर्ड कम्तीमा ६ अक्षरको राख्नुहोस्।'); return; }
+    if(e1!==e2){ ferr('दुवै पासवर्ड मिलेन।'); return; }
+    createRemoteTree(f,tn,pn,f.elements.g.value||'M',by.v,e1); return;
+  }
   const id='t'+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
   local.meta.trees=(local.meta.trees||[]).concat([{id,name:tn}]);
   state.tree=id; state.tab='chart'; state.scope='all';
@@ -1173,12 +1401,14 @@ function openRenameForm(){
 }
 function submitRename(f){
   const nm=f.elements.rname.value.trim(); if(!nm){ ferr('नाम लेख्नुहोस्।'); return; }
+  if(isRemote(state.tree)){ const R=remote.get(state.tree); if(R){ R.name=nm; const x=rlist.find(r=>'r:'+r.id===state.tree); if(x) x.name=nm; scheduleSave(state.tree); closeModal(); render(); } return; }
   const L=local.meta.trees=(local.meta.trees||[]),e=L.find(t=>t.id===state.tree);
   if(e) e.name=nm; else L.push({id:state.tree,name:nm});
   persistLocal(); closeModal(); render();
 }
 function delTree(){
   const id=state.tree; if(id===MAIN||!canEdit()) return;
+  if(isRemote(id)){ delRemote(); return; }
   const ids=persons().filter(p=>treeOf(p)===id).map(p=>p.id);
   state.confirmDel=null;
   local.meta.trees=(local.meta.trees||[]).filter(t=>t.id!==id);
@@ -1187,12 +1417,142 @@ function delTree(){
   deleteMany(ids); saveUI(); toast('वंशावली मेटियो');
 }
 
+/* ---------- डाटाबेस (Supabase): अनेक वंशावली, पासवर्डले सुरक्षित ---------- */
+async function rpc(fn,args){
+  const c=cfg(); if(!c) throw new Error('nocfg');
+  const h={'Content-Type':'application/json',apikey:c.key}; if(/^eyJ/.test(c.key)) h.Authorization='Bearer '+c.key;
+  const ctl=new AbortController(),to=setTimeout(()=>ctl.abort(),15000);
+  try{
+    const r=await fetch(c.url.replace(/\/+$/,'')+'/rest/v1/rpc/'+fn,{method:'POST',headers:h,body:JSON.stringify(args||{}),signal:ctl.signal});
+    const tx=await r.text();
+    if(!r.ok){ const e=new Error('http '+r.status+' '+tx.slice(0,160)); e.status=r.status; throw e; }
+    return tx?JSON.parse(tx):null;
+  } finally{ clearTimeout(to); }
+}
+function savePw(id,pw,edit){ try{ sessionStorage.setItem('ntg_pw_'+id,pw); if(edit) localStorage.setItem('ntg_ep_'+id,pw); }catch(e){} }
+function storedPw(id){ try{ return sessionStorage.getItem('ntg_pw_'+id)||localStorage.getItem('ntg_ep_'+id)||''; }catch(e){ return ''; } }
+function savedPw(id){ return (ADMIN&&adminPw)||storedPw(id); }
+async function refreshList(full){
+  if(!cfg()) return;
+  let ok=false;
+  try{ const r=await rpc('ntg_list_trees',{}); rlist=Array.isArray(r)?r:[]; ok=true; }catch(e){}
+  rlistReady=true;
+  if(ok){ [...remote.keys()].forEach(k=>{ if(!rlist.some(x=>'r:'+x.id===k)) remote.delete(k); }); pcache=null; gcache=null; }
+  const before=state.tree; fixSel();
+  if(full||before!==state.tree) render(); else { renderTreebar(); renderNotice(); }
+}
+async function autoUnlock(){
+  for(const x of rlist.slice()){
+    const id='r:'+x.id; if(remote.has(id)) continue;
+    const pw=id===state.tree?savedPw(id):storedPw(id);
+    if(pw) await loadTree(id,pw,true);
+  }
+}
+async function loadTree(id,pw,silent){
+  if(!pw) return false;
+  try{
+    state.loading=id; if(state.tree===id) render();
+    const r=await rpc('ntg_get_tree',{p_id:rid(id),p_pw:pw});
+    state.loading=null;
+    if(!r){ if(!silent) toast('पासवर्ड मिलेन।'); if(state.tree===id) render(); return false; }
+    const m=new Map(); (r.data||[]).forEach(p=>{ if(p&&p.id) m.set(p.id,Object.assign({},p,{tr:id})); });
+    remote.set(id,{id,name:r.name,persons:m,role:r.role,pw,ts:r.updated_at});
+    if(r.role!=='admin') savePw(id,pw,r.role==='edit');
+    pcache=null; gcache=null; fixSel(); render(); return true;
+  }catch(e){ state.loading=null; if(!silent) toast('सर्भरसँग जोडिएन। इन्टरनेट जाँचेर फेरि प्रयास गर्नुहोस्।'); render(); return false; }
+}
+function lockHTML(){
+  const id=state.tree,x=rlist.find(r=>'r:'+r.id===id),nm=x?x.name:'वंशावली';
+  if(state.loading===id) return '<div class="empty"><p class="mut">लोड हुँदै…</p></div>';
+  return `<div class="empty"><h2>${esc(nm)}</h2><p class="mut">यो वंशावली हेर्न प्रशासकले दिएको पासवर्ड चाहिन्छ।${x&&!x.has_view?' प्रशासकले अहिलेसम्म हेर्ने पासवर्ड राखेका छैनन्।':''}</p>
+  <form id="lkform" class="row" style="justify-content:center"><input type="password" id="lk-pw" name="pw" placeholder="पासवर्ड" autocomplete="off" aria-label="वंशावलीको पासवर्ड"><button class="btn pri" type="submit">खोल्नुहोस्</button></form><p class="ferr" id="lk-err" role="alert"></p></div>`;
+}
+async function doUnlock(f){
+  const pw=f.elements.pw.value,ok=await loadTree(state.tree,pw,true);
+  if(!ok){ const e=$('#lk-err'); if(e) e.textContent='पासवर्ड मिलेन। प्रशासकसँग सोध्नुहोस्।'; }
+}
+const saveT={};
+function scheduleSave(id){ const R=remote.get(id); if(!R) return; R.dirty=true; clearTimeout(saveT[id]); saveT[id]=setTimeout(()=>doSave(id),700); }
+async function doSave(id){
+  const R=remote.get(id); if(!R||!R.dirty) return;
+  if(R.saving){ R.again=true; return; }
+  R.saving=true;
+  try{
+    const data=[...R.persons.values()].map(p=>{ const c=Object.assign({},p); delete c.tr; delete c.ts; return c; });
+    const r=await rpc('ntg_save_tree',{p_id:rid(id),p_pw:R.pw,p_name:R.name,p_data:data,p_base:R.ts||null});
+    if(r&&r.ok){ R.ts=r.updated_at; R.dirty=false; toast('सर्भरमा सुरक्षित भयो'); }
+    else if(r&&r.reason==='conflict'){ R.dirty=false; toast('अर्कै व्यक्तिले यो वंशावली फेरेको छ। नयाँ अवस्था लोड गरियो; आफ्नो परिवर्तन फेरि गर्नुहोस्।'); await loadTree(id,R.pw,true); return; }
+    else toast('सुरक्षित हुन सकेन। पासवर्ड वा अनुमति जाँच्नुहोस्।');
+  }catch(e){ toast('सर्भरमा सुरक्षित हुन सकेन। इन्टरनेट जाँचेर फेरि परिवर्तन गर्नुहोस्।'); }
+  finally{ R.saving=false; if(R.again){ R.again=false; doSave(id); } }
+}
+async function createRemoteTree(f,tn,pn,gen,by,pw){
+  const btn=f.querySelector('[type=submit]'); if(btn) btn.disabled=true;
+  const person={id:uid(),name:pn,g:gen,by:by,dead:false,dy:null,house:'',note:'',ph:false,parents:[],spouses:[],hints:{}};
+  try{
+    const nid=await rpc('ntg_create_tree',{p_name:tn,p_data:[person],p_edit:pw}),tid='r:'+nid;
+    closeModal(); state.tree=tid; state.tab='chart'; state.scope='all';
+    await refreshList(false);
+    const ok=await loadTree(tid,pw,true);
+    state.me=person.id; state.anchor=person.id; state.sel=person.id; saveUI(); render();
+    toast(ok?'नयाँ वंशावली बन्यो। प्रशासकको सूचीमा देखिन्छ। अब अरु सदस्य थप्नुहोस्।':'वंशावली बन्यो तर खोल्न सकिएन। ताजा गरेर पासवर्ड राख्नुहोस्।');
+  }catch(e){ if(btn) btn.disabled=false; ferr('वंशावली बन्न सकेन। इन्टरनेट वा डाटाबेस जाँच्नुहोस्।'); }
+}
+async function delRemote(){
+  const id=state.tree,R=remote.get(id); if(!R||!canEdit()) return; state.confirmDel=null;
+  try{
+    const ok=await rpc('ntg_delete_tree',{p_id:rid(id),p_pw:R.pw});
+    if(!ok){ toast('मेट्न सकिएन।'); return; }
+    remote.delete(id); try{ localStorage.removeItem('ntg_ep_'+rid(id)); }catch(e){}
+    state.tree=MAIN; state.sel=null; state.anchor=null; saveUI(); await refreshList(true); toast('वंशावली मेटियो');
+  }catch(e){ toast('सर्भरसँग जोडिएन।'); }
+}
+function startPoll(){ if(!pollT) pollT=setInterval(()=>{ if(ADMIN&&cfg()&&!document.hidden) refreshList(false); },60000); }
+function openPwForm(kind){
+  const view=kind==='view';
+  openModal(`<form id="pwform" data-kind="${kind}"><h2>${view?'हेर्ने पासवर्ड दिनुहोस्':'सम्पादन पासवर्ड रिसेट'}</h2>
+  <p class="mut" style="margin-top:0">${view?'यो वंशावली हेर्न चाहने व्यक्तिलाई यही पासवर्ड दिनुहोस्। खाली राखेर सुरक्षित गरे हेर्ने पासवर्ड हट्छ र प्रशासक र बनाउने बाहेक कसैले हेर्न पाउँदैनन्।':'वंशावली बनाउने व्यक्तिले पासवर्ड बिर्सेको भए यहाँ नयाँ पासवर्ड राखेर उसलाई दिनुहोस् (कम्तीमा ६ अक्षर)।'}</p>
+  <div class="fld"><label for="pw-in">नयाँ पासवर्ड</label><input type="text" id="pw-in" name="pw" autocomplete="off"></div>
+  <div class="row"><button type="button" class="btn sm" data-act="genpw">आफैँ बनाइदिनुहोस्</button></div>
+  <p class="ferr" id="ferr" role="alert"></p><div class="foot"><button type="button" class="btn" data-act="close">रद्द</button><button type="submit" class="btn pri">सुरक्षित गर्नुहोस्</button></div></form>`);
+}
+async function submitPwForm(f){
+  const kind=f.dataset.kind,pw=f.elements.pw.value.trim(),id=state.tree;
+  if(kind==='view'&&pw&&pw.length<4){ ferr('पासवर्ड कम्तीमा ४ अक्षरको राख्नुहोस्।'); return; }
+  if(kind!=='view'&&pw.length<6){ ferr('पासवर्ड कम्तीमा ६ अक्षरको राख्नुहोस्।'); return; }
+  try{
+    const ok=kind==='view'?await rpc('ntg_set_view_pw',{p_id:rid(id),p_admin:adminPw,p_view:pw}):await rpc('ntg_reset_edit_pw',{p_id:rid(id),p_admin:adminPw,p_new:pw});
+    if(!ok){ ferr('सुरक्षित भएन। प्रशासकको रूपमा फेरि भित्र जानुहोस्।'); return; }
+    closeModal(); await refreshList(false);
+    toast(kind==='view'?(pw?'हेर्ने पासवर्ड राखियो: '+pw:'हेर्ने पासवर्ड हटाइयो'):'सम्पादन पासवर्ड रिसेट भयो: '+pw);
+  }catch(e){ ferr('सर्भरसँग जोडिएन।'); }
+}
+async function saveCfg(){
+  const msg=t=>{ const m=$('#cfg-msg'); if(m) m.textContent=t; };
+  let url=($('#cfg-url').value||'').trim().replace(/\/rest\/v1\/?$/,'').replace(/\/+$/,''),key=($('#cfg-key').value||'').trim();
+  if(!/^https:\/\/[^\s/]+$/.test(url)||!key){ msg('Project URL (https://….supabase.co) र key दुवै राख्नुहोस्।'); return; }
+  const prev=local.meta.cfg; local.meta.cfg={url,key}; msg('जाँच गर्दै…');
+  try{
+    const st=await rpc('ntg_admin_status',{p_pw:''});
+    persistLocal(); renderNotice();
+    if(st==='unset'){ msg('जोडियो। अब सर्भरको प्रशासक पासवर्ड बनाउनुहोस्।'); openLogin(); }
+    else msg('जोडियो। अब नयाँ index.html बनाएर अपलोड गर्नुहोस्।');
+  }catch(e){ if(prev) local.meta.cfg=prev; else delete local.meta.cfg; msg(e&&e.status===404?'जोडिएन: SQL चलाइएको छैन जस्तो छ। पहिले SQL चलाउनुहोस्।':'जोडिएन। URL र key जाँच्नुहोस्। ('+((e&&e.message)||'')+')'); }
+}
+
 /* ---------- घटना ---------- */
 document.addEventListener('click',e=>{
   const t=e.target.closest('[data-act]'); if(!t) return;
   const a=t.dataset.act,id=t.dataset.id;
   if(a==='ovclose'){ if(e.target===t) closeModal(); return; }
   if(a==='tab') setTab(t.dataset.t);
+  else if(a==='reflist'){ refreshList(true); toast('सूची ताजा गरियो'); }
+  else if(a==='markseen'){ let mx=seenTs(); rlist.forEach(r=>{ if(String(r.created_at)>mx) mx=String(r.created_at); }); try{ localStorage.setItem('ntg_seen',mx); }catch(e){} render(); }
+  else if(a==='setviewpw') openPwForm('view');
+  else if(a==='resetedit') openPwForm('edit');
+  else if(a==='genpw'){ const c='abcdefghjkmnpqrstuvwxyz23456789',v=Array.from({length:6},()=>c[Math.floor(Math.random()*c.length)]).join(''); const i=$('#pw-in'); if(i) i.value=v; }
+  else if(a==='savecfg') saveCfg();
+  else if(a==='copysql') copyText((document.getElementById('sqltext')||{}).textContent||'',null);
   else if(a==='newtree') openTreeForm();
   else if(a==='renametree') openRenameForm();
   else if(a==='deltree'){ state.confirmDel='tree'; renderTreebar(); }
@@ -1228,11 +1588,11 @@ document.addEventListener('click',e=>{
     }
   }
   else if(a==='copycode') copyText(exportOwn(),$('#code-out'));
-  else if(a==='copyall') copyText('NTG1'+JSON.stringify({docs:persons(),village:village(),trees:trees().filter(t=>t.id!==MAIN)}),null);
+  else if(a==='copyall') copyText('NTG1'+JSON.stringify({docs:persons().filter(p=>!isRemote(treeOf(p))),village:village(),trees:trees().filter(t=>t.id!==MAIN&&!isRemote(t.id))}),null);
   else if(a==='dlall'){ saveFile('natagota-backup.json',JSON.stringify(fullData(),null,1),'application/json'); toast('फाइल तयार भयो'); }
   else if(a==='dlsite'){ const seed=fullData(); lsSet(LSP,String(seed.meta.rev)); saveFile('index.html',buildDoc(seed),'text/html'); toast('index.html तयार भयो। यसलाई होस्टिङमा अपलोड गर्नुहोस्।'); }
   else if(a==='admin'){ if(ADMIN) setTab('share'); else openLogin(); }
-  else if(a==='exitadmin'){ ADMIN=false; try{ sessionStorage.removeItem('ntg_adm'); }catch(e){} document.body.classList.add('view'); state.tab='chart'; try{ location.hash='chart'; }catch(e){} render(); }
+  else if(a==='exitadmin'){ ADMIN=false; adminPw=''; remote.forEach((R,k)=>{ if(R.role==='admin') remote.delete(k); }); pcache=null; gcache=null; try{ sessionStorage.removeItem('ntg_apw'); }catch(e){} try{ sessionStorage.removeItem('ntg_adm'); }catch(e){} document.body.classList.add('view'); state.tab='chart'; try{ location.hash='chart'; }catch(e){} render(); }
   else if(a==='setpw'){ const p1=$('#pw-n1').value,p2=$('#pw-n2').value; if(p1.length<6) toast('पासवर्ड कम्तीमा ६ अक्षरको राख्नुहोस्।'); else if(p1!==p2) toast('दुवै पासवर्ड मिलेन।'); else { local.meta.pw=mkPw(p1); persistLocal(); $('#pw-n1').value=''; $('#pw-n2').value=''; toast('नयाँ पासवर्ड राखियो। नयाँ index.html बनाएर अपलोड गर्नुहोस्।'); } }
   else if(a==='dlimg') exportChartImage(t);
   else if(a==='dlimgall') exportChartImage(t,true);
@@ -1264,6 +1624,8 @@ document.addEventListener('submit',e=>{
   e.preventDefault();
   const f=e.target;
   if(f.id==='lform') doLogin(f);
+  else if(f.id==='lkform') doUnlock(f);
+  else if(f.id==='pwform') submitPwForm(f);
   else if(f.id==='tform') submitTree(f);
   else if(f.id==='rform') submitRename(f);
   else if(f.id==='pform') submitPerson(f);
@@ -1277,7 +1639,7 @@ document.addEventListener('submit',e=>{
 });
 document.addEventListener('change',e=>{
   const t=e.target;
-  if(t.id==='tree-sel'){ state.tree=t.value; state.sel=null; state.anchor=null; state.confirmDel=null; fixSel(); saveUI(); render(); }
+  if(t.id==='tree-sel'){ state.tree=t.value; state.sel=null; state.anchor=null; state.confirmDel=null; fixSel(); saveUI(); render(); if(isRemote(state.tree)&&!remote.has(state.tree)){ const pw=savedPw(state.tree); if(pw) loadTree(state.tree,pw); } }
   else if(t.id==='me-sel'){ state.me=t.value||null; saveUI(); render(); }
   else if(t.id==='scope-sel'){ state.scope=t.value; saveUI(); drawStage(); }
   else if(t.id==='kin-chk'){ state.kin=t.checked; saveUI(); drawStage(); }
@@ -1292,11 +1654,12 @@ document.addEventListener('toggle',e=>{ const d=e.target; if(d&&d.classList&&d.c
 window.addEventListener('hashchange',()=>{ const h=(location.hash||'').slice(1); if(TABS.some(t=>t[0]===h)&&h!==state.tab){ state.tab=h; render(); } });
 
 /* ---------- सुरु ---------- */
-try{ if(sessionStorage.getItem('ntg_adm')==='1'&&pwRec()) ADMIN=true; }catch(e){}
+try{ if(sessionStorage.getItem('ntg_adm')==='1'&&(pwRec()||cfg())){ ADMIN=true; adminPw=sessionStorage.getItem('ntg_apw')||''; } }catch(e){}
 document.body.classList.toggle('view',!ADMIN);
 shell();
 (function(){ const h=(location.hash||'').slice(1); if(TABS.some(t=>t[0]===h)) state.tab=h; })();
 fixSel(); render();
+if(cfg()){ refreshList(true).then(autoUnlock); if(ADMIN) startPoll(); }
 (async function(){
   try{
     if(!window.claude||!window.claude.use) return;
@@ -1307,4 +1670,6 @@ fixSel(); render();
   }catch(e){}
 })();
 })();
-</script></body></html>
+</script>
+
+</body></html>
